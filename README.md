@@ -5,7 +5,7 @@ Sonatra Mailer
 [![Build Status](https://img.shields.io/travis/sonatra/sonatra/sonatra-mailer/master.svg)](https://travis-ci.org/sonatra/sonatra/sonatra-mailer)
 [![Coverage Status](https://img.shields.io/coveralls/sonatra/sonatra/sonatra-mailer/master.svg)](https://coveralls.io/r/sonatra/sonatra/sonatra-mailer?branch=master)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/sonatra/sonatra/sonatra-mailer/master.svg)](https://scrutinizer-ci.com/g/sonatra/sonatra/sonatra-mailer?branch=master)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/8e1937d0-1e2d-464f-88d8-076c3a6b8ec5.svg)](https://insight.sensiolabs.com/projects/8e1937d0-1e2d-464f-88d8-076c3a6b8ec5)
+[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/f644cbc7-5481-49b5-aaab-6b09a0d6973a.svg)](https://insight.sensiolabs.com/projects/f644cbc7-5481-49b5-aaab-6b09a0d6973a)
 
 The Sonatra Mailer is a manager for render and send an mail template with different
 transport (email, mail, fax, ...).
