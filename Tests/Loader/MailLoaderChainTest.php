@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Loader;
+namespace Sonatra\Component\Mailer\Tests\Loader;
 
-use Sonatra\Bundle\MailerBundle\Exception\UnknownMailException;
-use Sonatra\Bundle\MailerBundle\Loader\MailLoaderChain;
-use Sonatra\Bundle\MailerBundle\Loader\MailLoaderInterface;
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Model\MailInterface;
+use Sonatra\Component\Mailer\Exception\UnknownMailException;
+use Sonatra\Component\Mailer\Loader\MailLoaderChain;
+use Sonatra\Component\Mailer\Loader\MailLoaderInterface;
+use Sonatra\Component\Mailer\MailTypes;
+use Sonatra\Component\Mailer\Model\MailInterface;
 
 /**
  * Tests for chain layout loader.
@@ -44,7 +44,7 @@ class MailLoaderChainTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\UnknownMailException
+     * @expectedException \Sonatra\Component\Mailer\Exception\UnknownMailException
      * @expectedExceptionMessage The "test" mail template does not exist with the "all" type
      */
     public function testLoadUnknownTemplate()

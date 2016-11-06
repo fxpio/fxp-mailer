@@ -9,9 +9,8 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Mailer;
+namespace Sonatra\Component\Mailer;
 
-use Sonatra\Bundle\MailerBundle\MailTypes;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**

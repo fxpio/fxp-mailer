@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Twig\TokenParser;
+namespace Sonatra\Component\Mailer\Twig\TokenParser;
 
-use Sonatra\Bundle\MailerBundle\Twig\Node\ParentLayoutNode;
+use Sonatra\Component\Mailer\Twig\Node\ParentLayoutNode;
 
 /**
  * Use mailer layout directly in twig template.

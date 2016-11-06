@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Twig\TokenParser;
+namespace Sonatra\Component\Mailer\Tests\Twig\TokenParser;
 
-use Sonatra\Bundle\MailerBundle\Twig\TokenParser\LayoutTokenParser;
+use Sonatra\Component\Mailer\Twig\TokenParser\LayoutTokenParser;
 
 /**
  * Tests for twig layout token parser.

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Exception;
+namespace Sonatra\Component\Mailer\Exception;
 
 /**
  * Unknown Mail Template Exception.

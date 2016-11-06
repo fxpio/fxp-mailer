@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Loader;
+namespace Sonatra\Component\Mailer\Tests\Loader;
 
-use Sonatra\Bundle\MailerBundle\Loader\YamlLayoutLoader;
-use Sonatra\Bundle\MailerBundle\Model\LayoutInterface;
+use Sonatra\Component\Mailer\Loader\YamlLayoutLoader;
+use Sonatra\Component\Mailer\Model\LayoutInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
@@ -38,7 +38,7 @@ class YamlLayoutLoaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\UnknownLayoutException
+     * @expectedException \Sonatra\Component\Mailer\Exception\UnknownLayoutException
      * @expectedExceptionMessage The "test" layout template does not exist
      */
     public function testLoadUnknownTemplate()

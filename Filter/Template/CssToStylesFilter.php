@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Filter\Template;
+namespace Sonatra\Component\Mailer\Filter\Template;
 
-use Sonatra\Bundle\MailerBundle\Filter\TemplateFilterInterface;
-use Sonatra\Bundle\MailerBundle\Mailer\MailRenderedInterface;
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Util\MailUtil;
+use Sonatra\Component\Mailer\Filter\TemplateFilterInterface;
+use Sonatra\Component\Mailer\MailRenderedInterface;
+use Sonatra\Component\Mailer\MailTypes;
+use Sonatra\Component\Mailer\Util\MailUtil;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
 /**

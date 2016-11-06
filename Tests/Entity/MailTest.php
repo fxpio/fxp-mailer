@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Entity;
+namespace Sonatra\Component\Mailer\Tests\Entity;
 
 use Doctrine\Common\Collections\Collection;
-use Sonatra\Bundle\MailerBundle\Entity\Mail;
-use Sonatra\Bundle\MailerBundle\Model\MailTranslationInterface;
+use Sonatra\Component\Mailer\Entity\Mail;
+use Sonatra\Component\Mailer\Model\MailTranslationInterface;
 
 /**
  * Tests for mail template entity.

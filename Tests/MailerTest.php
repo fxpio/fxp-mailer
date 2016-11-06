@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Mailer;
+namespace Sonatra\Component\Mailer\Tests;
 
-use Sonatra\Bundle\MailerBundle\Mailer\Mailer;
-use Sonatra\Bundle\MailerBundle\Mailer\MailRenderedInterface;
-use Sonatra\Bundle\MailerBundle\Mailer\MailTemplaterInterface;
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Transport\TransportInterface;
+use Sonatra\Component\Mailer\Mailer;
+use Sonatra\Component\Mailer\MailRenderedInterface;
+use Sonatra\Component\Mailer\MailTemplaterInterface;
+use Sonatra\Component\Mailer\MailTypes;
+use Sonatra\Component\Mailer\Transport\TransportInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
@@ -66,7 +66,7 @@ class MailerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\InvalidArgumentException
+     * @expectedException \Sonatra\Component\Mailer\Exception\InvalidArgumentException
      * @expectedExceptionMessage The "foo" transport does not exist
      */
     public function testGetInvalidTransport()

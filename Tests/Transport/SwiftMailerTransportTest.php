@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Transport;
+namespace Sonatra\Component\Mailer\Tests\Transport;
 
-use Sonatra\Bundle\MailerBundle\Mailer\MailRenderedInterface;
-use Sonatra\Bundle\MailerBundle\Transport\SwiftMailerTransport;
+use Sonatra\Component\Mailer\MailRenderedInterface;
+use Sonatra\Component\Mailer\Transport\SwiftMailerTransport;
 
 /**
  * Tests for swift mailer transport.
@@ -43,7 +43,7 @@ class SwiftMailerTransportTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\UnexpectedTypeException
+     * @expectedException \Sonatra\Component\Mailer\Exception\UnexpectedTypeException
      * @expectedExceptionMessage Expected argument of type "Swift_Message", "integer" given
      */
     public function testInvalidType()

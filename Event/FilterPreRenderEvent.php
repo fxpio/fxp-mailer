@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Event;
+namespace Sonatra\Component\Mailer\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 

@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Loader;
+namespace Sonatra\Component\Mailer\Loader;
 
-use Sonatra\Bundle\MailerBundle\Model\Layout;
-use Sonatra\Bundle\MailerBundle\Model\LayoutInterface;
-use Sonatra\Bundle\MailerBundle\Model\LayoutTranslation;
-use Sonatra\Bundle\MailerBundle\Model\LayoutTranslationInterface;
-use Sonatra\Bundle\MailerBundle\Util\ConfigUtil;
+use Sonatra\Component\Mailer\Model\Layout;
+use Sonatra\Component\Mailer\Model\LayoutInterface;
+use Sonatra\Component\Mailer\Model\LayoutTranslation;
+use Sonatra\Component\Mailer\Model\LayoutTranslationInterface;
+use Sonatra\Component\Mailer\Util\ConfigUtil;
 
 /**
  * Config layout loader.

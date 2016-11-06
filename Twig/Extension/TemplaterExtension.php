@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Twig\Extension;
+namespace Sonatra\Component\Mailer\Twig\Extension;
 
-use Sonatra\Bundle\MailerBundle\Exception\InvalidArgumentException;
-use Sonatra\Bundle\MailerBundle\Exception\UnknownLayoutException;
-use Sonatra\Bundle\MailerBundle\Loader\LayoutLoaderInterface;
-use Sonatra\Bundle\MailerBundle\Mailer\MailRenderedInterface;
-use Sonatra\Bundle\MailerBundle\Mailer\MailTemplaterInterface;
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Model\TwigLayout;
-use Sonatra\Bundle\MailerBundle\Twig\TokenParser\LayoutTokenParser;
-use Sonatra\Bundle\MailerBundle\Util\TranslationUtil;
+use Sonatra\Component\Mailer\Exception\InvalidArgumentException;
+use Sonatra\Component\Mailer\Exception\UnknownLayoutException;
+use Sonatra\Component\Mailer\Loader\LayoutLoaderInterface;
+use Sonatra\Component\Mailer\MailRenderedInterface;
+use Sonatra\Component\Mailer\MailTemplaterInterface;
+use Sonatra\Component\Mailer\MailTypes;
+use Sonatra\Component\Mailer\Model\TwigLayout;
+use Sonatra\Component\Mailer\Twig\TokenParser\LayoutTokenParser;
+use Sonatra\Component\Mailer\Util\TranslationUtil;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 

@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Loader;
+namespace Sonatra\Component\Mailer\Loader;
 
-use Sonatra\Bundle\MailerBundle\Model\LayoutInterface;
-use Sonatra\Bundle\MailerBundle\Model\TwigLayout;
-use Sonatra\Bundle\MailerBundle\Model\TwigLayoutTranslation;
-use Sonatra\Bundle\MailerBundle\Util\ConfigUtil;
+use Sonatra\Component\Mailer\Model\LayoutInterface;
+use Sonatra\Component\Mailer\Model\TwigLayout;
+use Sonatra\Component\Mailer\Model\TwigLayoutTranslation;
+use Sonatra\Component\Mailer\Util\ConfigUtil;
 
 /**
  * Twig File layout loader.

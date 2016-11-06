@@ -9,19 +9,19 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Mailer;
+namespace Sonatra\Component\Mailer\Tests;
 
-use Sonatra\Bundle\MailerBundle\Loader\MailLoaderInterface;
-use Sonatra\Bundle\MailerBundle\Mailer\MailTemplater;
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Model\Layout;
-use Sonatra\Bundle\MailerBundle\Model\LayoutTranslation;
-use Sonatra\Bundle\MailerBundle\Model\Mail;
-use Sonatra\Bundle\MailerBundle\Model\MailTranslation;
-use Sonatra\Bundle\MailerBundle\Model\TwigLayout;
-use Sonatra\Bundle\MailerBundle\Model\TwigLayoutTranslation;
-use Sonatra\Bundle\MailerBundle\Model\TwigMail;
-use Sonatra\Bundle\MailerBundle\Model\TwigMailTranslation;
+use Sonatra\Component\Mailer\Loader\MailLoaderInterface;
+use Sonatra\Component\Mailer\MailTemplater;
+use Sonatra\Component\Mailer\MailTypes;
+use Sonatra\Component\Mailer\Model\Layout;
+use Sonatra\Component\Mailer\Model\LayoutTranslation;
+use Sonatra\Component\Mailer\Model\Mail;
+use Sonatra\Component\Mailer\Model\MailTranslation;
+use Sonatra\Component\Mailer\Model\TwigLayout;
+use Sonatra\Component\Mailer\Model\TwigLayoutTranslation;
+use Sonatra\Component\Mailer\Model\TwigMail;
+use Sonatra\Component\Mailer\Model\TwigMailTranslation;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 

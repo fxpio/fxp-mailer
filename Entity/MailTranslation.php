@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Entity;
+namespace Sonatra\Component\Mailer\Entity;
 
-use Sonatra\Bundle\MailerBundle\Model\MailTranslation as BaseMailTranslation;
+use Sonatra\Component\Mailer\Model\MailTranslation as BaseMailTranslation;
 
 /**
  * Entity for mail translation template.

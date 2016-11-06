@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Model;
+namespace Sonatra\Component\Mailer\Model;
 
 /**
  * Base interface for the twig template.

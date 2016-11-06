@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Loader;
+namespace Sonatra\Component\Mailer\Loader;
 
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Model\Mail;
-use Sonatra\Bundle\MailerBundle\Model\MailInterface;
-use Sonatra\Bundle\MailerBundle\Model\MailTranslation;
-use Sonatra\Bundle\MailerBundle\Model\MailTranslationInterface;
-use Sonatra\Bundle\MailerBundle\Util\ConfigUtil;
+use Sonatra\Component\Mailer\MailTypes;
+use Sonatra\Component\Mailer\Model\Mail;
+use Sonatra\Component\Mailer\Model\MailInterface;
+use Sonatra\Component\Mailer\Model\MailTranslation;
+use Sonatra\Component\Mailer\Model\MailTranslationInterface;
+use Sonatra\Component\Mailer\Util\ConfigUtil;
 
 /**
  * Config mail loader.

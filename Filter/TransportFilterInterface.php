@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Filter;
+namespace Sonatra\Component\Mailer\Filter;
 
-use Sonatra\Bundle\MailerBundle\Mailer\MailRenderedInterface;
+use Sonatra\Component\Mailer\MailRenderedInterface;
 
 /**
  * Interface for the transport filter.

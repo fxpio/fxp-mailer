@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Model\Traits;
+namespace Sonatra\Component\Mailer\Model\Traits;
 
 /**
  * Trait for file model.
@@ -47,7 +47,7 @@ trait FileTrait
      *
      * @param string|null $file The file name
      *
-     * @throws \Sonatra\Bundle\MailerBundle\Exception\InvalidArgumentException When the file is not supported
+     * @throws \Sonatra\Component\Mailer\Exception\InvalidArgumentException When the file is not supported
      */
     abstract protected function support($file);
 }

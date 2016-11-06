@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Transport\SwiftMailer;
+namespace Sonatra\Component\Mailer\Transport\SwiftMailer;
 
-use Sonatra\Bundle\MailerBundle\Util\EmbedImageUtil;
+use Sonatra\Component\Mailer\Util\EmbedImageUtil;
 
 /**
  * SwiftMailer Embed Image Plugin.

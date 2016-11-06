@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Util;
+namespace Sonatra\Component\Mailer\Util;
 
 /**
  * Utils for swiftmailer embed image plugin.

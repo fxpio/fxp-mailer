@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle;
+namespace Sonatra\Component\Mailer;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>

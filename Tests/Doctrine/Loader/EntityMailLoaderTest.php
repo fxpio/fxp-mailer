@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Doctrine\Loader;
+namespace Sonatra\Component\Mailer\Tests\Doctrine\Loader;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
-use Sonatra\Bundle\MailerBundle\Doctrine\Loader\EntityMailLoader;
-use Sonatra\Bundle\MailerBundle\Entity\Mail;
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Util\MailUtil;
+use Sonatra\Component\Mailer\Doctrine\Loader\EntityMailLoader;
+use Sonatra\Component\Mailer\Entity\Mail;
+use Sonatra\Component\Mailer\MailTypes;
+use Sonatra\Component\Mailer\Util\MailUtil;
 
 /**
  * Tests for entity mail loader.
@@ -82,7 +82,7 @@ class EntityMailLoaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\UnknownMailException
+     * @expectedException \Sonatra\Component\Mailer\Exception\UnknownMailException
      * @expectedExceptionMessage The "test" mail template does not exist with the "all" type
      */
     public function testLoadUnknownTemplate()

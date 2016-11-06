@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Filter;
+namespace Sonatra\Component\Mailer\Tests\Filter;
 
-use Sonatra\Bundle\MailerBundle\Filter\FilterRegistry;
-use Sonatra\Bundle\MailerBundle\Filter\TemplateFilterInterface;
-use Sonatra\Bundle\MailerBundle\Filter\TransportFilterInterface;
+use Sonatra\Component\Mailer\Filter\FilterRegistry;
+use Sonatra\Component\Mailer\Filter\TemplateFilterInterface;
+use Sonatra\Component\Mailer\Filter\TransportFilterInterface;
 
 /**
  * Tests for filter registry.

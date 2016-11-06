@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Filter\Template;
+namespace Sonatra\Component\Mailer\Tests\Filter\Template;
 
-use Sonatra\Bundle\MailerBundle\Filter\Template\CssToStylesFilter;
-use Sonatra\Bundle\MailerBundle\Mailer\MailRenderedInterface;
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Model\MailInterface;
+use Sonatra\Component\Mailer\Filter\Template\CssToStylesFilter;
+use Sonatra\Component\Mailer\MailRenderedInterface;
+use Sonatra\Component\Mailer\MailTypes;
+use Sonatra\Component\Mailer\Model\MailInterface;
 
 /**
  * Tests for css to styles filter.

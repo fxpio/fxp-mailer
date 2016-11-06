@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Model;
+namespace Sonatra\Component\Mailer\Tests\Model;
 
-use Sonatra\Bundle\MailerBundle\Model\AbstractTemplate;
-use Sonatra\Bundle\MailerBundle\Model\TemplateInterface;
+use Sonatra\Component\Mailer\Model\AbstractTemplate;
+use Sonatra\Component\Mailer\Model\TemplateInterface;
 
 /**
  * Tests for abstract template model.

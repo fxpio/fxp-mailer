@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Loader;
+namespace Sonatra\Component\Mailer\Tests\Loader;
 
-use Sonatra\Bundle\MailerBundle\Loader\LayoutLoaderInterface;
-use Sonatra\Bundle\MailerBundle\Loader\TwigMailLoader;
-use Sonatra\Bundle\MailerBundle\Model\LayoutInterface;
-use Sonatra\Bundle\MailerBundle\Model\MailInterface;
+use Sonatra\Component\Mailer\Loader\LayoutLoaderInterface;
+use Sonatra\Component\Mailer\Loader\TwigMailLoader;
+use Sonatra\Component\Mailer\Model\LayoutInterface;
+use Sonatra\Component\Mailer\Model\MailInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
@@ -72,7 +72,7 @@ class TwigMailLoaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\UnknownMailException
+     * @expectedException \Sonatra\Component\Mailer\Exception\UnknownMailException
      * @expectedExceptionMessage The "test" mail template does not exist with the "all" type
      */
     public function testLoadUnknownTemplate()

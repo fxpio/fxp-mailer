@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Model\Traits;
+namespace Sonatra\Component\Mailer\Model\Traits;
 
-use Sonatra\Bundle\MailerBundle\Util\TranslationUtil;
+use Sonatra\Component\Mailer\Util\TranslationUtil;
 
 /**
  * Trait for translation model.
@@ -41,7 +41,7 @@ trait TranslationTrait
             return $this->cacheTranslation[$locale];
         }
 
-        /* @var \Sonatra\Bundle\MailerBundle\Model\LayoutInterface|\Sonatra\Bundle\MailerBundle\Model\MailInterface|TranslationTrait $this */
+        /* @var \Sonatra\Component\Mailer\Model\LayoutInterface|\Sonatra\Component\Mailer\Model\MailInterface|TranslationTrait $this */
         $self = clone $this;
 
         if (!TranslationUtil::find($self, $locale) && false !== ($pos = strrpos($locale, '_'))) {

@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Model;
+namespace Sonatra\Component\Mailer\Tests\Model;
 
-use Sonatra\Bundle\MailerBundle\Model\TwigLayout;
+use Sonatra\Component\Mailer\Model\TwigLayout;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
@@ -47,7 +47,7 @@ class TwigLayoutTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\InvalidArgumentException
+     * @expectedException \Sonatra\Component\Mailer\Exception\InvalidArgumentException
      * @expectedExceptionMessage The "file.ext" file is not supported by the layout file template
      */
     public function testInvalidFile()

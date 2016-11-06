@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Loader;
+namespace Sonatra\Component\Mailer\Tests\Loader;
 
-use Sonatra\Bundle\MailerBundle\Loader\ConfigMailLoader;
-use Sonatra\Bundle\MailerBundle\Loader\LayoutLoaderInterface;
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Model\LayoutInterface;
-use Sonatra\Bundle\MailerBundle\Model\MailInterface;
+use Sonatra\Component\Mailer\Loader\ConfigMailLoader;
+use Sonatra\Component\Mailer\Loader\LayoutLoaderInterface;
+use Sonatra\Component\Mailer\MailTypes;
+use Sonatra\Component\Mailer\Model\LayoutInterface;
+use Sonatra\Component\Mailer\Model\MailInterface;
 
 /**
  * Tests for config mail loader.
@@ -73,7 +73,7 @@ class ConfigMailLoaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\UnknownMailException
+     * @expectedException \Sonatra\Component\Mailer\Exception\UnknownMailException
      * @expectedExceptionMessage The "test" mail template does not exist with the "all" type
      */
     public function testLoadUnknownTemplate()

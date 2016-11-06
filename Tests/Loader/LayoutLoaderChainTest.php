@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Loader;
+namespace Sonatra\Component\Mailer\Tests\Loader;
 
-use Sonatra\Bundle\MailerBundle\Exception\UnknownLayoutException;
-use Sonatra\Bundle\MailerBundle\Loader\LayoutLoaderChain;
-use Sonatra\Bundle\MailerBundle\Loader\LayoutLoaderInterface;
-use Sonatra\Bundle\MailerBundle\Model\LayoutInterface;
+use Sonatra\Component\Mailer\Exception\UnknownLayoutException;
+use Sonatra\Component\Mailer\Loader\LayoutLoaderChain;
+use Sonatra\Component\Mailer\Loader\LayoutLoaderInterface;
+use Sonatra\Component\Mailer\Model\LayoutInterface;
 
 /**
  * Tests for chain mail loader.
@@ -43,7 +43,7 @@ class LayoutLoaderChainTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\UnknownLayoutException
+     * @expectedException \Sonatra\Component\Mailer\Exception\UnknownLayoutException
      * @expectedExceptionMessage The "test" layout template does not exist
      */
     public function testLoadUnknownTemplate()

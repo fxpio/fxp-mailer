@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Entity;
+namespace Sonatra\Component\Mailer\Tests\Entity;
 
 use Doctrine\Common\Collections\Collection;
-use Sonatra\Bundle\MailerBundle\Entity\Layout;
-use Sonatra\Bundle\MailerBundle\Model\LayoutTranslationInterface;
+use Sonatra\Component\Mailer\Entity\Layout;
+use Sonatra\Component\Mailer\Model\LayoutTranslationInterface;
 
 /**
  * Tests for layout template entity.

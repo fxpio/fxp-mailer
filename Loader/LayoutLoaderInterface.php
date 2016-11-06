@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Loader;
+namespace Sonatra\Component\Mailer\Loader;
 
-use Sonatra\Bundle\MailerBundle\Exception\UnknownLayoutException;
-use Sonatra\Bundle\MailerBundle\Model\LayoutInterface;
+use Sonatra\Component\Mailer\Exception\UnknownLayoutException;
+use Sonatra\Component\Mailer\Model\LayoutInterface;
 
 /**
  * Interface for the layout loader.

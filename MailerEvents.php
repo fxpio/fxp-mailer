@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle;
+namespace Sonatra\Component\Mailer;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
@@ -20,7 +20,7 @@ final class MailerEvents
      * The template.pre_render event is thrown before that an mail must be rendered.
      *
      * The event listener receives an
-     * Sonatra\Bundle\MailerBundle\Event\FilterPreRenderEvent instance.
+     * Sonatra\Component\Mailer\Event\FilterPreRenderEvent instance.
      *
      * @var string
      */
@@ -30,7 +30,7 @@ final class MailerEvents
      * The template.post_render event is thrown after that an mail is rendered.
      *
      * The event listener receives an
-     * Sonatra\Bundle\MailerBundle\Event\FilterPostRenderEvent instance.
+     * Sonatra\Component\Mailer\Event\FilterPostRenderEvent instance.
      *
      * @var string
      */
@@ -41,7 +41,7 @@ final class MailerEvents
      * but after a render of mail.
      *
      * The event listener receives an
-     * Sonatra\Bundle\MailerBundle\Event\FilterPreSendEvent instance.
+     * Sonatra\Component\Mailer\Event\FilterPreSendEvent instance.
      *
      * @var string
      */
@@ -51,7 +51,7 @@ final class MailerEvents
      * The transport.post_send event is thrown after that an mail is sent.
      *
      * The event listener receives an
-     * Sonatra\Bundle\MailerBundle\Event\FilterPostSendEvent instance.
+     * Sonatra\Component\Mailer\Event\FilterPostSendEvent instance.
      *
      * @var string
      */

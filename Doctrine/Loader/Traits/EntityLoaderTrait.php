@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Doctrine\Loader\Traits;
+namespace Sonatra\Component\Mailer\Doctrine\Loader\Traits;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 

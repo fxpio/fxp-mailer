@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Loader;
+namespace Sonatra\Component\Mailer\Tests\Loader;
 
-use Sonatra\Bundle\MailerBundle\Loader\ArrayMailLoader;
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Model\MailInterface;
+use Sonatra\Component\Mailer\Loader\ArrayMailLoader;
+use Sonatra\Component\Mailer\MailTypes;
+use Sonatra\Component\Mailer\Model\MailInterface;
 
 /**
  * Tests for Array mail loader.
@@ -41,7 +41,7 @@ class ArrayMailLoaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\UnknownMailException
+     * @expectedException \Sonatra\Component\Mailer\Exception\UnknownMailException
      * @expectedExceptionMessage The "test" mail template does not exist with the "all" type
      */
     public function testLoadUnknownTemplate()

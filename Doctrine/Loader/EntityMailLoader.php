@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Doctrine\Loader;
+namespace Sonatra\Component\Mailer\Doctrine\Loader;
 
-use Sonatra\Bundle\MailerBundle\Doctrine\Loader\Traits\EntityLoaderTrait;
-use Sonatra\Bundle\MailerBundle\Exception\UnknownMailException;
-use Sonatra\Bundle\MailerBundle\Loader\MailLoaderInterface;
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Util\MailUtil;
+use Sonatra\Component\Mailer\Doctrine\Loader\Traits\EntityLoaderTrait;
+use Sonatra\Component\Mailer\Exception\UnknownMailException;
+use Sonatra\Component\Mailer\Loader\MailLoaderInterface;
+use Sonatra\Component\Mailer\MailTypes;
+use Sonatra\Component\Mailer\Util\MailUtil;
 
 /**
  * Entity mail loader.

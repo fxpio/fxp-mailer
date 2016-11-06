@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Util;
+namespace Sonatra\Component\Mailer\Util;
 
-use Sonatra\Bundle\MailerBundle\Model\LayoutInterface;
-use Sonatra\Bundle\MailerBundle\Model\MailInterface;
-use Sonatra\Bundle\MailerBundle\Model\TemplateFileInterface;
-use Sonatra\Bundle\MailerBundle\Model\TemplateInterface;
-use Sonatra\Bundle\MailerBundle\Model\TemplateTranslationInterface;
+use Sonatra\Component\Mailer\Model\LayoutInterface;
+use Sonatra\Component\Mailer\Model\MailInterface;
+use Sonatra\Component\Mailer\Model\TemplateFileInterface;
+use Sonatra\Component\Mailer\Model\TemplateInterface;
+use Sonatra\Component\Mailer\Model\TemplateTranslationInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**

@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Transport\SwiftMailer;
+namespace Sonatra\Component\Mailer\Tests\Transport\SwiftMailer;
 
-use Sonatra\Bundle\MailerBundle\Transport\SwiftMailer\DkimSignerPlugin;
+use Sonatra\Component\Mailer\Transport\SwiftMailer\DkimSignerPlugin;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
@@ -76,7 +76,7 @@ class DkimSignerPluginTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\RuntimeException
+     * @expectedException \Sonatra\Component\Mailer\Exception\RuntimeException
      * @expectedExceptionMessageRegExp /Impossible to read the private key of the DKIM swiftmailer signer "([\w.~:\\\/]+)\/private_key"/
      */
     public function testBeforeSendPerformedWithInvalidPrivateKey()

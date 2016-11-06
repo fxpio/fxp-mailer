@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Mailer;
+namespace Sonatra\Component\Mailer\Tests;
 
-use Sonatra\Bundle\MailerBundle\Mailer\MailRendered;
-use Sonatra\Bundle\MailerBundle\Model\MailInterface;
+use Sonatra\Component\Mailer\MailRendered;
+use Sonatra\Component\Mailer\Model\MailInterface;
 
 /**
  * Tests for mail rendered.

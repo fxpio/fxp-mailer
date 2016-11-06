@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Loader;
+namespace Sonatra\Component\Mailer\Loader;
 
-use Sonatra\Bundle\MailerBundle\Model\MailInterface;
-use Sonatra\Bundle\MailerBundle\Model\TwigMail;
-use Sonatra\Bundle\MailerBundle\Model\TwigMailTranslation;
-use Sonatra\Bundle\MailerBundle\Util\ConfigUtil;
+use Sonatra\Component\Mailer\Model\MailInterface;
+use Sonatra\Component\Mailer\Model\TwigMail;
+use Sonatra\Component\Mailer\Model\TwigMailTranslation;
+use Sonatra\Component\Mailer\Util\ConfigUtil;
 
 /**
  * Twig File mail loader.

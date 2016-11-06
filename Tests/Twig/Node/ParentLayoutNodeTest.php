@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Twig\Node;
+namespace Sonatra\Component\Mailer\Tests\Twig\Node;
 
-use Sonatra\Bundle\MailerBundle\Twig\Node\ParentLayoutNode;
+use Sonatra\Component\Mailer\Twig\Node\ParentLayoutNode;
 
 /**
  * Tests for twig parent layout node.

@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Model;
+namespace Sonatra\Component\Mailer\Model;
 
-use Sonatra\Bundle\MailerBundle\Exception\InvalidArgumentException;
-use Sonatra\Bundle\MailerBundle\Model\Traits\FileTrait;
+use Sonatra\Component\Mailer\Exception\InvalidArgumentException;
+use Sonatra\Component\Mailer\Model\Traits\FileTrait;
 
 /**
  * Model for twig file mail template.

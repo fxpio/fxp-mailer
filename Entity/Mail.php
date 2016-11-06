@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Entity;
+namespace Sonatra\Component\Mailer\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Sonatra\Bundle\MailerBundle\Model\Mail as BaseMail;
+use Sonatra\Component\Mailer\Model\Mail as BaseMail;
 
 /**
  * Entity for mail template.

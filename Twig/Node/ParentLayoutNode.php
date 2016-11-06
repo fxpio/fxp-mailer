@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Twig\Node;
+namespace Sonatra\Component\Mailer\Twig\Node;
 
 /**
  * Get the filename of layout translated template.
@@ -39,7 +39,7 @@ class ParentLayoutNode extends \Twig_Node_Expression
     public function compile(\Twig_Compiler $compiler)
     {
         $compiler
-            ->raw('$this->env->getExtension(\'Sonatra\Bundle\MailerBundle\Twig\Extension\TemplaterExtension\')')
+            ->raw('$this->env->getExtension(\'Sonatra\Component\Mailer\Twig\Extension\TemplaterExtension\')')
             ->raw('->getTranslatedLayout(')
             ->subcompile($this->getAttribute('variables'))
             ->raw(')->getFile()')

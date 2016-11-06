@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Entity;
+namespace Sonatra\Component\Mailer\Entity;
 
-use Sonatra\Bundle\MailerBundle\Model\LayoutTranslation as BaseLayoutTranslation;
+use Sonatra\Component\Mailer\Model\LayoutTranslation as BaseLayoutTranslation;
 
 /**
  * Entity for layout translation template.

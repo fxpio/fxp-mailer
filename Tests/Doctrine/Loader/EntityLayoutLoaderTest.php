@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Doctrine\Loader;
+namespace Sonatra\Component\Mailer\Tests\Doctrine\Loader;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
-use Sonatra\Bundle\MailerBundle\Doctrine\Loader\EntityLayoutLoader;
-use Sonatra\Bundle\MailerBundle\Entity\Layout;
+use Sonatra\Component\Mailer\Doctrine\Loader\EntityLayoutLoader;
+use Sonatra\Component\Mailer\Entity\Layout;
 
 /**
  * Tests for entity layout loader.
@@ -79,7 +79,7 @@ class EntityLayoutLoaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\UnknownLayoutException
+     * @expectedException \Sonatra\Component\Mailer\Exception\UnknownLayoutException
      * @expectedExceptionMessage The "test" layout template does not exist
      */
     public function testLoadUnknownTemplate()

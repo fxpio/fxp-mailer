@@ -9,18 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Mailer;
+namespace Sonatra\Component\Mailer;
 
-use Sonatra\Bundle\MailerBundle\Event\FilterPostRenderEvent;
-use Sonatra\Bundle\MailerBundle\Event\FilterPreRenderEvent;
-use Sonatra\Bundle\MailerBundle\Loader\MailLoaderInterface;
-use Sonatra\Bundle\MailerBundle\MailerEvents;
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Model\LayoutInterface;
-use Sonatra\Bundle\MailerBundle\Model\MailInterface;
-use Sonatra\Bundle\MailerBundle\Model\TwigTemplateInterface;
-use Sonatra\Bundle\MailerBundle\Util\MailUtil;
-use Sonatra\Bundle\MailerBundle\Util\TranslationUtil;
+use Sonatra\Component\Mailer\Event\FilterPostRenderEvent;
+use Sonatra\Component\Mailer\Event\FilterPreRenderEvent;
+use Sonatra\Component\Mailer\Loader\MailLoaderInterface;
+use Sonatra\Component\Mailer\Model\LayoutInterface;
+use Sonatra\Component\Mailer\Model\MailInterface;
+use Sonatra\Component\Mailer\Model\TwigTemplateInterface;
+use Sonatra\Component\Mailer\Util\MailUtil;
+use Sonatra\Component\Mailer\Util\TranslationUtil;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 

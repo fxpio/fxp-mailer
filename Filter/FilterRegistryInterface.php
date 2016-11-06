@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Filter;
+namespace Sonatra\Component\Mailer\Filter;
 
 /**
  * Interface for the filter registry of template and transport.

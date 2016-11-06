@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Model;
+namespace Sonatra\Component\Mailer\Tests\Model;
 
-use Sonatra\Bundle\MailerBundle\Model\MailInterface;
-use Sonatra\Bundle\MailerBundle\Model\TwigMailTranslation;
+use Sonatra\Component\Mailer\Model\MailInterface;
+use Sonatra\Component\Mailer\Model\TwigMailTranslation;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
@@ -54,7 +54,7 @@ class TwigMailTranslationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\InvalidArgumentException
+     * @expectedException \Sonatra\Component\Mailer\Exception\InvalidArgumentException
      * @expectedExceptionMessage The "file.ext" file is not supported by the mail translation file template
      */
     public function testInvalidFile()

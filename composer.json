@@ -1,9 +1,9 @@
 {
-    "name": "sonatra/mailer-bundle",
-    "type": "symfony-bundle",
+    "name": "sonatra/mailer",
+    "type": "library",
     "description": "A manager of HTML mail template stored in multiple systems and sent with different transports",
-    "keywords": ["email", "template", "html", "mail", "manager", "switmailer", "doctrine", "twig", "bundle"],
-    "homepage": "https://github.com/sonatra/SonatraMailerBundle",
+    "keywords": ["email", "template", "html", "mail", "manager", "switmailer", "doctrine", "twig"],
+    "homepage": "https://github.com/sonatra/sonatra-mailer",
     "license": "MIT",
     "authors": [
         {
@@ -13,20 +13,25 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "symfony/framework-bundle": "~3.0",
-        "twig/twig": "~1.23"
+        "symfony/dependency-injection": "~3.0",
+        "symfony/event-dispatcher": "~3.0",
+        "symfony/http-kernel": "~3.0",
+        "symfony/translation": "~3.0",
+        "doctrine/common": "~2.6",
+        "twig/twig": "~1.27"
 
     },
     "require-dev": {
         "symfony/yaml": "~3.0",
-        "doctrine/doctrine-bundle": "~1.6",
+        "symfony/filesystem": "~3.0",
+        "symfony/config": "~3.0",
         "doctrine/orm": "~2.5",
         "swiftmailer/swiftmailer": "~5.4",
         "tijsverkoyen/css-to-inline-styles": "~2.0"
 
     },
     "autoload": {
-        "psr-4": { "Sonatra\\Bundle\\MailerBundle\\": "" },
+        "psr-4": { "Sonatra\\Component\\Mailer\\": "" },
         "exclude-from-classmap": [
             "/Tests/"
         ]

@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Transport;
+namespace Sonatra\Component\Mailer\Transport;
 
-use Sonatra\Bundle\MailerBundle\Exception\UnexpectedTypeException;
-use Sonatra\Bundle\MailerBundle\Mailer\MailRenderedInterface;
+use Sonatra\Component\Mailer\Exception\UnexpectedTypeException;
+use Sonatra\Component\Mailer\MailRenderedInterface;
 
 /**
  * SwiftMailer transport.

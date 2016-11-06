@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Loader;
+namespace Sonatra\Component\Mailer\Tests\Loader;
 
-use Sonatra\Bundle\MailerBundle\Loader\ArrayLayoutLoader;
-use Sonatra\Bundle\MailerBundle\Model\LayoutInterface;
+use Sonatra\Component\Mailer\Loader\ArrayLayoutLoader;
+use Sonatra\Component\Mailer\Model\LayoutInterface;
 
 /**
  * Tests for Array layout loader.
@@ -37,7 +37,7 @@ class ArrayLayoutLoaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\UnknownLayoutException
+     * @expectedException \Sonatra\Component\Mailer\Exception\UnknownLayoutException
      * @expectedExceptionMessage The "test" layout template does not exist
      */
     public function testLoadUnknownTemplate()

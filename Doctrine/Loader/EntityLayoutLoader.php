@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Doctrine\Loader;
+namespace Sonatra\Component\Mailer\Doctrine\Loader;
 
-use Sonatra\Bundle\MailerBundle\Doctrine\Loader\Traits\EntityLoaderTrait;
-use Sonatra\Bundle\MailerBundle\Exception\UnknownLayoutException;
-use Sonatra\Bundle\MailerBundle\Loader\LayoutLoaderInterface;
+use Sonatra\Component\Mailer\Doctrine\Loader\Traits\EntityLoaderTrait;
+use Sonatra\Component\Mailer\Exception\UnknownLayoutException;
+use Sonatra\Component\Mailer\Loader\LayoutLoaderInterface;
 
 /**
  * Entity layout loader.

@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Mailer;
+namespace Sonatra\Component\Mailer\Tests\Event;
 
-use Sonatra\Bundle\MailerBundle\Event\FilterPreSendEvent;
-use Sonatra\Bundle\MailerBundle\Mailer\MailRenderedInterface;
+use Sonatra\Component\Mailer\Event\FilterPreSendEvent;
+use Sonatra\Component\Mailer\MailRenderedInterface;
 
 /**
  * Tests for filter pre send event.

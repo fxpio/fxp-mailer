@@ -9,11 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Mailer;
+namespace Sonatra\Component\Mailer;
 
-use Sonatra\Bundle\MailerBundle\Exception\InvalidArgumentException;
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Transport\TransportInterface;
+use Sonatra\Component\Mailer\Exception\InvalidArgumentException;
+use Sonatra\Component\Mailer\Transport\TransportInterface;
 
 /**
  * Interface for the mailer.

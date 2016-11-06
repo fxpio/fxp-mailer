@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Transport\SwiftMailer;
+namespace Sonatra\Component\Mailer\Transport\SwiftMailer;
 
-use Sonatra\Bundle\MailerBundle\Exception\RuntimeException;
+use Sonatra\Component\Mailer\Exception\RuntimeException;
 
 /**
  * SwiftMailer DKIM Signer Plugin.

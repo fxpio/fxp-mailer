@@ -9,14 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Mailer;
+namespace Sonatra\Component\Mailer;
 
-use Sonatra\Bundle\MailerBundle\Event\FilterPostSendEvent;
-use Sonatra\Bundle\MailerBundle\Event\FilterPreSendEvent;
-use Sonatra\Bundle\MailerBundle\Exception\InvalidArgumentException;
-use Sonatra\Bundle\MailerBundle\MailerEvents;
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Transport\TransportInterface;
+use Sonatra\Component\Mailer\Event\FilterPostSendEvent;
+use Sonatra\Component\Mailer\Event\FilterPreSendEvent;
+use Sonatra\Component\Mailer\Exception\InvalidArgumentException;
+use Sonatra\Component\Mailer\Transport\TransportInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**

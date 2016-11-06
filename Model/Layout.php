@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Model;
+namespace Sonatra\Component\Mailer\Model;
 
 use Doctrine\Common\Collections\Collection;
-use Sonatra\Bundle\MailerBundle\Model\Traits\TranslationTrait;
+use Sonatra\Component\Mailer\Model\Traits\TranslationTrait;
 
 /**
  * Model for layout template.

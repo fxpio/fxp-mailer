@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Twig\Extension;
+namespace Sonatra\Component\Mailer\Tests\Twig\Extension;
 
-use Sonatra\Bundle\MailerBundle\Loader\LayoutLoaderInterface;
-use Sonatra\Bundle\MailerBundle\Mailer\MailRenderedInterface;
-use Sonatra\Bundle\MailerBundle\Mailer\MailTemplaterInterface;
-use Sonatra\Bundle\MailerBundle\MailTypes;
-use Sonatra\Bundle\MailerBundle\Model\LayoutInterface;
-use Sonatra\Bundle\MailerBundle\Model\TwigLayout;
-use Sonatra\Bundle\MailerBundle\Twig\Extension\TemplaterExtension;
+use Sonatra\Component\Mailer\Loader\LayoutLoaderInterface;
+use Sonatra\Component\Mailer\MailRenderedInterface;
+use Sonatra\Component\Mailer\MailTemplaterInterface;
+use Sonatra\Component\Mailer\MailTypes;
+use Sonatra\Component\Mailer\Model\LayoutInterface;
+use Sonatra\Component\Mailer\Model\TwigLayout;
+use Sonatra\Component\Mailer\Twig\Extension\TemplaterExtension;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -198,7 +198,7 @@ class TemplaterExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\InvalidArgumentException
+     * @expectedException \Sonatra\Component\Mailer\Exception\InvalidArgumentException
      * @expectedExceptionMessage The "test" layout is not a twig layout
      */
     public function testGetTranslatedLayoutWithInvalidLayout()

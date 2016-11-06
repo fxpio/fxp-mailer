@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Util;
+namespace Sonatra\Component\Mailer\Tests\Util;
 
-use Sonatra\Bundle\MailerBundle\Util\ConfigUtil;
+use Sonatra\Component\Mailer\Util\ConfigUtil;
 
 /**
  * Tests for config util.
@@ -32,7 +32,7 @@ class ConfigUtilTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\UnexpectedTypeException
+     * @expectedException \Sonatra\Component\Mailer\Exception\UnexpectedTypeException
      * @expectedExceptionMessage Expected argument of type "array", "integer" given
      */
     public function testFormatConfigWithoutFile()
@@ -43,7 +43,7 @@ class ConfigUtilTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Bundle\MailerBundle\Exception\InvalidConfigurationException
+     * @expectedException \Sonatra\Component\Mailer\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The "file" attribute must be defined in config of layout template
      */
     public function testFormatConfigWithInvalidFilename()

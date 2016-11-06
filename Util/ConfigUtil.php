@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Util;
+namespace Sonatra\Component\Mailer\Util;
 
-use Sonatra\Bundle\MailerBundle\Exception\InvalidConfigurationException;
-use Sonatra\Bundle\MailerBundle\Exception\UnexpectedTypeException;
+use Sonatra\Component\Mailer\Exception\InvalidConfigurationException;
+use Sonatra\Component\Mailer\Exception\UnexpectedTypeException;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**

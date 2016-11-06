@@ -9,16 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Tests\Filter;
+namespace Sonatra\Component\Mailer\Tests\Filter;
 
-use Sonatra\Bundle\MailerBundle\Event\FilterPostRenderEvent;
-use Sonatra\Bundle\MailerBundle\Event\FilterPreSendEvent;
-use Sonatra\Bundle\MailerBundle\Filter\FilterRegistryInterface;
-use Sonatra\Bundle\MailerBundle\Filter\TemplateFilterInterface;
-use Sonatra\Bundle\MailerBundle\Filter\TransportFilterInterface;
-use Sonatra\Bundle\MailerBundle\Listener\FilterSubscriber;
-use Sonatra\Bundle\MailerBundle\Mailer\MailRenderedInterface;
-use Sonatra\Bundle\MailerBundle\MailerEvents;
+use Sonatra\Component\Mailer\Event\FilterPostRenderEvent;
+use Sonatra\Component\Mailer\Event\FilterPreSendEvent;
+use Sonatra\Component\Mailer\Filter\FilterRegistryInterface;
+use Sonatra\Component\Mailer\Filter\TemplateFilterInterface;
+use Sonatra\Component\Mailer\Filter\TransportFilterInterface;
+use Sonatra\Component\Mailer\Listener\FilterSubscriber;
+use Sonatra\Component\Mailer\MailRenderedInterface;
+use Sonatra\Component\Mailer\MailerEvents;
 
 /**
  * Tests for filter subscriber.

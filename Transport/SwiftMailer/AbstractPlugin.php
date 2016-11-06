@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\MailerBundle\Transport\SwiftMailer;
+namespace Sonatra\Component\Mailer\Transport\SwiftMailer;
 
 /**
  * Base plugin for SwiftMailer.
