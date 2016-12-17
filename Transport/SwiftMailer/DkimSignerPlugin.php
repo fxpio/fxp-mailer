@@ -32,6 +32,7 @@ class DkimSignerPlugin extends AbstractPlugin
      * @var string
      */
     protected $selector;
+
     /**
      * Constructor.
      *
