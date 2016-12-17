@@ -42,7 +42,7 @@ class MailTest extends \PHPUnit_Framework_TestCase
             ->setTranslationDomain('domain')
         ;
 
-        $this->assertTrue(is_array($mail->getTranslations()));
+        $this->assertInternalType('array', $mail->getTranslations());
 
         $this->assertCount(0, $mail->getTranslations());
         $mail->addTranslation($translation);

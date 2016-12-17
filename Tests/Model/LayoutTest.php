@@ -31,8 +31,8 @@ class LayoutTest extends \PHPUnit_Framework_TestCase
         $layout = new Layout();
         $layout->setTranslationDomain('domain');
 
-        $this->assertTrue(is_array($layout->getMails()));
-        $this->assertTrue(is_array($layout->getTranslations()));
+        $this->assertInternalType('array', $layout->getMails());
+        $this->assertInternalType('array', $layout->getTranslations());
 
         $this->assertCount(0, $layout->getTranslations());
         $layout->addTranslation($translation);
