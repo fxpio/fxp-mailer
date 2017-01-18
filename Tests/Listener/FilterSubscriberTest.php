@@ -17,8 +17,8 @@ use Sonatra\Component\Mailer\Filter\FilterRegistryInterface;
 use Sonatra\Component\Mailer\Filter\TemplateFilterInterface;
 use Sonatra\Component\Mailer\Filter\TransportFilterInterface;
 use Sonatra\Component\Mailer\Listener\FilterSubscriber;
-use Sonatra\Component\Mailer\MailRenderedInterface;
 use Sonatra\Component\Mailer\MailerEvents;
+use Sonatra\Component\Mailer\MailRenderedInterface;
 
 /**
  * Tests for filter subscriber.
