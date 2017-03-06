@@ -11,23 +11,25 @@
             "email": "francois.pluchino@sonatra.com"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": ">=7.0.0",
-        "symfony/dependency-injection": "~3.0",
-        "symfony/event-dispatcher": "~3.0",
-        "symfony/http-kernel": "~3.0",
-        "symfony/translation": "~3.0",
-        "doctrine/common": "~2.6",
-        "twig/twig": "~1.27"
+        "symfony/dependency-injection": "^3.0.0",
+        "symfony/event-dispatcher": "^3.0.0",
+        "symfony/http-kernel": "^3.0.0",
+        "symfony/translation": "^3.0.0",
+        "doctrine/common": "^2.6.0",
+        "twig/twig": "^2.0.0"
 
     },
     "require-dev": {
-        "symfony/yaml": "~3.0",
-        "symfony/filesystem": "~3.0",
-        "symfony/config": "~3.0",
-        "doctrine/orm": "~2.5",
-        "swiftmailer/swiftmailer": "~5.4",
-        "tijsverkoyen/css-to-inline-styles": "~2.0"
+        "symfony/yaml": "^3.0.0",
+        "symfony/filesystem": "^3.0.0",
+        "symfony/config": "^3.0.0",
+        "doctrine/orm": "^2.5.0",
+        "swiftmailer/swiftmailer": "^5.4.0",
+        "tijsverkoyen/css-to-inline-styles": "^2.0.0"
 
     },
     "autoload": {
