@@ -60,18 +60,25 @@ class MailTemplaterTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->loader = $this->getMockBuilder(MailLoaderInterface::class)->getMock();
-        $this->twig = $this->getMockBuilder(\Twig_Environment::class)->getMock();
+        $this->twig = $this->getMockBuilder(\Twig_Environment::class)->disableOriginalConstructor()->getMock();
         $this->twigTemplate = $this->getMockBuilder(\Twig_Template::class)->disableOriginalConstructor()->getMock();
         $this->dispatcher = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
         $this->templater = new MailTemplater($this->loader, $this->twig, $this->dispatcher);
+        $templateWrapper = new \Twig_TemplateWrapper($this->twig, $this->twigTemplate);
 
         $this->twig->expects($this->any())
             ->method('createTemplate')
             ->will($this->returnValue($this->twigTemplate));
 
         $this->twig->expects($this->any())
-            ->method('loadTemplate')
-            ->will($this->returnValue($this->twigTemplate));
+            ->method('load')
+            ->will($this->returnValue($templateWrapper));
+
+        $this->twig->expects($this->any())
+            ->method('mergeGlobals')
+            ->willReturnCallback(function ($v) {
+                return $v;
+            });
     }
 
     public function testLocale()
@@ -292,33 +299,41 @@ class MailTemplaterTest extends \PHPUnit_Framework_TestCase
 
         // render subject
         $this->twigTemplate->expects($this->at(0))
-            ->method('renderBlock')
+            ->method('displayBlock')
             ->with('subject', $twigVariables)
-            ->will($this->returnValue($trans->getSubject()));
+            ->willReturnCallback(function () use ($trans) {
+                echo $trans->getSubject();
+            });
 
         $twigVariables['_subject'] = $trans->getSubject();
 
         // render html body
         $this->twigTemplate->expects($this->at(1))
-            ->method('renderBlock')
+            ->method('displayBlock')
             ->with('html_body', $twigVariables)
-            ->will($this->returnValue($trans->getHtmlBody()));
+            ->willReturnCallback(function () use ($trans) {
+                echo $trans->getHtmlBody();
+            });
 
         $twigVariables['_html_body'] = $trans->getHtmlBody();
 
         // render body
         $this->twigTemplate->expects($this->at(2))
-            ->method('renderBlock')
+            ->method('displayBlock')
             ->with('body', $twigVariables)
-            ->will($this->returnValue($trans->getBody()));
+            ->willReturnCallback(function () use ($trans) {
+                echo $trans->getBody();
+            });
 
         $twigVariables['_body'] = $trans->getBody();
 
         // render layout
         $this->twigTemplate->expects($this->at(3))
-            ->method('renderBlock')
+            ->method('displayBlock')
             ->with('body', $twigVariables)
-            ->will($this->returnValue($htmlRendered));
+            ->willReturnCallback(function () use ($htmlRendered) {
+                echo $htmlRendered;
+            });
 
         $rendered = $this->templater->render('test', array(), MailTypes::TYPE_ALL);
 

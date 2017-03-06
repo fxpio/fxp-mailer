@@ -249,4 +249,13 @@ class TemplaterExtensionTest extends \PHPUnit_Framework_TestCase
 
         return array($template, $variables, $mail);
     }
+
+    public function testLayoutTokenParser()
+    {
+        $loader = new \Twig_Loader_Filesystem(__DIR__.'/../../Fixtures/token_parsers');
+        $twig = new \Twig_Environment($loader, array('debug' => true, 'cache' => false));
+        $twig->addExtension($this->ext);
+
+        $twig->load('mail.html.twig');
+    }
 }

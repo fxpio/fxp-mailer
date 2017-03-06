@@ -1,0 +1,8 @@
+{% block html_body %}
+    {%- mailer_layout _layout -%}
+        {%- set render_subject = true -%}
+        {%- block template_body -%}
+            <p>HTML Body.</p>
+        {%- endblock template_body -%}
+    {%- endmailer_layout -%}
+{% endblock html_body %}

@@ -18,7 +18,7 @@ use Sonatra\Component\Mailer\Twig\Node\ParentLayoutNode;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class LayoutTokenParser extends \Twig_TokenParser_Embed
+class LayoutTokenParser extends \Twig_TokenParser_Include
 {
     /**
      * {@inheritdoc}
@@ -40,12 +40,8 @@ class LayoutTokenParser extends \Twig_TokenParser_Embed
             new \Twig_Token(\Twig_Token::BLOCK_END_TYPE, '', $token->getLine()),
         ));
 
+        /* @var \Twig_Node_Module $module */
         $module = $this->parser->parse($stream, array($this, 'decideBlockEnd'), true);
-
-        if (null === $module) {
-            throw new \Twig_Error_Syntax('The decideBlockEnd method is wrong');
-        }
-
         // override the parent with the correct one
         $module->setNode('parent', $parent);
 
@@ -53,7 +49,7 @@ class LayoutTokenParser extends \Twig_TokenParser_Embed
 
         $stream->expect(\Twig_Token::BLOCK_END_TYPE);
 
-        return new \Twig_Node_Embed($module->getAttribute('filename'), $module->getAttribute('index'), $variables, $only, $ignoreMissing, $token->getLine(), $this->getTag());
+        return new \Twig_Node_Embed($module->getTemplateName(), $module->getAttribute('index'), $variables, $only, $ignoreMissing, $token->getLine(), $this->getTag());
     }
 
     /**

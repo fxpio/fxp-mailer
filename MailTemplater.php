@@ -190,12 +190,9 @@ class MailTemplater implements MailTemplaterInterface
     {
         if (null !== $template) {
             if ($templateInstance instanceof TwigTemplateInterface) {
-                $tpl = $this->renderer->loadTemplate($templateInstance->getFile());
-
-                if ($tpl instanceof \Twig_Template) {
-                    $template = $tpl->renderBlock($template, $variables);
-                    $template = '' === $template ? null : $template;
-                }
+                $tpl = $this->renderer->load($templateInstance->getFile());
+                $template = $tpl->renderBlock($template, $variables);
+                $template = '' === $template ? null : $template;
             } else {
                 $tpl = $this->renderer->createTemplate($template);
                 $template = $tpl->render($variables);
