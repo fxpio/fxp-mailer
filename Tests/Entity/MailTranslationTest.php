@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Entity;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Entity\MailTranslation;
 use Sonatra\Component\Mailer\Model\MailInterface;
 
@@ -19,7 +20,7 @@ use Sonatra\Component\Mailer\Model\MailInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class MailTranslationTest extends \PHPUnit_Framework_TestCase
+class MailTranslationTest extends TestCase
 {
     public function testEntity()
     {

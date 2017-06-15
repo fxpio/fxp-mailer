@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Mailer;
 use Sonatra\Component\Mailer\MailRenderedInterface;
 use Sonatra\Component\Mailer\MailTemplaterInterface;
@@ -23,7 +24,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class MailerTest extends \PHPUnit_Framework_TestCase
+class MailerTest extends TestCase
 {
     /**
      * @var MailTemplaterInterface|\PHPUnit_Framework_MockObject_MockObject

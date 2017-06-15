@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Model;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Model\TwigLayout;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -19,7 +20,7 @@ use Symfony\Component\Filesystem\Filesystem;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class TwigLayoutTest extends \PHPUnit_Framework_TestCase
+class TwigLayoutTest extends TestCase
 {
     /**
      * @var string

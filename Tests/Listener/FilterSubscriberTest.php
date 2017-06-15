@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Filter;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Event\FilterPostRenderEvent;
 use Sonatra\Component\Mailer\Event\FilterPreSendEvent;
 use Sonatra\Component\Mailer\Filter\FilterRegistryInterface;
@@ -25,7 +26,7 @@ use Sonatra\Component\Mailer\MailRenderedInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class FilterSubscriberTest extends \PHPUnit_Framework_TestCase
+class FilterSubscriberTest extends TestCase
 {
     /**
      * @var FilterRegistryInterface|\PHPUnit_Framework_MockObject_MockObject

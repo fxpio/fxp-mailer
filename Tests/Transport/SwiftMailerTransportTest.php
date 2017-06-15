@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Transport;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\MailRenderedInterface;
 use Sonatra\Component\Mailer\Transport\SwiftMailerTransport;
 
@@ -19,7 +20,7 @@ use Sonatra\Component\Mailer\Transport\SwiftMailerTransport;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class SwiftMailerTransportTest extends \PHPUnit_Framework_TestCase
+class SwiftMailerTransportTest extends TestCase
 {
     /**
      * @var \Swift_Mailer|\PHPUnit_Framework_MockObject_MockObject

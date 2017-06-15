@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Filter\Template;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Filter\Template\CssToStylesFilter;
 use Sonatra\Component\Mailer\MailRenderedInterface;
 use Sonatra\Component\Mailer\MailTypes;
@@ -21,7 +22,7 @@ use Sonatra\Component\Mailer\Model\MailInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class CssToStylesFilterTest extends \PHPUnit_Framework_TestCase
+class CssToStylesFilterTest extends TestCase
 {
     public function getSupportTests()
     {

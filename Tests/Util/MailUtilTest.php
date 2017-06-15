@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Util;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\MailTypes;
 use Sonatra\Component\Mailer\Model\MailInterface;
 use Sonatra\Component\Mailer\Util\MailUtil;
@@ -20,7 +21,7 @@ use Sonatra\Component\Mailer\Util\MailUtil;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class MailUtilTest extends \PHPUnit_Framework_TestCase
+class MailUtilTest extends TestCase
 {
     public function getCheckIsValidMailTypes()
     {

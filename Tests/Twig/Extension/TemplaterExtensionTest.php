@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Twig\Extension;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Loader\LayoutLoaderInterface;
 use Sonatra\Component\Mailer\MailRenderedInterface;
 use Sonatra\Component\Mailer\MailTemplaterInterface;
@@ -26,7 +27,7 @@ use Symfony\Component\Translation\TranslatorInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class TemplaterExtensionTest extends \PHPUnit_Framework_TestCase
+class TemplaterExtensionTest extends TestCase
 {
     /**
      * @var MailTemplaterInterface|\PHPUnit_Framework_MockObject_MockObject
@@ -256,6 +257,6 @@ class TemplaterExtensionTest extends \PHPUnit_Framework_TestCase
         $twig = new \Twig_Environment($loader, array('debug' => true, 'cache' => false));
         $twig->addExtension($this->ext);
 
-        $twig->load('mail.html.twig');
+        $this->assertInstanceOf(\Twig_TemplateWrapper::class, $twig->load('mail.html.twig'));
     }
 }

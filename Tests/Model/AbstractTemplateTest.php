@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Model;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Model\AbstractTemplate;
 use Sonatra\Component\Mailer\Model\TemplateInterface;
 
@@ -19,7 +20,7 @@ use Sonatra\Component\Mailer\Model\TemplateInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class AbstractTemplateTest extends \PHPUnit_Framework_TestCase
+class AbstractTemplateTest extends TestCase
 {
     public function testModel()
     {

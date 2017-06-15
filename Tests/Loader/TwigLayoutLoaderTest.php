@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Loader;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Loader\TwigLayoutLoader;
 use Sonatra\Component\Mailer\Model\LayoutInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -20,7 +21,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class TwigLayoutLoaderTest extends \PHPUnit_Framework_TestCase
+class TwigLayoutLoaderTest extends TestCase
 {
     public function testLoad()
     {

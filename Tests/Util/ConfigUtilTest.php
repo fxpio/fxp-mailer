@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Util;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Util\ConfigUtil;
 
 /**
@@ -18,7 +19,7 @@ use Sonatra\Component\Mailer\Util\ConfigUtil;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class ConfigUtilTest extends \PHPUnit_Framework_TestCase
+class ConfigUtilTest extends TestCase
 {
     public function testFormatConfigWithString()
     {

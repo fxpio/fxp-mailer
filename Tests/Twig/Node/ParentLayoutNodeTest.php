@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Twig\Node;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Twig\Node\ParentLayoutNode;
 
 /**
@@ -18,7 +19,7 @@ use Sonatra\Component\Mailer\Twig\Node\ParentLayoutNode;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class ParentLayoutNodeTest extends \PHPUnit_Framework_TestCase
+class ParentLayoutNodeTest extends TestCase
 {
     public function testBasic()
     {
@@ -36,6 +37,6 @@ class ParentLayoutNodeTest extends \PHPUnit_Framework_TestCase
 
         $node = new ParentLayoutNode($variables, 42, 'test');
 
-        $node->compile($compiler);
+        $this->assertNull($node->compile($compiler));
     }
 }

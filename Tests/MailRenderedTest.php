@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\MailRendered;
 use Sonatra\Component\Mailer\Model\MailInterface;
 
@@ -19,7 +20,7 @@ use Sonatra\Component\Mailer\Model\MailInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class MailRenderedTest extends \PHPUnit_Framework_TestCase
+class MailRenderedTest extends TestCase
 {
     public function testModel()
     {

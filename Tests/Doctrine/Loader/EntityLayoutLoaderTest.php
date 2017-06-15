@@ -14,6 +14,7 @@ namespace Sonatra\Component\Mailer\Tests\Doctrine\Loader;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Doctrine\Loader\EntityLayoutLoader;
 use Sonatra\Component\Mailer\Entity\Layout;
 
@@ -22,7 +23,7 @@ use Sonatra\Component\Mailer\Entity\Layout;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class EntityLayoutLoaderTest extends \PHPUnit_Framework_TestCase
+class EntityLayoutLoaderTest extends TestCase
 {
     /**
      * @var ObjectManager|\PHPUnit_Framework_MockObject_MockObject

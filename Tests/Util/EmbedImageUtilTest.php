@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Util;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Util\EmbedImageUtil;
 
 /**
@@ -18,7 +19,7 @@ use Sonatra\Component\Mailer\Util\EmbedImageUtil;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class EmbedImageUtilTest extends \PHPUnit_Framework_TestCase
+class EmbedImageUtilTest extends TestCase
 {
     public function getLocalePathData()
     {

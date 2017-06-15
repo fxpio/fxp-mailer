@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Loader;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Exception\UnknownLayoutException;
 use Sonatra\Component\Mailer\Loader\LayoutLoaderChain;
 use Sonatra\Component\Mailer\Loader\LayoutLoaderInterface;
@@ -21,7 +22,7 @@ use Sonatra\Component\Mailer\Model\LayoutInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class LayoutLoaderChainTest extends \PHPUnit_Framework_TestCase
+class LayoutLoaderChainTest extends TestCase
 {
     public function testLoad()
     {

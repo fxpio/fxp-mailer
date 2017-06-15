@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Loader;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Loader\ConfigLayoutLoader;
 use Sonatra\Component\Mailer\Model\LayoutInterface;
 
@@ -19,7 +20,7 @@ use Sonatra\Component\Mailer\Model\LayoutInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class ConfigLayoutLoaderTest extends \PHPUnit_Framework_TestCase
+class ConfigLayoutLoaderTest extends TestCase
 {
     public function testLoad()
     {

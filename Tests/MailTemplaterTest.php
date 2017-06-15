@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Loader\MailLoaderInterface;
 use Sonatra\Component\Mailer\MailTemplater;
 use Sonatra\Component\Mailer\MailTypes;
@@ -30,7 +31,7 @@ use Symfony\Component\Translation\TranslatorInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class MailTemplaterTest extends \PHPUnit_Framework_TestCase
+class MailTemplaterTest extends TestCase
 {
     /**
      * @var MailLoaderInterface|\PHPUnit_Framework_MockObject_MockObject

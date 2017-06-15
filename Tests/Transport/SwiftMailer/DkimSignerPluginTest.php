@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Transport\SwiftMailer;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Transport\SwiftMailer\DkimSignerPlugin;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -19,7 +20,7 @@ use Symfony\Component\Filesystem\Filesystem;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class DkimSignerPluginTest extends \PHPUnit_Framework_TestCase
+class DkimSignerPluginTest extends TestCase
 {
     /**
      * @var Filesystem
@@ -117,6 +118,6 @@ class DkimSignerPluginTest extends \PHPUnit_Framework_TestCase
 
     public function testSendPerformed()
     {
-        $this->plugin->sendPerformed($this->event);
+        $this->assertNull($this->plugin->sendPerformed($this->event));
     }
 }

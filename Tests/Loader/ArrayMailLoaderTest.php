@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Loader;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Loader\ArrayMailLoader;
 use Sonatra\Component\Mailer\MailTypes;
 use Sonatra\Component\Mailer\Model\MailInterface;
@@ -20,7 +21,7 @@ use Sonatra\Component\Mailer\Model\MailInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class ArrayMailLoaderTest extends \PHPUnit_Framework_TestCase
+class ArrayMailLoaderTest extends TestCase
 {
     public function testLoad()
     {

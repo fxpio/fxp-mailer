@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Loader;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Exception\UnknownMailException;
 use Sonatra\Component\Mailer\Loader\MailLoaderChain;
 use Sonatra\Component\Mailer\Loader\MailLoaderInterface;
@@ -22,7 +23,7 @@ use Sonatra\Component\Mailer\Model\MailInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class MailLoaderChainTest extends \PHPUnit_Framework_TestCase
+class MailLoaderChainTest extends TestCase
 {
     public function testLoad()
     {

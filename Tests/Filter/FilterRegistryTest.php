@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Filter;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Filter\FilterRegistry;
 use Sonatra\Component\Mailer\Filter\TemplateFilterInterface;
 use Sonatra\Component\Mailer\Filter\TransportFilterInterface;
@@ -20,7 +21,7 @@ use Sonatra\Component\Mailer\Filter\TransportFilterInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class FilterRegistryTest extends \PHPUnit_Framework_TestCase
+class FilterRegistryTest extends TestCase
 {
     public function test()
     {

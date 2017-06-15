@@ -14,6 +14,7 @@ namespace Sonatra\Component\Mailer\Tests\Doctrine\Loader;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Doctrine\Loader\EntityMailLoader;
 use Sonatra\Component\Mailer\Entity\Mail;
 use Sonatra\Component\Mailer\MailTypes;
@@ -24,7 +25,7 @@ use Sonatra\Component\Mailer\Util\MailUtil;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class EntityMailLoaderTest extends \PHPUnit_Framework_TestCase
+class EntityMailLoaderTest extends TestCase
 {
     /**
      * @var ObjectManager|\PHPUnit_Framework_MockObject_MockObject

@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Transport\SwiftMailer;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Transport\SwiftMailer\EmbedImagePlugin;
 
 /**
@@ -18,7 +19,7 @@ use Sonatra\Component\Mailer\Transport\SwiftMailer\EmbedImagePlugin;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class EmbedImagePluginTest extends \PHPUnit_Framework_TestCase
+class EmbedImagePluginTest extends TestCase
 {
     /**
      * @var \Swift_Message|\PHPUnit_Framework_MockObject_MockObject
@@ -154,6 +155,6 @@ class EmbedImagePluginTest extends \PHPUnit_Framework_TestCase
 
     public function testSendPerformed()
     {
-        $this->plugin->sendPerformed($this->event);
+        $this->assertNull($this->plugin->sendPerformed($this->event));
     }
 }

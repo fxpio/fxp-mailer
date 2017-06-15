@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Mailer\Tests\Event;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Component\Mailer\Event\FilterPostSendEvent;
 use Sonatra\Component\Mailer\MailRenderedInterface;
 
@@ -19,7 +20,7 @@ use Sonatra\Component\Mailer\MailRenderedInterface;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class FilterPostSendEventTest extends \PHPUnit_Framework_TestCase
+class FilterPostSendEventTest extends TestCase
 {
     public function testModel()
     {
