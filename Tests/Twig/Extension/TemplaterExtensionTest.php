@@ -78,9 +78,9 @@ class TemplaterExtensionTest extends TestCase
             'sonatra_mailer_clean',
         );
 
-        /* @var \Twig_SimpleFunction $function */
+        /* @var \Twig_Function $function */
         foreach ($this->ext->getFunctions() as $function) {
-            $this->assertInstanceOf(\Twig_SimpleFunction::class, $function);
+            $this->assertInstanceOf(\Twig_Function::class, $function);
             $this->assertTrue(in_array($function->getName(), $valid));
         }
 

@@ -74,11 +74,11 @@ class TemplaterExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('sonatra_mailer_render_subject', array($this, 'renderSubject')),
-            new \Twig_SimpleFunction('sonatra_mailer_render_html', array($this, 'renderHtml'), array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('sonatra_mailer_render_text', array($this, 'renderPlainText')),
-            new \Twig_SimpleFunction('sonatra_mailer_mail_rendered', array($this, 'getMailRendered')),
-            new \Twig_SimpleFunction('sonatra_mailer_clean', array($this, 'cleanRendered')),
+            new \Twig_Function('sonatra_mailer_render_subject', array($this, 'renderSubject')),
+            new \Twig_Function('sonatra_mailer_render_html', array($this, 'renderHtml'), array('is_safe' => array('html'))),
+            new \Twig_Function('sonatra_mailer_render_text', array($this, 'renderPlainText')),
+            new \Twig_Function('sonatra_mailer_mail_rendered', array($this, 'getMailRendered')),
+            new \Twig_Function('sonatra_mailer_clean', array($this, 'cleanRendered')),
         );
     }
 
