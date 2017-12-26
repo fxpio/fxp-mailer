@@ -45,9 +45,9 @@ abstract class MailUtil
      */
     public static function getValidTypes($type)
     {
-        if ($type === MailTypes::TYPE_PRINT) {
+        if (MailTypes::TYPE_PRINT === $type) {
             return array(MailTypes::TYPE_ALL, MailTypes::TYPE_PRINT);
-        } elseif ($type === MailTypes::TYPE_SCREEN) {
+        } elseif (MailTypes::TYPE_SCREEN === $type) {
             return array(MailTypes::TYPE_ALL, MailTypes::TYPE_SCREEN);
         }
 
