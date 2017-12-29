@@ -1,26 +1,26 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer;
+namespace Fxp\Component\Mailer;
 
-use Sonatra\Component\Mailer\Event\FilterPostSendEvent;
-use Sonatra\Component\Mailer\Event\FilterPreSendEvent;
-use Sonatra\Component\Mailer\Exception\InvalidArgumentException;
-use Sonatra\Component\Mailer\Transport\TransportInterface;
+use Fxp\Component\Mailer\Event\FilterPostSendEvent;
+use Fxp\Component\Mailer\Event\FilterPreSendEvent;
+use Fxp\Component\Mailer\Exception\InvalidArgumentException;
+use Fxp\Component\Mailer\Transport\TransportInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * The mailer.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class Mailer implements MailerInterface
 {

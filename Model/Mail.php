@@ -1,24 +1,24 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Model;
+namespace Fxp\Component\Mailer\Model;
 
 use Doctrine\Common\Collections\Collection;
-use Sonatra\Component\Mailer\MailTypes;
-use Sonatra\Component\Mailer\Model\Traits\TranslationTrait;
+use Fxp\Component\Mailer\MailTypes;
+use Fxp\Component\Mailer\Model\Traits\TranslationTrait;
 
 /**
  * Model for mail template.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class Mail extends AbstractTemplate implements MailInterface
 {

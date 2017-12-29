@@ -1,29 +1,29 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Tests\Doctrine\Loader;
+namespace Fxp\Component\Mailer\Tests\Doctrine\Loader;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
+use Fxp\Component\Mailer\Doctrine\Loader\EntityMailLoader;
+use Fxp\Component\Mailer\Entity\Mail;
+use Fxp\Component\Mailer\MailTypes;
+use Fxp\Component\Mailer\Util\MailUtil;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Mailer\Doctrine\Loader\EntityMailLoader;
-use Sonatra\Component\Mailer\Entity\Mail;
-use Sonatra\Component\Mailer\MailTypes;
-use Sonatra\Component\Mailer\Util\MailUtil;
 
 /**
  * Tests for entity mail loader.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class EntityMailLoaderTest extends TestCase
 {
@@ -83,7 +83,7 @@ class EntityMailLoaderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Mailer\Exception\UnknownMailException
+     * @expectedException \Fxp\Component\Mailer\Exception\UnknownMailException
      * @expectedExceptionMessage The "test" mail template does not exist with the "all" type
      */
     public function testLoadUnknownTemplate()

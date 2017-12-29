@@ -1,25 +1,25 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Tests\Entity;
+namespace Fxp\Component\Mailer\Tests\Entity;
 
 use Doctrine\Common\Collections\Collection;
+use Fxp\Component\Mailer\Entity\Mail;
+use Fxp\Component\Mailer\Model\MailTranslationInterface;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Mailer\Entity\Mail;
-use Sonatra\Component\Mailer\Model\MailTranslationInterface;
 
 /**
  * Tests for mail template entity.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class MailTest extends TestCase
 {

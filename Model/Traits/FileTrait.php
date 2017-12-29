@@ -1,20 +1,20 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Model\Traits;
+namespace Fxp\Component\Mailer\Model\Traits;
 
 /**
  * Trait for file model.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 trait FileTrait
 {
@@ -47,7 +47,7 @@ trait FileTrait
      *
      * @param string|null $file The file name
      *
-     * @throws \Sonatra\Component\Mailer\Exception\InvalidArgumentException When the file is not supported
+     * @throws \Fxp\Component\Mailer\Exception\InvalidArgumentException When the file is not supported
      */
     abstract protected function support($file);
 }

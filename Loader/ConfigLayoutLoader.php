@@ -1,26 +1,26 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Loader;
+namespace Fxp\Component\Mailer\Loader;
 
-use Sonatra\Component\Mailer\Model\Layout;
-use Sonatra\Component\Mailer\Model\LayoutInterface;
-use Sonatra\Component\Mailer\Model\LayoutTranslation;
-use Sonatra\Component\Mailer\Model\LayoutTranslationInterface;
-use Sonatra\Component\Mailer\Util\ConfigUtil;
+use Fxp\Component\Mailer\Model\Layout;
+use Fxp\Component\Mailer\Model\LayoutInterface;
+use Fxp\Component\Mailer\Model\LayoutTranslation;
+use Fxp\Component\Mailer\Model\LayoutTranslationInterface;
+use Fxp\Component\Mailer\Util\ConfigUtil;
 
 /**
  * Config layout loader.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class ConfigLayoutLoader extends ArrayLayoutLoader
 {

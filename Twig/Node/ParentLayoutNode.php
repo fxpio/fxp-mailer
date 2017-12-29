@@ -1,20 +1,20 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Twig\Node;
+namespace Fxp\Component\Mailer\Twig\Node;
 
 /**
  * Get the filename of layout translated template.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class ParentLayoutNode extends \Twig_Node_Expression
 {
@@ -39,7 +39,7 @@ class ParentLayoutNode extends \Twig_Node_Expression
     public function compile(\Twig_Compiler $compiler)
     {
         $compiler
-            ->raw('$this->env->getExtension(\'Sonatra\Component\Mailer\Twig\Extension\TemplaterExtension\')')
+            ->raw('$this->env->getExtension(\'Fxp\Component\Mailer\Twig\Extension\TemplaterExtension\')')
             ->raw('->getTranslatedLayout(')
             ->subcompile($this->getAttribute('variables'))
             ->raw(')->getFile()')

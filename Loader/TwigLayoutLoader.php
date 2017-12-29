@@ -1,25 +1,25 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Loader;
+namespace Fxp\Component\Mailer\Loader;
 
-use Sonatra\Component\Mailer\Model\LayoutInterface;
-use Sonatra\Component\Mailer\Model\TwigLayout;
-use Sonatra\Component\Mailer\Model\TwigLayoutTranslation;
-use Sonatra\Component\Mailer\Util\ConfigUtil;
+use Fxp\Component\Mailer\Model\LayoutInterface;
+use Fxp\Component\Mailer\Model\TwigLayout;
+use Fxp\Component\Mailer\Model\TwigLayoutTranslation;
+use Fxp\Component\Mailer\Util\ConfigUtil;
 
 /**
  * Twig File layout loader.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class TwigLayoutLoader extends AbstractFileLayoutLoader
 {

@@ -1,22 +1,22 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Twig\TokenParser;
+namespace Fxp\Component\Mailer\Twig\TokenParser;
 
-use Sonatra\Component\Mailer\Twig\Node\ParentLayoutNode;
+use Fxp\Component\Mailer\Twig\Node\ParentLayoutNode;
 
 /**
  * Use mailer layout directly in twig template.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class LayoutTokenParser extends \Twig_TokenParser_Include
 {

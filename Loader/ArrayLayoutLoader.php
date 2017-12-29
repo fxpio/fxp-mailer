@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Loader;
+namespace Fxp\Component\Mailer\Loader;
 
-use Sonatra\Component\Mailer\Exception\UnknownLayoutException;
-use Sonatra\Component\Mailer\Model\LayoutInterface;
+use Fxp\Component\Mailer\Exception\UnknownLayoutException;
+use Fxp\Component\Mailer\Model\LayoutInterface;
 
 /**
  * Array layout loader.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class ArrayLayoutLoader implements LayoutLoaderInterface
 {

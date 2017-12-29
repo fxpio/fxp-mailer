@@ -1,27 +1,27 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Util;
+namespace Fxp\Component\Mailer\Util;
 
-use Sonatra\Component\Mailer\Model\LayoutInterface;
-use Sonatra\Component\Mailer\Model\MailInterface;
-use Sonatra\Component\Mailer\Model\TemplateFileInterface;
-use Sonatra\Component\Mailer\Model\TemplateInterface;
-use Sonatra\Component\Mailer\Model\TemplateTranslationInterface;
+use Fxp\Component\Mailer\Model\LayoutInterface;
+use Fxp\Component\Mailer\Model\MailInterface;
+use Fxp\Component\Mailer\Model\TemplateFileInterface;
+use Fxp\Component\Mailer\Model\TemplateInterface;
+use Fxp\Component\Mailer\Model\TemplateTranslationInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Utils for translation.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 abstract class TranslationUtil
 {

@@ -1,26 +1,26 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Listener;
+namespace Fxp\Component\Mailer\Listener;
 
-use Sonatra\Component\Mailer\Event\FilterPostRenderEvent;
-use Sonatra\Component\Mailer\Event\FilterPreSendEvent;
-use Sonatra\Component\Mailer\Filter\FilterRegistryInterface;
-use Sonatra\Component\Mailer\MailerEvents;
+use Fxp\Component\Mailer\Event\FilterPostRenderEvent;
+use Fxp\Component\Mailer\Event\FilterPreSendEvent;
+use Fxp\Component\Mailer\Filter\FilterRegistryInterface;
+use Fxp\Component\Mailer\MailerEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * The filter listener of template and transport.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class FilterSubscriber implements EventSubscriberInterface
 {

@@ -1,25 +1,25 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Tests\Loader;
+namespace Fxp\Component\Mailer\Tests\Loader;
 
+use Fxp\Component\Mailer\Loader\TwigLayoutLoader;
+use Fxp\Component\Mailer\Model\LayoutInterface;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Mailer\Loader\TwigLayoutLoader;
-use Sonatra\Component\Mailer\Model\LayoutInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
  * Tests for twig layout loader.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class TwigLayoutLoaderTest extends TestCase
 {
@@ -54,7 +54,7 @@ class TwigLayoutLoaderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Mailer\Exception\UnknownLayoutException
+     * @expectedException \Fxp\Component\Mailer\Exception\UnknownLayoutException
      * @expectedExceptionMessage The "test" layout template does not exist
      */
     public function testLoadUnknownTemplate()

@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Tests\Twig\Node;
+namespace Fxp\Component\Mailer\Tests\Twig\Node;
 
+use Fxp\Component\Mailer\Twig\Node\ParentLayoutNode;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Mailer\Twig\Node\ParentLayoutNode;
 
 /**
  * Tests for twig parent layout node.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class ParentLayoutNodeTest extends TestCase
 {

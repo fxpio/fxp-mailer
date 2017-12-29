@@ -1,24 +1,24 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Tests\Event;
+namespace Fxp\Component\Mailer\Tests\Event;
 
+use Fxp\Component\Mailer\Event\FilterPreRenderEvent;
+use Fxp\Component\Mailer\MailTypes;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Mailer\Event\FilterPreRenderEvent;
-use Sonatra\Component\Mailer\MailTypes;
 
 /**
  * Tests for filter pre render event.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class FilterPreRenderEventTest extends TestCase
 {

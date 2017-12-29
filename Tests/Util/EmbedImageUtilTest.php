@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Tests\Util;
+namespace Fxp\Component\Mailer\Tests\Util;
 
+use Fxp\Component\Mailer\Util\EmbedImageUtil;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Mailer\Util\EmbedImageUtil;
 
 /**
  * Tests for util of swiftmailer embed image.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class EmbedImageUtilTest extends TestCase
 {

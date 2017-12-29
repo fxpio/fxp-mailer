@@ -1,22 +1,22 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Model\Traits;
+namespace Fxp\Component\Mailer\Model\Traits;
 
-use Sonatra\Component\Mailer\Util\TranslationUtil;
+use Fxp\Component\Mailer\Util\TranslationUtil;
 
 /**
  * Trait for translation model.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 trait TranslationTrait
 {
@@ -41,7 +41,7 @@ trait TranslationTrait
             return $this->cacheTranslation[$locale];
         }
 
-        /* @var \Sonatra\Component\Mailer\Model\LayoutInterface|\Sonatra\Component\Mailer\Model\MailInterface|TranslationTrait $this */
+        /* @var \Fxp\Component\Mailer\Model\LayoutInterface|\Fxp\Component\Mailer\Model\MailInterface|TranslationTrait $this */
         $self = clone $this;
 
         if (!TranslationUtil::find($self, $locale) && false !== ($pos = strrpos($locale, '_'))) {

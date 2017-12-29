@@ -1,22 +1,22 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Transport\SwiftMailer;
+namespace Fxp\Component\Mailer\Transport\SwiftMailer;
 
-use Sonatra\Component\Mailer\Exception\RuntimeException;
+use Fxp\Component\Mailer\Exception\RuntimeException;
 
 /**
  * SwiftMailer DKIM Signer Plugin.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class DkimSignerPlugin extends AbstractPlugin
 {

@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Transport;
+namespace Fxp\Component\Mailer\Transport;
 
-use Sonatra\Component\Mailer\Exception\UnexpectedTypeException;
-use Sonatra\Component\Mailer\MailRenderedInterface;
+use Fxp\Component\Mailer\Exception\UnexpectedTypeException;
+use Fxp\Component\Mailer\MailRenderedInterface;
 
 /**
  * Interface for the transport.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 interface TransportInterface
 {

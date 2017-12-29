@@ -1,14 +1,14 @@
 {
-    "name": "sonatra/mailer",
+    "name": "fxp/mailer",
     "type": "library",
     "description": "A manager of HTML mail template stored in multiple systems and sent with different transports",
     "keywords": ["email", "template", "html", "mail", "manager", "switmailer", "doctrine", "twig"],
-    "homepage": "https://github.com/sonatra/sonatra-mailer",
+    "homepage": "https://github.com/fxpio/fxp-mailer",
     "license": "MIT",
     "authors": [
         {
             "name": "François Pluchino",
-            "email": "francois.pluchino@sonatra.com"
+            "email": "francois.pluchino@gmail.com"
         }
     ],
     "minimum-stability": "dev",
@@ -32,7 +32,7 @@
 
     },
     "autoload": {
-        "psr-4": { "Sonatra\\Component\\Mailer\\": "" },
+        "psr-4": { "Fxp\\Component\\Mailer\\": "" },
         "exclude-from-classmap": [
             "/Tests/"
         ]

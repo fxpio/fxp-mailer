@@ -1,26 +1,26 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Doctrine\Loader;
+namespace Fxp\Component\Mailer\Doctrine\Loader;
 
-use Sonatra\Component\Mailer\Doctrine\Loader\Traits\EntityLoaderTrait;
-use Sonatra\Component\Mailer\Exception\UnknownMailException;
-use Sonatra\Component\Mailer\Loader\MailLoaderInterface;
-use Sonatra\Component\Mailer\MailTypes;
-use Sonatra\Component\Mailer\Util\MailUtil;
+use Fxp\Component\Mailer\Doctrine\Loader\Traits\EntityLoaderTrait;
+use Fxp\Component\Mailer\Exception\UnknownMailException;
+use Fxp\Component\Mailer\Loader\MailLoaderInterface;
+use Fxp\Component\Mailer\MailTypes;
+use Fxp\Component\Mailer\Util\MailUtil;
 
 /**
  * Entity mail loader.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class EntityMailLoader implements MailLoaderInterface
 {

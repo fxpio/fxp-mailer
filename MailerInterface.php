@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer;
+namespace Fxp\Component\Mailer;
 
-use Sonatra\Component\Mailer\Exception\InvalidArgumentException;
-use Sonatra\Component\Mailer\Transport\TransportInterface;
+use Fxp\Component\Mailer\Exception\InvalidArgumentException;
+use Fxp\Component\Mailer\Transport\TransportInterface;
 
 /**
  * Interface for the mailer.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 interface MailerInterface
 {

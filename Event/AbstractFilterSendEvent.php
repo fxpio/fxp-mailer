@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Event;
+namespace Fxp\Component\Mailer\Event;
 
-use Sonatra\Component\Mailer\MailRenderedInterface;
+use Fxp\Component\Mailer\MailRenderedInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Base class event for the transport.* event.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 abstract class AbstractFilterSendEvent extends Event
 {

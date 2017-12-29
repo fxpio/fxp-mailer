@@ -1,31 +1,31 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Tests\Twig\Extension;
+namespace Fxp\Component\Mailer\Tests\Twig\Extension;
 
+use Fxp\Component\Mailer\Loader\LayoutLoaderInterface;
+use Fxp\Component\Mailer\MailRenderedInterface;
+use Fxp\Component\Mailer\MailTemplaterInterface;
+use Fxp\Component\Mailer\MailTypes;
+use Fxp\Component\Mailer\Model\LayoutInterface;
+use Fxp\Component\Mailer\Model\TwigLayout;
+use Fxp\Component\Mailer\Twig\Extension\TemplaterExtension;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Mailer\Loader\LayoutLoaderInterface;
-use Sonatra\Component\Mailer\MailRenderedInterface;
-use Sonatra\Component\Mailer\MailTemplaterInterface;
-use Sonatra\Component\Mailer\MailTypes;
-use Sonatra\Component\Mailer\Model\LayoutInterface;
-use Sonatra\Component\Mailer\Model\TwigLayout;
-use Sonatra\Component\Mailer\Twig\Extension\TemplaterExtension;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Tests for twig templater extension.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class TemplaterExtensionTest extends TestCase
 {
@@ -60,7 +60,7 @@ class TemplaterExtensionTest extends TestCase
         $container = $this->getMockBuilder(ContainerInterface::class)->getMock();
         $container->expects($this->any())
             ->method('get')
-            ->with('sonatra_mailer.mail_templater')
+            ->with('fxp_mailer.mail_templater')
             ->will($this->returnValue($this->templater));
 
         $this->ext->container = $container;
@@ -71,11 +71,11 @@ class TemplaterExtensionTest extends TestCase
         $this->assertCount(5, $this->ext->getFunctions());
 
         $valid = array(
-            'sonatra_mailer_render_subject',
-            'sonatra_mailer_render_html',
-            'sonatra_mailer_render_text',
-            'sonatra_mailer_mail_rendered',
-            'sonatra_mailer_clean',
+            'fxp_mailer_render_subject',
+            'fxp_mailer_render_html',
+            'fxp_mailer_render_text',
+            'fxp_mailer_mail_rendered',
+            'fxp_mailer_clean',
         );
 
         /* @var \Twig_Function $function */
@@ -199,7 +199,7 @@ class TemplaterExtensionTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Mailer\Exception\InvalidArgumentException
+     * @expectedException \Fxp\Component\Mailer\Exception\InvalidArgumentException
      * @expectedExceptionMessage The "test" layout is not a twig layout
      */
     public function testGetTranslatedLayoutWithInvalidLayout()

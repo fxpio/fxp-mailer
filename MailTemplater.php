@@ -1,31 +1,31 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer;
+namespace Fxp\Component\Mailer;
 
-use Sonatra\Component\Mailer\Event\FilterPostRenderEvent;
-use Sonatra\Component\Mailer\Event\FilterPreRenderEvent;
-use Sonatra\Component\Mailer\Loader\MailLoaderInterface;
-use Sonatra\Component\Mailer\Model\LayoutInterface;
-use Sonatra\Component\Mailer\Model\MailInterface;
-use Sonatra\Component\Mailer\Model\TwigTemplateInterface;
-use Sonatra\Component\Mailer\Util\MailUtil;
-use Sonatra\Component\Mailer\Util\TranslationUtil;
+use Fxp\Component\Mailer\Event\FilterPostRenderEvent;
+use Fxp\Component\Mailer\Event\FilterPreRenderEvent;
+use Fxp\Component\Mailer\Loader\MailLoaderInterface;
+use Fxp\Component\Mailer\Model\LayoutInterface;
+use Fxp\Component\Mailer\Model\MailInterface;
+use Fxp\Component\Mailer\Model\TwigTemplateInterface;
+use Fxp\Component\Mailer\Util\MailUtil;
+use Fxp\Component\Mailer\Util\TranslationUtil;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * The mail templater.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class MailTemplater implements MailTemplaterInterface
 {

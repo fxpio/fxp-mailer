@@ -1,27 +1,27 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Tests\Doctrine\Loader;
+namespace Fxp\Component\Mailer\Tests\Doctrine\Loader;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
+use Fxp\Component\Mailer\Doctrine\Loader\EntityLayoutLoader;
+use Fxp\Component\Mailer\Entity\Layout;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Component\Mailer\Doctrine\Loader\EntityLayoutLoader;
-use Sonatra\Component\Mailer\Entity\Layout;
 
 /**
  * Tests for entity layout loader.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class EntityLayoutLoaderTest extends TestCase
 {
@@ -80,7 +80,7 @@ class EntityLayoutLoaderTest extends TestCase
     }
 
     /**
-     * @expectedException \Sonatra\Component\Mailer\Exception\UnknownLayoutException
+     * @expectedException \Fxp\Component\Mailer\Exception\UnknownLayoutException
      * @expectedExceptionMessage The "test" layout template does not exist
      */
     public function testLoadUnknownTemplate()

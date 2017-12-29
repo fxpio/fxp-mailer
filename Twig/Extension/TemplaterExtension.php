@@ -1,32 +1,32 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Mailer\Twig\Extension;
+namespace Fxp\Component\Mailer\Twig\Extension;
 
-use Sonatra\Component\Mailer\Exception\InvalidArgumentException;
-use Sonatra\Component\Mailer\Exception\UnknownLayoutException;
-use Sonatra\Component\Mailer\Loader\LayoutLoaderInterface;
-use Sonatra\Component\Mailer\MailRenderedInterface;
-use Sonatra\Component\Mailer\MailTemplaterInterface;
-use Sonatra\Component\Mailer\MailTypes;
-use Sonatra\Component\Mailer\Model\TwigLayout;
-use Sonatra\Component\Mailer\Twig\TokenParser\LayoutTokenParser;
-use Sonatra\Component\Mailer\Util\TranslationUtil;
+use Fxp\Component\Mailer\Exception\InvalidArgumentException;
+use Fxp\Component\Mailer\Exception\UnknownLayoutException;
+use Fxp\Component\Mailer\Loader\LayoutLoaderInterface;
+use Fxp\Component\Mailer\MailRenderedInterface;
+use Fxp\Component\Mailer\MailTemplaterInterface;
+use Fxp\Component\Mailer\MailTypes;
+use Fxp\Component\Mailer\Model\TwigLayout;
+use Fxp\Component\Mailer\Twig\TokenParser\LayoutTokenParser;
+use Fxp\Component\Mailer\Util\TranslationUtil;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Use the mail templater directly in twig template.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class TemplaterExtension extends \Twig_Extension
 {
@@ -74,11 +74,11 @@ class TemplaterExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_Function('sonatra_mailer_render_subject', array($this, 'renderSubject')),
-            new \Twig_Function('sonatra_mailer_render_html', array($this, 'renderHtml'), array('is_safe' => array('html'))),
-            new \Twig_Function('sonatra_mailer_render_text', array($this, 'renderPlainText')),
-            new \Twig_Function('sonatra_mailer_mail_rendered', array($this, 'getMailRendered')),
-            new \Twig_Function('sonatra_mailer_clean', array($this, 'cleanRendered')),
+            new \Twig_Function('fxp_mailer_render_subject', array($this, 'renderSubject')),
+            new \Twig_Function('fxp_mailer_render_html', array($this, 'renderHtml'), array('is_safe' => array('html'))),
+            new \Twig_Function('fxp_mailer_render_text', array($this, 'renderPlainText')),
+            new \Twig_Function('fxp_mailer_mail_rendered', array($this, 'getMailRendered')),
+            new \Twig_Function('fxp_mailer_clean', array($this, 'cleanRendered')),
         );
     }
 
@@ -209,7 +209,7 @@ class TemplaterExtension extends \Twig_Extension
     protected function getTemplater()
     {
         if (null !== $this->container) {
-            $this->templater = $this->container->get('sonatra_mailer.mail_templater');
+            $this->templater = $this->container->get('fxp_mailer.mail_templater');
             $this->container = null;
         }
 
