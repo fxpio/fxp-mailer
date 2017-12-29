@@ -66,10 +66,10 @@ class SwiftMailerTransportTest extends TestCase
 
     public function getHtmlValues()
     {
-        return array(
-            array('HTML Body'),
-            array(null),
-        );
+        return [
+            ['HTML Body'],
+            [null],
+        ];
     }
 
     /**

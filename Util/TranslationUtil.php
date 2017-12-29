@@ -169,7 +169,7 @@ abstract class TranslationUtil
             $val = $template->{$getter}();
 
             if (null !== $val) {
-                $template->{$setter}($translator->trans($val, array(), $template->getTranslationDomain()));
+                $template->{$setter}($translator->trans($val, [], $template->getTranslationDomain()));
             }
         }
     }

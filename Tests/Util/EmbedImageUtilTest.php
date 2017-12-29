@@ -25,16 +25,16 @@ class EmbedImageUtilTest extends TestCase
     {
         $webDir = __DIR__.'/../Fixtures';
 
-        return array(
-            array('http://www.example.tld/loaders/mail.yml', $webDir, '/(.*)+/', realpath($webDir.'/loaders/mail.yml')),
-            array('http://www.example.tld/loaders/mail.yml', $webDir, '/(.*)+.example.tld$/', realpath($webDir.'/loaders/mail.yml')),
-            array('http://www.example.tld/loaders/mail.yml', $webDir, '/^example.tld$/', 'http://www.example.tld/loaders/mail.yml'),
-            array('./loaders/mail.yml', $webDir, '/(.*)+.example.tld$/', realpath($webDir.'/loaders/mail.yml')),
-            array('loaders/mail.yml', $webDir, '/(.*)+.example.tld$/', realpath($webDir.'/loaders/mail.yml')),
-            array('/loaders/mail.yml', $webDir, '/(.*)+.example.tld$/', realpath($webDir.'/loaders/mail.yml')),
-            array('http://www.example.tld/loaders/mail.yml', $webDir, '/^((.*)+\.)?example.tld$/', realpath($webDir.'/loaders/mail.yml')),
-            array('http://example.tld/loaders/mail.yml', $webDir, '/^((.*)+\.)?example.tld$/', realpath($webDir.'/loaders/mail.yml')),
-        );
+        return [
+            ['http://www.example.tld/loaders/mail.yml', $webDir, '/(.*)+/', realpath($webDir.'/loaders/mail.yml')],
+            ['http://www.example.tld/loaders/mail.yml', $webDir, '/(.*)+.example.tld$/', realpath($webDir.'/loaders/mail.yml')],
+            ['http://www.example.tld/loaders/mail.yml', $webDir, '/^example.tld$/', 'http://www.example.tld/loaders/mail.yml'],
+            ['./loaders/mail.yml', $webDir, '/(.*)+.example.tld$/', realpath($webDir.'/loaders/mail.yml')],
+            ['loaders/mail.yml', $webDir, '/(.*)+.example.tld$/', realpath($webDir.'/loaders/mail.yml')],
+            ['/loaders/mail.yml', $webDir, '/(.*)+.example.tld$/', realpath($webDir.'/loaders/mail.yml')],
+            ['http://www.example.tld/loaders/mail.yml', $webDir, '/^((.*)+\.)?example.tld$/', realpath($webDir.'/loaders/mail.yml')],
+            ['http://example.tld/loaders/mail.yml', $webDir, '/^((.*)+\.)?example.tld$/', realpath($webDir.'/loaders/mail.yml')],
+        ];
     }
 
     /**

@@ -27,16 +27,16 @@ class TwigLayoutLoaderTest extends TestCase
     {
         /* @var KernelInterface|\PHPUnit_Framework_MockObject_MockObject $kernel */
         $kernel = $this->getMockBuilder(KernelInterface::class)->getMock();
-        $template = array(
+        $template = [
             'name' => 'test',
             'file' => '@AcmeDemoBundle/Resources/loaders/layout.html.twig',
-            'translations' => array(
-                array(
+            'translations' => [
+                [
                     'locale' => 'fr',
                     'file' => '@AcmeDemoBundle/Resources/loaders/layout.fr.html.twig',
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
 
         $kernel->expects($this->at(0))
             ->method('locateResource')
@@ -48,7 +48,7 @@ class TwigLayoutLoaderTest extends TestCase
             ->with('@AcmeDemoBundle/Resources/loaders/layout.fr.html.twig')
             ->will($this->returnValue(__DIR__.'/../Fixtures/loaders/layout.fr.html.twig'));
 
-        $loader = new TwigLayoutLoader(array($template), $kernel);
+        $loader = new TwigLayoutLoader([$template], $kernel);
 
         $this->assertInstanceOf(LayoutInterface::class, $loader->load('test'));
     }
@@ -62,7 +62,7 @@ class TwigLayoutLoaderTest extends TestCase
         /* @var KernelInterface $kernel */
         $kernel = $this->getMockBuilder(KernelInterface::class)->getMock();
 
-        $loader = new TwigLayoutLoader(array(), $kernel);
+        $loader = new TwigLayoutLoader([], $kernel);
 
         $loader->load('test');
     }

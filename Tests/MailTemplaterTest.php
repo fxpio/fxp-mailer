@@ -97,10 +97,10 @@ class MailTemplaterTest extends TestCase
         $mail = $this->createMail(true, true);
         $trans = $mail->getTranslation('fr');
         $htmlRendered = $mail->getLayout()->getTranslation('fr')->getBody().' | '.$trans->getHtmlBody();
-        $twigVariables = array(
+        $twigVariables = [
             '_mail_type' => MailTypes::TYPE_ALL,
             '_layout' => 'test',
-        );
+        ];
 
         $this->assertNull($mail->getTranslationDomain());
         $this->assertCount(1, $mail->getTranslations());
@@ -143,7 +143,7 @@ class MailTemplaterTest extends TestCase
             ->with($twigVariables)
             ->will($this->returnValue($htmlRendered));
 
-        $rendered = $this->templater->render('test', array(), MailTypes::TYPE_ALL);
+        $rendered = $this->templater->render('test', [], MailTypes::TYPE_ALL);
 
         $this->assertSame($trans->getSubject(), $rendered->getSubject());
         $this->assertSame($trans->getBody(), $rendered->getBody());
@@ -159,10 +159,10 @@ class MailTemplaterTest extends TestCase
         $this->templater->setLocale('fr');
 
         $mail = $this->createMail(true, false, true);
-        $twigVariables = array(
+        $twigVariables = [
             '_mail_type' => MailTypes::TYPE_ALL,
             '_layout' => 'test',
-        );
+        ];
 
         $this->assertSame('domain', $mail->getTranslationDomain());
         $this->assertCount(0, $mail->getTranslations());
@@ -184,27 +184,27 @@ class MailTemplaterTest extends TestCase
 
         $translator->expects($this->at(0))
             ->method('trans')
-            ->with('Test', array(), 'domain')
+            ->with('Test', [], 'domain')
             ->will($this->returnValue($mailTransLabel));
 
         $translator->expects($this->at(1))
             ->method('trans')
-            ->with('Description of template', array(), 'domain')
+            ->with('Description of template', [], 'domain')
             ->will($this->returnValue($mailTransDescription));
 
         $translator->expects($this->at(2))
             ->method('trans')
-            ->with('Body of template', array(), 'domain')
+            ->with('Body of template', [], 'domain')
             ->will($this->returnValue($mailTransBody));
 
         $translator->expects($this->at(3))
             ->method('trans')
-            ->with('Subject of template', array(), 'domain')
+            ->with('Subject of template', [], 'domain')
             ->will($this->returnValue($mailTransSubject));
 
         $translator->expects($this->at(4))
             ->method('trans')
-            ->with('HTML Body of template', array(), 'domain')
+            ->with('HTML Body of template', [], 'domain')
             ->will($this->returnValue($mailTransHtmlBody));
 
         // translator layout
@@ -214,17 +214,17 @@ class MailTemplaterTest extends TestCase
 
         $translator->expects($this->at(5))
             ->method('trans')
-            ->with('Test', array(), 'domain')
+            ->with('Test', [], 'domain')
             ->will($this->returnValue($layoutTransLabel));
 
         $translator->expects($this->at(6))
             ->method('trans')
-            ->with('Description of template', array(), 'domain')
+            ->with('Description of template', [], 'domain')
             ->will($this->returnValue($layoutTransDescription));
 
         $translator->expects($this->at(7))
             ->method('trans')
-            ->with('Body of template', array(), 'domain')
+            ->with('Body of template', [], 'domain')
             ->will($this->returnValue($layoutTransBody));
 
         // render subject
@@ -259,7 +259,7 @@ class MailTemplaterTest extends TestCase
             ->with($twigVariables)
             ->will($this->returnValue($htmlRendered));
 
-        $rendered = $this->templater->render('test', array(), MailTypes::TYPE_ALL);
+        $rendered = $this->templater->render('test', [], MailTypes::TYPE_ALL);
 
         $this->assertSame($mailTransSubject, $rendered->getSubject());
         $this->assertSame($mailTransBody, $rendered->getBody());
@@ -282,10 +282,10 @@ class MailTemplaterTest extends TestCase
 
         $trans = $mail->getTranslation('fr');
         $htmlRendered = $mail->getLayout()->getTranslation('fr')->getBody().' | '.$trans->getHtmlBody();
-        $twigVariables = array(
+        $twigVariables = [
             '_mail_type' => MailTypes::TYPE_ALL,
             '_layout' => 'test',
-        );
+        ];
 
         $this->assertNull($mail->getTranslationDomain());
         $this->assertCount(1, $mail->getTranslations());
@@ -336,7 +336,7 @@ class MailTemplaterTest extends TestCase
                 echo $htmlRendered;
             });
 
-        $rendered = $this->templater->render('test', array(), MailTypes::TYPE_ALL);
+        $rendered = $this->templater->render('test', [], MailTypes::TYPE_ALL);
 
         $this->assertSame($trans->getSubject(), $rendered->getSubject());
         $this->assertSame($trans->getBody(), $rendered->getBody());

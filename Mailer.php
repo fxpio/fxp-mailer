@@ -89,7 +89,7 @@ class Mailer implements MailerInterface
     /**
      * {@inheritdoc}
      */
-    public function send($transport, $message, $template = null, array $variables = array(),
+    public function send($transport, $message, $template = null, array $variables = [],
                          $type = MailTypes::TYPE_ALL)
     {
         $transportName = $transport;

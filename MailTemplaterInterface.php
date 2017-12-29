@@ -52,5 +52,5 @@ interface MailTemplaterInterface
      *
      * @return MailRenderedInterface
      */
-    public function render($template, array $variables = array(), $type = MailTypes::TYPE_ALL);
+    public function render($template, array $variables = [], $type = MailTypes::TYPE_ALL);
 }

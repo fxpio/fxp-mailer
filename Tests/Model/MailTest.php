@@ -141,6 +141,6 @@ class MailTest extends TestCase
             ->setBody('Body of translated template')
         ;
 
-        return array($mail, $translation);
+        return [$mail, $translation];
     }
 }

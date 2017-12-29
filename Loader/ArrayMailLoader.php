@@ -35,7 +35,7 @@ class ArrayMailLoader implements MailLoaderInterface
      */
     public function __construct(array $mails)
     {
-        $this->mails = array();
+        $this->mails = [];
 
         foreach ($mails as $mail) {
             $this->addMail($mail);

@@ -41,7 +41,7 @@ abstract class AbstractFileMailLoader extends ConfigMailLoader
      */
     public function __construct($resources, LayoutLoaderInterface $layoutLoader, KernelInterface $kernel)
     {
-        parent::__construct(array(), $layoutLoader);
+        parent::__construct([], $layoutLoader);
 
         $this->kernel = $kernel;
         $this->resources = (array) $resources;

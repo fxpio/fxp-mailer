@@ -23,7 +23,7 @@ trait TranslationTrait
     /**
      * @var array
      */
-    protected $cacheTranslation = array();
+    protected $cacheTranslation = [];
 
     /**
      * @var string|null

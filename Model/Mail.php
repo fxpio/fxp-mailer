@@ -47,7 +47,7 @@ class Mail extends AbstractTemplate implements MailInterface
     /**
      * @var MailTranslationInterface[]|Collection
      */
-    protected $translations = array();
+    protected $translations = [];
 
     /**
      * {@inheritdoc}

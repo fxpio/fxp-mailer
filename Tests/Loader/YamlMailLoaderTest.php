@@ -51,7 +51,7 @@ class YamlMailLoaderTest extends TestCase
             ->method('locateResource')
             ->will($this->returnValue(__DIR__.'/../Fixtures/loaders/mail.yml'));
 
-        $loader = new YamlMailLoader(array($template), $layoutLoader, $kernel);
+        $loader = new YamlMailLoader([$template], $layoutLoader, $kernel);
 
         $this->assertInstanceOf(MailInterface::class, $loader->load('test'));
     }
@@ -67,7 +67,7 @@ class YamlMailLoaderTest extends TestCase
         /* @var KernelInterface $kernel */
         $kernel = $this->getMockBuilder(KernelInterface::class)->getMock();
 
-        $loader = new YamlMailLoader(array(), $layoutLoader, $kernel);
+        $loader = new YamlMailLoader([], $layoutLoader, $kernel);
 
         $loader->load('test');
     }

@@ -48,7 +48,7 @@ abstract class ConfigUtil
     public static function formatConfig($config)
     {
         if (is_string($config)) {
-            $config = array('file' => $config);
+            $config = ['file' => $config];
         }
 
         if (!is_array($config)) {

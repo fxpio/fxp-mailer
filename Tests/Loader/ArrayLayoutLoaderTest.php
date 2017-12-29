@@ -32,7 +32,7 @@ class ArrayLayoutLoaderTest extends TestCase
             ->method('isEnabled')
             ->will($this->returnValue(true));
 
-        $loader = new ArrayLayoutLoader(array($template));
+        $loader = new ArrayLayoutLoader([$template]);
 
         $this->assertSame($template, $loader->load('test'));
     }
@@ -43,7 +43,7 @@ class ArrayLayoutLoaderTest extends TestCase
      */
     public function testLoadUnknownTemplate()
     {
-        $loader = new ArrayLayoutLoader(array());
+        $loader = new ArrayLayoutLoader([]);
 
         $loader->load('test');
     }

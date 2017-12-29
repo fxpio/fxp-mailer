@@ -37,7 +37,7 @@ class ConfigMailLoaderTest extends TestCase
             ->will($this->returnValue(true));
 
         // mail
-        $template = array(
+        $template = [
             'name' => 'test',
             'label' => 'Test',
             'description' => 'Description of test',
@@ -47,17 +47,17 @@ class ConfigMailLoaderTest extends TestCase
             'html_body' => '<p>HTML content of mail with {{ twig_variable }}.</p>',
             'body' => 'Content of mail with {{ twig_variable }}.',
             'layout' => 'test',
-            'translations' => array(
-                array(
+            'translations' => [
+                [
                     'locale' => 'fr',
                     'label' => 'Test fr',
                     'description' => 'Description du test',
                     'subject' => 'Sujet du courrier avec {{ twig_variable }}',
                     'html_body' => '<p>Contenu HTML du courrier avec {{ twig_variable }}.</p>',
                     'body' => 'Contenu du courrier avec {{ twig_variable }}.',
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
 
         /* @var LayoutLoaderInterface|\PHPUnit_Framework_MockObject_MockObject $layoutLoader */
         $layoutLoader = $this->getMockBuilder(LayoutLoaderInterface::class)->getMock();
@@ -65,7 +65,7 @@ class ConfigMailLoaderTest extends TestCase
             ->method('load')
             ->will($this->returnValue($templateLayout));
 
-        $loader = new ConfigMailLoader(array($template), $layoutLoader);
+        $loader = new ConfigMailLoader([$template], $layoutLoader);
 
         $mail = $loader->load('test');
 
@@ -82,7 +82,7 @@ class ConfigMailLoaderTest extends TestCase
         /* @var LayoutLoaderInterface $layoutLoader */
         $layoutLoader = $this->getMockBuilder(LayoutLoaderInterface::class)->getMock();
 
-        $loader = new ConfigMailLoader(array(), $layoutLoader);
+        $loader = new ConfigMailLoader([], $layoutLoader);
 
         $loader->load('test');
     }

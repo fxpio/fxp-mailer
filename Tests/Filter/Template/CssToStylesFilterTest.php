@@ -26,11 +26,11 @@ class CssToStylesFilterTest extends TestCase
 {
     public function getSupportTests()
     {
-        return array(
-            array(MailTypes::TYPE_ALL,    true),
-            array(MailTypes::TYPE_SCREEN, true),
-            array(MailTypes::TYPE_PRINT,  false),
-        );
+        return [
+            [MailTypes::TYPE_ALL,    true],
+            [MailTypes::TYPE_SCREEN, true],
+            [MailTypes::TYPE_PRINT,  false],
+        ];
     }
 
     /**

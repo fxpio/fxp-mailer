@@ -25,7 +25,7 @@ class FilterPreRenderEventTest extends TestCase
     public function testModel()
     {
         $template = 'template_name';
-        $variables = array('foo' => 'bar');
+        $variables = ['foo' => 'bar'];
         $type = MailTypes::TYPE_ALL;
 
         $event = new FilterPreRenderEvent($template, $variables, $type);
@@ -35,7 +35,7 @@ class FilterPreRenderEventTest extends TestCase
         $this->assertSame($type, $event->getType());
 
         $template2 = 'new_template_name';
-        $variables2 = array_merge($variables, array('bar' => 'foo'));
+        $variables2 = array_merge($variables, ['bar' => 'foo']);
         $type2 = MailTypes::TYPE_SCREEN;
 
         $event->setTemplate($template2);

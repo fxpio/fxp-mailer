@@ -30,10 +30,10 @@ class EntityLayoutLoader implements LayoutLoaderInterface
     public function load($name)
     {
         $repo = $this->om->getRepository($this->class);
-        $layout = $repo->findOneBy(array(
+        $layout = $repo->findOneBy([
             'name' => $name,
             'enabled' => true,
-        ));
+        ]);
 
         if (null !== $layout) {
             return $layout;

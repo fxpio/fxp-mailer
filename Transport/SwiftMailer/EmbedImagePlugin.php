@@ -60,7 +60,7 @@ class EmbedImagePlugin extends AbstractPlugin
         libxml_use_internal_errors($internalErrors);
         $xpath = new \DOMXPath($dom);
         $nodes = $xpath->query('//img/@src');
-        $images = array();
+        $images = [];
 
         foreach ($nodes as $node) {
             $this->embedImage($message, $node, $images);

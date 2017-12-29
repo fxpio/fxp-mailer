@@ -119,6 +119,6 @@ class LayoutTest extends TestCase
             ->setBody('Body of translated template')
         ;
 
-        return array($layout, $translation);
+        return [$layout, $translation];
     }
 }

@@ -26,12 +26,12 @@ class Layout extends AbstractTemplate implements LayoutInterface
     /**
      * @var MailInterface[]|Collection
      */
-    protected $mails = array();
+    protected $mails = [];
 
     /**
      * @var LayoutTranslationInterface[]|Collection
      */
-    protected $translations = array();
+    protected $translations = [];
 
     /**
      * {@inheritdoc}

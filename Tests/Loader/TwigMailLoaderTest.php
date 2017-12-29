@@ -45,17 +45,17 @@ class TwigMailLoaderTest extends TestCase
 
         /* @var KernelInterface|\PHPUnit_Framework_MockObject_MockObject $kernel */
         $kernel = $this->getMockBuilder(KernelInterface::class)->getMock();
-        $template = array(
+        $template = [
             'name' => 'test',
             'layout' => 'test',
             'file' => '@AcmeDemoBundle/Resources/loaders/mail.html.twig',
-            'translations' => array(
-                array(
+            'translations' => [
+                [
                     'locale' => 'fr',
                     'file' => '@AcmeDemoBundle/Resources/loaders/mail.fr.html.twig',
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
 
         $kernel->expects($this->at(0))
             ->method('locateResource')
@@ -67,7 +67,7 @@ class TwigMailLoaderTest extends TestCase
             ->with('@AcmeDemoBundle/Resources/loaders/mail.fr.html.twig')
             ->will($this->returnValue(__DIR__.'/../Fixtures/loaders/mail.fr.html.twig'));
 
-        $loader = new TwigMailLoader(array($template), $layoutLoader, $kernel);
+        $loader = new TwigMailLoader([$template], $layoutLoader, $kernel);
 
         $this->assertInstanceOf(MailInterface::class, $loader->load('test'));
     }
@@ -83,7 +83,7 @@ class TwigMailLoaderTest extends TestCase
         /* @var KernelInterface $kernel */
         $kernel = $this->getMockBuilder(KernelInterface::class)->getMock();
 
-        $loader = new TwigMailLoader(array(), $layoutLoader, $kernel);
+        $loader = new TwigMailLoader([], $layoutLoader, $kernel);
 
         $loader->load('test');
     }

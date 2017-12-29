@@ -69,10 +69,10 @@ class EntityLayoutLoaderTest extends TestCase
         $template = $this->getMockBuilder(Layout::class)->disableOriginalConstructor()->getMock();
         $this->repo->expects($this->once())
             ->method('findOneBy')
-            ->with(array(
+            ->with([
                 'name' => 'test',
                 'enabled' => true,
-            ))
+            ])
             ->will($this->returnValue($template))
         ;
 

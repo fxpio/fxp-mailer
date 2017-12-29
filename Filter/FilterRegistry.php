@@ -34,10 +34,10 @@ class FilterRegistry implements FilterRegistryInterface
      * @param TemplateFilterInterface[]  $templateFilters  The template filters
      * @param TransportFilterInterface[] $transportFilters The transport filters
      */
-    public function __construct(array $templateFilters = array(), array $transportFilters = array())
+    public function __construct(array $templateFilters = [], array $transportFilters = [])
     {
-        $this->templateFilters = array();
-        $this->transportFilters = array();
+        $this->templateFilters = [];
+        $this->transportFilters = [];
 
         foreach ($templateFilters as $filter) {
             $this->addTemplateFilter($filter);

@@ -39,7 +39,7 @@ abstract class AbstractFileLayoutLoader extends ConfigLayoutLoader
      */
     public function __construct($resources, KernelInterface $kernel)
     {
-        parent::__construct(array());
+        parent::__construct([]);
 
         $this->kernel = $kernel;
         $this->resources = (array) $resources;

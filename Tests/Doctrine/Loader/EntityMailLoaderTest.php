@@ -71,11 +71,11 @@ class EntityMailLoaderTest extends TestCase
         $template = $this->getMockBuilder(Mail::class)->disableOriginalConstructor()->getMock();
         $this->repo->expects($this->once())
             ->method('findOneBy')
-            ->with(array(
+            ->with([
                 'name' => 'test',
                 'enabled' => true,
                 'type' => MailUtil::getValidTypes(MailTypes::TYPE_ALL),
-            ))
+            ])
             ->will($this->returnValue($template))
         ;
 

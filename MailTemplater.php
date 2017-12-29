@@ -99,7 +99,7 @@ class MailTemplater implements MailTemplaterInterface
     /**
      * {@inheritdoc}
      */
-    public function render($template, array $variables = array(), $type = MailTypes::TYPE_ALL)
+    public function render($template, array $variables = [], $type = MailTypes::TYPE_ALL)
     {
         $preEvent = new FilterPreRenderEvent($template, $variables, $type);
         $this->dispatcher->dispatch(MailerEvents::TEMPLATE_PRE_RENDER, $preEvent);
@@ -186,7 +186,7 @@ class MailTemplater implements MailTemplaterInterface
      *
      * @throws \Exception
      */
-    protected function renderTemplate($template, $templateInstance, array $variables = array())
+    protected function renderTemplate($template, $templateInstance, array $variables = [])
     {
         if (null !== $template) {
             if ($templateInstance instanceof TwigTemplateInterface) {

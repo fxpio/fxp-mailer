@@ -27,8 +27,8 @@ class ParentLayoutNode extends \Twig_Node_Expression
      */
     public function __construct(\Twig_Node_Expression $variables, $lineno, $tag = null)
     {
-        $attr = array('variables' => $variables);
-        parent::__construct(array(), $attr, $lineno, $tag);
+        $attr = ['variables' => $variables];
+        parent::__construct([], $attr, $lineno, $tag);
     }
 
     /**

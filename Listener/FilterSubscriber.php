@@ -44,14 +44,14 @@ class FilterSubscriber implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
-            MailerEvents::TEMPLATE_POST_RENDER => array(
+        return [
+            MailerEvents::TEMPLATE_POST_RENDER => [
                 'onPostRender', 0,
-            ),
-            MailerEvents::TRANSPORT_PRE_SEND => array(
+            ],
+            MailerEvents::TRANSPORT_PRE_SEND => [
                 'onPreSend', 0,
-            ),
-        );
+            ],
+        ];
     }
 
     /**

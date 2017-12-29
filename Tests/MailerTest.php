@@ -55,7 +55,7 @@ class MailerTest extends TestCase
             ->method('getName')
             ->will($this->returnValue('test'));
 
-        $this->mailer = new Mailer($this->templater, array($this->transport), $this->dispatcher);
+        $this->mailer = new Mailer($this->templater, [$this->transport], $this->dispatcher);
     }
 
     public function testGetTransport()
@@ -82,7 +82,7 @@ class MailerTest extends TestCase
 
         $this->templater->expects($this->once())
             ->method('render')
-            ->with('template-test', array(), MailTypes::TYPE_ALL)
+            ->with('template-test', [], MailTypes::TYPE_ALL)
             ->will($this->returnValue($mail));
 
         $this->transport->expects($this->once())
@@ -90,7 +90,7 @@ class MailerTest extends TestCase
             ->with($message, $mail)
             ->will($this->returnValue(true));
 
-        $res = $this->mailer->send('test', $message, 'template-test', array(), MailTypes::TYPE_ALL);
+        $res = $this->mailer->send('test', $message, 'template-test', [], MailTypes::TYPE_ALL);
 
         $this->assertTrue($res);
     }

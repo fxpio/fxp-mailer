@@ -28,7 +28,7 @@ class FilterRegistryTest extends TestCase
         $templateFilter = $this->getMockBuilder(TemplateFilterInterface::class)->getMock();
         $transportFilter = $this->getMockBuilder(TransportFilterInterface::class)->getMock();
 
-        $registry = new FilterRegistry(array($templateFilter), array($transportFilter));
+        $registry = new FilterRegistry([$templateFilter], [$transportFilter]);
 
         $templateFilters = $registry->getTemplateFilters();
         $transportFilters = $registry->getTransportFilters();

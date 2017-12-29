@@ -31,7 +31,7 @@ class ConfigLayoutLoader extends ArrayLayoutLoader
      */
     public function __construct(array $configs)
     {
-        $layouts = array();
+        $layouts = [];
 
         foreach ($configs as $config) {
             $layouts[] = $this->createLayout($config);

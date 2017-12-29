@@ -61,5 +61,5 @@ interface MailerInterface
      *
      * @return bool
      */
-    public function send($transport, $message, $template = null, array $variables = array(), $type = MailTypes::TYPE_ALL);
+    public function send($transport, $message, $template = null, array $variables = [], $type = MailTypes::TYPE_ALL);
 }

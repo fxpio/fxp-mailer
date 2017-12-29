@@ -39,7 +39,7 @@ class MailLoaderChainTest extends TestCase
             ->method('load')
             ->will($this->returnValue($template));
 
-        $chainLoader = new MailLoaderChain(array($loader1, $loader2));
+        $chainLoader = new MailLoaderChain([$loader1, $loader2]);
 
         $this->assertSame($template, $chainLoader->load('test'));
     }
@@ -50,7 +50,7 @@ class MailLoaderChainTest extends TestCase
      */
     public function testLoadUnknownTemplate()
     {
-        $loader = new MailLoaderChain(array());
+        $loader = new MailLoaderChain([]);
 
         $loader->load('test');
     }

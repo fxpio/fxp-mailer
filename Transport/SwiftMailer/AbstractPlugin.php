@@ -21,7 +21,7 @@ abstract class AbstractPlugin implements \Swift_Events_SendListener
     /**
      * @var array
      */
-    protected $performed = array();
+    protected $performed = [];
 
     /**
      * @var bool

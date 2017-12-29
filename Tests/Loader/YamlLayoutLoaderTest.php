@@ -33,7 +33,7 @@ class YamlLayoutLoaderTest extends TestCase
             ->method('locateResource')
             ->will($this->returnValue(__DIR__.'/../Fixtures/loaders/layout.yml'));
 
-        $loader = new YamlLayoutLoader(array($template), $kernel);
+        $loader = new YamlLayoutLoader([$template], $kernel);
 
         $this->assertInstanceOf(LayoutInterface::class, $loader->load('test'));
     }
@@ -47,7 +47,7 @@ class YamlLayoutLoaderTest extends TestCase
         /* @var KernelInterface $kernel */
         $kernel = $this->getMockBuilder(KernelInterface::class)->getMock();
 
-        $loader = new YamlLayoutLoader(array(), $kernel);
+        $loader = new YamlLayoutLoader([], $kernel);
 
         $loader->load('test');
     }

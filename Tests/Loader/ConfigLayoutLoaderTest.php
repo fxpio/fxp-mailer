@@ -24,23 +24,23 @@ class ConfigLayoutLoaderTest extends TestCase
 {
     public function testLoad()
     {
-        $template = array(
+        $template = [
             'name' => 'test',
             'label' => 'Test',
             'description' => 'Description of test',
             'enabled' => true,
             'body' => 'Content of layout with {{ twig_variable }}.',
-            'translations' => array(
-                array(
+            'translations' => [
+                [
                     'locale' => 'fr',
                     'label' => 'Test fr',
                     'description' => 'Description du test',
                     'body' => 'Contenu du layout avec {{ twig_variable }}.',
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
 
-        $loader = new ConfigLayoutLoader(array($template));
+        $loader = new ConfigLayoutLoader([$template]);
 
         $this->assertInstanceOf(LayoutInterface::class, $loader->load('test'));
     }
@@ -51,7 +51,7 @@ class ConfigLayoutLoaderTest extends TestCase
      */
     public function testLoadUnknownTemplate()
     {
-        $loader = new ConfigLayoutLoader(array());
+        $loader = new ConfigLayoutLoader([]);
 
         $loader->load('test');
     }

@@ -36,7 +36,7 @@ class ArrayMailLoaderTest extends TestCase
             ->method('getType')
             ->will($this->returnValue(MailTypes::TYPE_ALL));
 
-        $loader = new ArrayMailLoader(array($template));
+        $loader = new ArrayMailLoader([$template]);
 
         $this->assertSame($template, $loader->load('test'));
     }
@@ -47,7 +47,7 @@ class ArrayMailLoaderTest extends TestCase
      */
     public function testLoadUnknownTemplate()
     {
-        $loader = new ArrayMailLoader(array());
+        $loader = new ArrayMailLoader([]);
 
         $loader->load('test');
     }

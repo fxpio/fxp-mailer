@@ -70,13 +70,13 @@ class TemplaterExtensionTest extends TestCase
     {
         $this->assertCount(5, $this->ext->getFunctions());
 
-        $valid = array(
+        $valid = [
             'fxp_mailer_render_subject',
             'fxp_mailer_render_html',
             'fxp_mailer_render_text',
             'fxp_mailer_mail_rendered',
             'fxp_mailer_clean',
-        );
+        ];
 
         /* @var \Twig_Function $function */
         foreach ($this->ext->getFunctions() as $function) {
@@ -230,9 +230,9 @@ class TemplaterExtensionTest extends TestCase
     public function getConfig($clone = false)
     {
         $template = 'test';
-        $variables = array(
+        $variables = [
             'foo' => 'bar',
-        );
+        ];
 
         $mail = $this->getMockBuilder(MailRenderedInterface::class)->getMock();
 
@@ -248,13 +248,13 @@ class TemplaterExtensionTest extends TestCase
                 ->will($this->returnValue(clone $mail));
         }
 
-        return array($template, $variables, $mail);
+        return [$template, $variables, $mail];
     }
 
     public function testLayoutTokenParser()
     {
         $loader = new \Twig_Loader_Filesystem(__DIR__.'/../../Fixtures/token_parsers');
-        $twig = new \Twig_Environment($loader, array('debug' => true, 'cache' => false));
+        $twig = new \Twig_Environment($loader, ['debug' => true, 'cache' => false]);
         $twig->addExtension($this->ext);
 
         $this->assertInstanceOf(\Twig_TemplateWrapper::class, $twig->load('mail.html.twig'));

@@ -47,10 +47,10 @@ class FilterSubscriberTest extends TestCase
     public function testGetSubscribedEvents()
     {
         $events = $this->listener->getSubscribedEvents();
-        $valid = array(
+        $valid = [
             MailerEvents::TEMPLATE_POST_RENDER,
             MailerEvents::TRANSPORT_PRE_SEND,
-        );
+        ];
 
         $this->assertSame($valid, array_keys($events));
     }
@@ -79,7 +79,7 @@ class FilterSubscriberTest extends TestCase
 
         $this->registry->expects($this->once())
             ->method('getTemplateFilters')
-            ->will($this->returnValue(array($templateFilter)));
+            ->will($this->returnValue([$templateFilter]));
 
         $this->listener->onPostRender($event);
     }
@@ -117,7 +117,7 @@ class FilterSubscriberTest extends TestCase
 
         $this->registry->expects($this->once())
             ->method('getTransportFilters')
-            ->will($this->returnValue(array($transportFilter)));
+            ->will($this->returnValue([$transportFilter]));
 
         $this->listener->onPreSend($event);
     }

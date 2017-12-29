@@ -25,9 +25,9 @@ class ConfigUtilTest extends TestCase
     {
         $config = 'filename.file';
 
-        $valid = array(
+        $valid = [
             'file' => $config,
-        );
+        ];
 
         $this->assertEquals($valid, ConfigUtil::formatConfig($config));
     }
@@ -49,9 +49,9 @@ class ConfigUtilTest extends TestCase
      */
     public function testFormatConfigWithInvalidFilename()
     {
-        $config = array(
+        $config = [
             'name' => 'test',
-        );
+        ];
 
         ConfigUtil::formatConfig($config);
     }

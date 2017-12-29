@@ -33,7 +33,7 @@ class ArrayLayoutLoader implements LayoutLoaderInterface
      */
     public function __construct(array $layouts)
     {
-        $this->layouts = array();
+        $this->layouts = [];
 
         foreach ($layouts as $layout) {
             $this->addLayout($layout);

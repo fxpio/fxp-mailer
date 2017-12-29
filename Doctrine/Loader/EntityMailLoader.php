@@ -32,11 +32,11 @@ class EntityMailLoader implements MailLoaderInterface
     public function load($name, $type = MailTypes::TYPE_ALL)
     {
         $repo = $this->om->getRepository($this->class);
-        $mail = $repo->findOneBy(array(
+        $mail = $repo->findOneBy([
             'name' => $name,
             'enabled' => true,
             'type' => MailUtil::getValidTypes($type),
-        ));
+        ]);
 
         if (null !== $mail) {
             return $mail;

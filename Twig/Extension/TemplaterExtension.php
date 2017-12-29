@@ -65,7 +65,7 @@ class TemplaterExtension extends \Twig_Extension
     {
         $this->layoutLoader = $layoutLoader;
         $this->translator = $translator;
-        $this->cache = array();
+        $this->cache = [];
     }
 
     /**
@@ -73,13 +73,13 @@ class TemplaterExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
-        return array(
-            new \Twig_Function('fxp_mailer_render_subject', array($this, 'renderSubject')),
-            new \Twig_Function('fxp_mailer_render_html', array($this, 'renderHtml'), array('is_safe' => array('html'))),
-            new \Twig_Function('fxp_mailer_render_text', array($this, 'renderPlainText')),
-            new \Twig_Function('fxp_mailer_mail_rendered', array($this, 'getMailRendered')),
-            new \Twig_Function('fxp_mailer_clean', array($this, 'cleanRendered')),
-        );
+        return [
+            new \Twig_Function('fxp_mailer_render_subject', [$this, 'renderSubject']),
+            new \Twig_Function('fxp_mailer_render_html', [$this, 'renderHtml'], ['is_safe' => ['html']]),
+            new \Twig_Function('fxp_mailer_render_text', [$this, 'renderPlainText']),
+            new \Twig_Function('fxp_mailer_mail_rendered', [$this, 'getMailRendered']),
+            new \Twig_Function('fxp_mailer_clean', [$this, 'cleanRendered']),
+        ];
     }
 
     /**
@@ -87,9 +87,9 @@ class TemplaterExtension extends \Twig_Extension
      */
     public function getTokenParsers()
     {
-        return array(
+        return [
             new LayoutTokenParser(),
-        );
+        ];
     }
 
     /**
@@ -101,7 +101,7 @@ class TemplaterExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function renderSubject($template, array $variables = array(), $type = MailTypes::TYPE_ALL)
+    public function renderSubject($template, array $variables = [], $type = MailTypes::TYPE_ALL)
     {
         return $this->getMailRendered($template, $variables, $type)->getSubject();
     }
@@ -115,7 +115,7 @@ class TemplaterExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function renderHtml($template, array $variables = array(), $type = MailTypes::TYPE_ALL)
+    public function renderHtml($template, array $variables = [], $type = MailTypes::TYPE_ALL)
     {
         return $this->getMailRendered($template, $variables, $type)->getHtmlBody();
     }
@@ -129,7 +129,7 @@ class TemplaterExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function renderPlainText($template, array $variables = array(), $type = MailTypes::TYPE_ALL)
+    public function renderPlainText($template, array $variables = [], $type = MailTypes::TYPE_ALL)
     {
         return $this->getMailRendered($template, $variables, $type)->getBody();
     }
@@ -143,7 +143,7 @@ class TemplaterExtension extends \Twig_Extension
      *
      * @return MailRenderedInterface
      */
-    public function getMailRendered($template, array $variables = array(), $type = MailTypes::TYPE_ALL)
+    public function getMailRendered($template, array $variables = [], $type = MailTypes::TYPE_ALL)
     {
         $id = $this->getCacheId($template, $variables, $type);
 
@@ -194,7 +194,7 @@ class TemplaterExtension extends \Twig_Extension
      *
      * @return string
      */
-    protected function getCacheId($template, array $variables = array(), $type = MailTypes::TYPE_ALL)
+    protected function getCacheId($template, array $variables = [], $type = MailTypes::TYPE_ALL)
     {
         $serialize = serialize($variables);
 

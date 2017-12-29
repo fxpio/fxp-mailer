@@ -32,7 +32,7 @@ class LayoutLoaderChain implements LayoutLoaderInterface
      */
     public function __construct(array $loaders)
     {
-        $this->loaders = array();
+        $this->loaders = [];
 
         foreach ($loaders as $loader) {
             $this->addLoader($loader);

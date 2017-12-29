@@ -25,27 +25,27 @@ class MailUtilTest extends TestCase
 {
     public function getCheckIsValidMailTypes()
     {
-        return array(
-            array(true,  MailTypes::TYPE_ALL,    true,  MailTypes::TYPE_ALL),
-            array(true,  MailTypes::TYPE_ALL,    true,  MailTypes::TYPE_PRINT),
-            array(true,  MailTypes::TYPE_ALL,    true,  MailTypes::TYPE_SCREEN),
-            array(true,  MailTypes::TYPE_PRINT,  true,  MailTypes::TYPE_ALL),
-            array(true,  MailTypes::TYPE_PRINT,  true,  MailTypes::TYPE_PRINT),
-            array(false, MailTypes::TYPE_PRINT,  true,  MailTypes::TYPE_SCREEN),
-            array(true,  MailTypes::TYPE_SCREEN, true,  MailTypes::TYPE_ALL),
-            array(false, MailTypes::TYPE_SCREEN, true,  MailTypes::TYPE_PRINT),
-            array(true,  MailTypes::TYPE_SCREEN, true,  MailTypes::TYPE_SCREEN),
+        return [
+            [true,  MailTypes::TYPE_ALL,    true,  MailTypes::TYPE_ALL],
+            [true,  MailTypes::TYPE_ALL,    true,  MailTypes::TYPE_PRINT],
+            [true,  MailTypes::TYPE_ALL,    true,  MailTypes::TYPE_SCREEN],
+            [true,  MailTypes::TYPE_PRINT,  true,  MailTypes::TYPE_ALL],
+            [true,  MailTypes::TYPE_PRINT,  true,  MailTypes::TYPE_PRINT],
+            [false, MailTypes::TYPE_PRINT,  true,  MailTypes::TYPE_SCREEN],
+            [true,  MailTypes::TYPE_SCREEN, true,  MailTypes::TYPE_ALL],
+            [false, MailTypes::TYPE_SCREEN, true,  MailTypes::TYPE_PRINT],
+            [true,  MailTypes::TYPE_SCREEN, true,  MailTypes::TYPE_SCREEN],
 
-            array(false, MailTypes::TYPE_ALL,    false, MailTypes::TYPE_ALL),
-            array(false, MailTypes::TYPE_ALL,    false, MailTypes::TYPE_PRINT),
-            array(false, MailTypes::TYPE_ALL,    false, MailTypes::TYPE_SCREEN),
-            array(false, MailTypes::TYPE_PRINT,  false, MailTypes::TYPE_ALL),
-            array(false, MailTypes::TYPE_PRINT,  false, MailTypes::TYPE_PRINT),
-            array(false, MailTypes::TYPE_PRINT,  false, MailTypes::TYPE_SCREEN),
-            array(false, MailTypes::TYPE_SCREEN, false, MailTypes::TYPE_ALL),
-            array(false, MailTypes::TYPE_SCREEN, false, MailTypes::TYPE_PRINT),
-            array(false, MailTypes::TYPE_SCREEN, false, MailTypes::TYPE_SCREEN),
-        );
+            [false, MailTypes::TYPE_ALL,    false, MailTypes::TYPE_ALL],
+            [false, MailTypes::TYPE_ALL,    false, MailTypes::TYPE_PRINT],
+            [false, MailTypes::TYPE_ALL,    false, MailTypes::TYPE_SCREEN],
+            [false, MailTypes::TYPE_PRINT,  false, MailTypes::TYPE_ALL],
+            [false, MailTypes::TYPE_PRINT,  false, MailTypes::TYPE_PRINT],
+            [false, MailTypes::TYPE_PRINT,  false, MailTypes::TYPE_SCREEN],
+            [false, MailTypes::TYPE_SCREEN, false, MailTypes::TYPE_ALL],
+            [false, MailTypes::TYPE_SCREEN, false, MailTypes::TYPE_PRINT],
+            [false, MailTypes::TYPE_SCREEN, false, MailTypes::TYPE_SCREEN],
+        ];
     }
 
     /**
@@ -72,12 +72,12 @@ class MailUtilTest extends TestCase
 
     public function getTypes()
     {
-        return array(
-            array(MailTypes::TYPE_ALL,    array(MailTypes::TYPE_ALL, MailTypes::TYPE_PRINT, MailTypes::TYPE_SCREEN)),
-            array(MailTypes::TYPE_PRINT,  array(MailTypes::TYPE_ALL, MailTypes::TYPE_PRINT)),
-            array(MailTypes::TYPE_SCREEN, array(MailTypes::TYPE_ALL, MailTypes::TYPE_SCREEN)),
-            array('invalid',              array(MailTypes::TYPE_ALL, MailTypes::TYPE_PRINT, MailTypes::TYPE_SCREEN)),
-        );
+        return [
+            [MailTypes::TYPE_ALL,    [MailTypes::TYPE_ALL, MailTypes::TYPE_PRINT, MailTypes::TYPE_SCREEN]],
+            [MailTypes::TYPE_PRINT,  [MailTypes::TYPE_ALL, MailTypes::TYPE_PRINT]],
+            [MailTypes::TYPE_SCREEN, [MailTypes::TYPE_ALL, MailTypes::TYPE_SCREEN]],
+            ['invalid',              [MailTypes::TYPE_ALL, MailTypes::TYPE_PRINT, MailTypes::TYPE_SCREEN]],
+        ];
     }
 
     /**

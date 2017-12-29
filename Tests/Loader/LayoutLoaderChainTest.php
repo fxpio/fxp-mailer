@@ -38,7 +38,7 @@ class LayoutLoaderChainTest extends TestCase
             ->method('load')
             ->will($this->returnValue($template));
 
-        $chainLoader = new LayoutLoaderChain(array($loader1, $loader2));
+        $chainLoader = new LayoutLoaderChain([$loader1, $loader2]);
 
         $this->assertSame($template, $chainLoader->load('test'));
     }
@@ -49,7 +49,7 @@ class LayoutLoaderChainTest extends TestCase
      */
     public function testLoadUnknownTemplate()
     {
-        $loader = new LayoutLoaderChain(array());
+        $loader = new LayoutLoaderChain([]);
 
         $loader->load('test');
     }
