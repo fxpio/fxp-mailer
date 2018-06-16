@@ -34,7 +34,7 @@ abstract class EmbedImageUtil
 
             if (isset($url['host']) && isset($url['path'])
                     && preg_match($hostPattern, $url['host'], $matches)) {
-                $path = static::getExistingPath($url['path'], $webDir);
+                $path = static::getExistingPath($url['path'], $webDir, $path);
             }
         } else {
             $path = static::getExistingPath($path, $webDir);
@@ -46,15 +46,16 @@ abstract class EmbedImageUtil
     /**
      * Get the the absolute path if file exists.
      *
-     * @param string $path   The path
-     * @param string $webDir The absolute web directory
+     * @param string      $path         The path
+     * @param string      $webDir       The absolute web directory
+     * @param string|null $fallbackPath The fallback if path is not in locale file system
      *
      * @return string
      */
-    protected static function getExistingPath($path, $webDir)
+    protected static function getExistingPath($path, $webDir, $fallbackPath = null)
     {
         return file_exists($webDir.'/'.$path)
             ? realpath($webDir.'/'.$path)
-            : $path;
+            : (null !== $fallbackPath ? $fallbackPath : $path);
     }
 }
