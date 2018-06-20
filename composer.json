@@ -15,17 +15,17 @@
     "prefer-stable": true,
     "require": {
         "php": "^7.1.0",
-        "symfony/dependency-injection": "^3.4.0|^4.0.0",
-        "symfony/event-dispatcher": "^3.4.0|^4.0.0",
-        "symfony/http-kernel": "^3.4.0|^4.0.0",
-        "symfony/translation": "^3.4.0|^4.0.0",
+        "symfony/dependency-injection": "^4.1.0",
+        "symfony/event-dispatcher": "^4.1.0",
+        "symfony/http-kernel": "^4.1.0",
+        "symfony/translation": "^4.1.0",
         "doctrine/common": "^2.8.0",
         "twig/twig": "^2.4.0"
     },
     "require-dev": {
-        "symfony/yaml": "^3.4.0|^4.0.0",
-        "symfony/filesystem": "^3.4.0|^4.0.0",
-        "symfony/config": "^3.4.0|^4.0.0",
+        "symfony/yaml": "^4.1.0",
+        "symfony/filesystem": "^4.1.0",
+        "symfony/config": "^4.1.0",
         "doctrine/orm": "^2.6.0",
         "swiftmailer/swiftmailer": "^6.0.0",
         "tijsverkoyen/css-to-inline-styles": "^2.2.0"
