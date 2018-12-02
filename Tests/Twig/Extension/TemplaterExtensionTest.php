@@ -81,7 +81,7 @@ class TemplaterExtensionTest extends TestCase
         /* @var \Twig_Function $function */
         foreach ($this->ext->getFunctions() as $function) {
             $this->assertInstanceOf(\Twig_Function::class, $function);
-            $this->assertTrue(in_array($function->getName(), $valid));
+            $this->assertTrue(\in_array($function->getName(), $valid));
         }
 
         $this->assertCount(1, $this->ext->getTokenParsers());

@@ -26,7 +26,7 @@ class UnexpectedTypeException extends InvalidArgumentException
      */
     public function __construct($value, $expectedType)
     {
-        $msg = sprintf('Expected argument of type "%s", "%s" given', $expectedType, is_object($value) ? get_class((object) $value) : gettype($value));
+        $msg = sprintf('Expected argument of type "%s", "%s" given', $expectedType, \is_object($value) ? \get_class((object) $value) : \gettype($value));
 
         parent::__construct($msg);
     }

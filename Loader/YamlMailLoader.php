@@ -27,7 +27,7 @@ class YamlMailLoader extends AbstractFileMailLoader
      */
     public function load($name, $type = MailTypes::TYPE_ALL)
     {
-        if (is_array($this->resources)) {
+        if (\is_array($this->resources)) {
             foreach ($this->resources as $resource) {
                 $config = ConfigUtil::formatConfig($resource);
                 $filename = $this->kernel->locateResource($resource);

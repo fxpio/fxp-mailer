@@ -47,11 +47,11 @@ abstract class ConfigUtil
      */
     public static function formatConfig($config)
     {
-        if (is_string($config)) {
+        if (\is_string($config)) {
             $config = ['file' => $config];
         }
 
-        if (!is_array($config)) {
+        if (!\is_array($config)) {
             throw new UnexpectedTypeException($config, 'array');
         }
 
@@ -76,7 +76,7 @@ abstract class ConfigUtil
         $config = static::formatConfig($config);
         $config['file'] = $kernel->locateResource($config['file']);
 
-        if (isset($config['translations']) && is_array($config['translations'])) {
+        if (isset($config['translations']) && \is_array($config['translations'])) {
             /* @var array $translation */
             foreach ($config['translations'] as &$translation) {
                 $translation['file'] = $kernel->locateResource($translation['file']);

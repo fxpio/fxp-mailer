@@ -26,7 +26,7 @@ class YamlLayoutLoader extends AbstractFileLayoutLoader
      */
     public function load($name)
     {
-        if (is_array($this->resources)) {
+        if (\is_array($this->resources)) {
             foreach ($this->resources as $resource) {
                 $config = ConfigUtil::formatConfig($resource);
                 $filename = $this->kernel->locateResource($config['file']);

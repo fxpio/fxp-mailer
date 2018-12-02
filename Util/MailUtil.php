@@ -33,7 +33,7 @@ abstract class MailUtil
     {
         $validTypes = static::getValidTypes($type);
 
-        return $mail->isEnabled() && in_array($mail->getType(), $validTypes);
+        return $mail->isEnabled() && \in_array($mail->getType(), $validTypes);
     }
 
     /**

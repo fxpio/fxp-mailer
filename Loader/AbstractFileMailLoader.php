@@ -52,7 +52,7 @@ abstract class AbstractFileMailLoader extends ConfigMailLoader
      */
     public function load($name, $type = MailTypes::TYPE_ALL)
     {
-        if (is_array($this->resources)) {
+        if (\is_array($this->resources)) {
             foreach ($this->resources as $resource) {
                 $config = ConfigUtil::formatTranslationConfig($resource, $this->kernel);
                 $this->addMail($this->createMail($config));

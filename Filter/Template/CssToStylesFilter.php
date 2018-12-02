@@ -41,6 +41,6 @@ class CssToStylesFilter implements TemplateFilterInterface
     {
         $validTypes = MailUtil::getValidTypes($mailRendered->getTemplate()->getType());
 
-        return in_array(MailTypes::TYPE_SCREEN, $validTypes);
+        return \in_array(MailTypes::TYPE_SCREEN, $validTypes);
     }
 }

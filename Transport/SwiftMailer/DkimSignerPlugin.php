@@ -55,7 +55,7 @@ class DkimSignerPlugin extends AbstractPlugin
         $message = $event->getMessage();
 
         if (!$this->isEnabled() || !$message instanceof \Swift_Message
-                || in_array($message->getId(), $this->performed)) {
+                || \in_array($message->getId(), $this->performed)) {
             return;
         }
 

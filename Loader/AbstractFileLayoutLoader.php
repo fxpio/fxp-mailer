@@ -50,7 +50,7 @@ abstract class AbstractFileLayoutLoader extends ConfigLayoutLoader
      */
     public function load($name)
     {
-        if (is_array($this->resources)) {
+        if (\is_array($this->resources)) {
             foreach ($this->resources as $resource) {
                 $config = ConfigUtil::formatTranslationConfig($resource, $this->kernel);
                 $this->addLayout($this->createLayout($config));

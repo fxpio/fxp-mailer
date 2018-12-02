@@ -37,7 +37,7 @@ class TwigLayoutTest extends TestCase
     protected function tearDown()
     {
         $fs = new Filesystem();
-        $fs->remove(dirname($this->file));
+        $fs->remove(\dirname($this->file));
     }
 
     public function testModel()

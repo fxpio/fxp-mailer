@@ -73,7 +73,7 @@ class ConfigMailLoader extends ArrayMailLoader
             $mail->setLayout($this->layoutLoader->load($config['layout']));
         }
 
-        if (isset($config['translations']) && is_array($config['translations'])) {
+        if (isset($config['translations']) && \is_array($config['translations'])) {
             foreach ($config['translations'] as $translation) {
                 $mail->addTranslation($this->createMailTranslation($mail, $translation));
             }
