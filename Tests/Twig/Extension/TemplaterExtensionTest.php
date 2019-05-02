@@ -20,7 +20,11 @@ use Fxp\Component\Mailer\Model\TwigLayout;
 use Fxp\Component\Mailer\Twig\Extension\TemplaterExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
+use Twig\TemplateWrapper;
+use Twig\TwigFunction;
 
 /**
  * Tests for twig templater extension.
@@ -81,9 +85,9 @@ final class TemplaterExtensionTest extends TestCase
             'fxp_mailer_clean',
         ];
 
-        /** @var \Twig_Function $function */
+        /** @var TwigFunction $function */
         foreach ($this->ext->getFunctions() as $function) {
-            $this->assertInstanceOf(\Twig_Function::class, $function);
+            $this->assertInstanceOf(TwigFunction::class, $function);
             $this->assertTrue(\in_array($function->getName(), $valid, true));
         }
 
@@ -266,10 +270,10 @@ final class TemplaterExtensionTest extends TestCase
 
     public function testLayoutTokenParser(): void
     {
-        $loader = new \Twig_Loader_Filesystem(__DIR__.'/../../Fixtures/token_parsers');
-        $twig = new \Twig_Environment($loader, ['debug' => true, 'cache' => false]);
+        $loader = new FilesystemLoader(__DIR__.'/../../Fixtures/token_parsers');
+        $twig = new Environment($loader, ['debug' => true, 'cache' => false]);
         $twig->addExtension($this->ext);
 
-        $this->assertInstanceOf(\Twig_TemplateWrapper::class, $twig->load('mail.html.twig'));
+        $this->assertInstanceOf(TemplateWrapper::class, $twig->load('mail.html.twig'));
     }
 }

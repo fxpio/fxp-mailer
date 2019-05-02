@@ -16,7 +16,7 @@ use Fxp\Component\Mailer\Model\MailInterface;
 use Fxp\Component\Mailer\Model\TemplateFileInterface;
 use Fxp\Component\Mailer\Model\TemplateInterface;
 use Fxp\Component\Mailer\Model\TemplateTranslationInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Utils for translation.

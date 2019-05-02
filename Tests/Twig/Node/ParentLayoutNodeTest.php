@@ -13,6 +13,8 @@ namespace Fxp\Component\Mailer\Tests\Twig\Node;
 
 use Fxp\Component\Mailer\Twig\Node\ParentLayoutNode;
 use PHPUnit\Framework\TestCase;
+use Twig\Compiler;
+use Twig\Node\Expression\AbstractExpression;
 
 /**
  * Tests for twig parent layout node.
@@ -25,10 +27,10 @@ final class ParentLayoutNodeTest extends TestCase
 {
     public function testBasic(): void
     {
-        /** @var \Twig_Node_Expression $variables */
-        $variables = $this->getMockBuilder(\Twig_Node_Expression::class)->disableOriginalConstructor()->getMock();
-        /** @var \PHPUnit_Framework_MockObject_MockObject|\Twig_Compiler $compiler */
-        $compiler = $this->getMockBuilder(\Twig_Compiler::class)->disableOriginalConstructor()->getMock();
+        /** @var AbstractExpression $variables */
+        $variables = $this->getMockForAbstractClass(AbstractExpression::class);
+        /** @var Compiler|\PHPUnit_Framework_MockObject_MockObject $compiler */
+        $compiler = $this->getMockBuilder(Compiler::class)->disableOriginalConstructor()->getMock();
         $compiler->expects($this->any())
             ->method('raw')
             ->will($this->returnValue($compiler))
@@ -41,6 +43,7 @@ final class ParentLayoutNodeTest extends TestCase
 
         $node = new ParentLayoutNode($variables, 42, 'test');
 
-        $this->assertNull($node->compile($compiler));
+        $node->compile($compiler);
+        $this->assertTrue(true);
     }
 }

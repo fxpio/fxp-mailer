@@ -24,7 +24,10 @@ use Fxp\Component\Mailer\Model\TwigMail;
 use Fxp\Component\Mailer\Model\TwigMailTranslation;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use Twig\Environment;
+use Twig\Template;
+use Twig\TemplateWrapper;
 
 /**
  * Tests for mail templater.
@@ -41,12 +44,12 @@ final class MailTemplaterTest extends TestCase
     protected $loader;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\Twig_Environment
+     * @var Environment|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $twig;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\Twig_Template
+     * @var \PHPUnit_Framework_MockObject_MockObject|Template
      */
     protected $twigTemplate;
 
@@ -63,11 +66,11 @@ final class MailTemplaterTest extends TestCase
     protected function setUp(): void
     {
         $this->loader = $this->getMockBuilder(MailLoaderInterface::class)->getMock();
-        $this->twig = $this->getMockBuilder(\Twig_Environment::class)->disableOriginalConstructor()->getMock();
-        $this->twigTemplate = $this->getMockBuilder(\Twig_Template::class)->disableOriginalConstructor()->getMock();
+        $this->twig = $this->getMockBuilder(Environment::class)->disableOriginalConstructor()->getMock();
+        $this->twigTemplate = $this->getMockBuilder(Template::class)->disableOriginalConstructor()->getMock();
         $this->dispatcher = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
         $this->templater = new MailTemplater($this->loader, $this->twig, $this->dispatcher);
-        $templateWrapper = new \Twig_TemplateWrapper($this->twig, $this->twigTemplate);
+        $templateWrapper = new TemplateWrapper($this->twig, $this->twigTemplate);
 
         $this->twig->expects($this->any())
             ->method('createTemplate')

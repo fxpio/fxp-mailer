@@ -20,7 +20,7 @@ use Fxp\Component\Mailer\Model\TwigTemplateInterface;
 use Fxp\Component\Mailer\Util\MailUtil;
 use Fxp\Component\Mailer\Util\TranslationUtil;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * The mail templater.

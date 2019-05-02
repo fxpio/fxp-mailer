@@ -11,21 +11,24 @@
 
 namespace Fxp\Component\Mailer\Twig\Node;
 
+use Twig\Compiler;
+use Twig\Node\Expression\AbstractExpression;
+
 /**
  * Get the filename of layout translated template.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
  */
-class ParentLayoutNode extends \Twig_Node_Expression
+class ParentLayoutNode extends AbstractExpression
 {
     /**
      * Constructor.
      *
-     * @param \Twig_Node_Expression $variables
-     * @param int                   $lineno
-     * @param string                $tag
+     * @param AbstractExpression $variables
+     * @param int                $lineno
+     * @param string             $tag
      */
-    public function __construct(\Twig_Node_Expression $variables, $lineno, $tag = null)
+    public function __construct(AbstractExpression $variables, $lineno, $tag = null)
     {
         $attr = ['variables' => $variables];
         parent::__construct([], $attr, $lineno, $tag);
@@ -34,9 +37,9 @@ class ParentLayoutNode extends \Twig_Node_Expression
     /**
      * Compiles the node to PHP.
      *
-     * @param \Twig_Compiler $compiler A Twig_Compiler instance
+     * @param Compiler $compiler A Twig_Compiler instance
      */
-    public function compile(\Twig_Compiler $compiler): void
+    public function compile(Compiler $compiler): void
     {
         $compiler
             ->raw('$this->env->getExtension(\'Fxp\Component\Mailer\Twig\Extension\TemplaterExtension\')')

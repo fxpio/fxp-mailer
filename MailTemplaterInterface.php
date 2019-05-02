@@ -11,7 +11,7 @@
 
 namespace Fxp\Component\Mailer;
 
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Interface for the mail templater.

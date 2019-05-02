@@ -21,14 +21,16 @@ use Fxp\Component\Mailer\Model\TwigLayout;
 use Fxp\Component\Mailer\Twig\TokenParser\LayoutTokenParser;
 use Fxp\Component\Mailer\Util\TranslationUtil;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
  * Use the mail templater directly in twig template.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
  */
-class TemplaterExtension extends \Twig_Extension
+class TemplaterExtension extends AbstractExtension
 {
     /**
      * @var ContainerInterface
@@ -74,11 +76,11 @@ class TemplaterExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_Function('fxp_mailer_render_subject', [$this, 'renderSubject']),
-            new \Twig_Function('fxp_mailer_render_html', [$this, 'renderHtml'], ['is_safe' => ['html']]),
-            new \Twig_Function('fxp_mailer_render_text', [$this, 'renderPlainText']),
-            new \Twig_Function('fxp_mailer_mail_rendered', [$this, 'getMailRendered']),
-            new \Twig_Function('fxp_mailer_clean', [$this, 'cleanRendered']),
+            new TwigFunction('fxp_mailer_render_subject', [$this, 'renderSubject']),
+            new TwigFunction('fxp_mailer_render_html', [$this, 'renderHtml'], ['is_safe' => ['html']]),
+            new TwigFunction('fxp_mailer_render_text', [$this, 'renderPlainText']),
+            new TwigFunction('fxp_mailer_mail_rendered', [$this, 'getMailRendered']),
+            new TwigFunction('fxp_mailer_clean', [$this, 'cleanRendered']),
         ];
     }
 
