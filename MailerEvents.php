@@ -24,7 +24,7 @@ final class MailerEvents
      *
      * @var string
      */
-    const TEMPLATE_PRE_RENDER = 'fxp_mailer.template.pre_render';
+    public const TEMPLATE_PRE_RENDER = 'fxp_mailer.template.pre_render';
 
     /**
      * The template.post_render event is thrown after that an mail is rendered.
@@ -34,7 +34,7 @@ final class MailerEvents
      *
      * @var string
      */
-    const TEMPLATE_POST_RENDER = 'fxp_mailer.template.post_render';
+    public const TEMPLATE_POST_RENDER = 'fxp_mailer.template.post_render';
 
     /**
      * The transport.pre_send event is thrown before that an mail must be sent
@@ -45,7 +45,7 @@ final class MailerEvents
      *
      * @var string
      */
-    const TRANSPORT_PRE_SEND = 'fxp_mailer.transport.pre_send';
+    public const TRANSPORT_PRE_SEND = 'fxp_mailer.transport.pre_send';
 
     /**
      * The transport.post_send event is thrown after that an mail is sent.
@@ -55,5 +55,5 @@ final class MailerEvents
      *
      * @var string
      */
-    const TRANSPORT_POST_SEND = 'fxp_mailer.transport.post_send';
+    public const TRANSPORT_POST_SEND = 'fxp_mailer.transport.post_send';
 }

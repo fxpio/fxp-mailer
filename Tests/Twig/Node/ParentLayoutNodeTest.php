@@ -18,22 +18,26 @@ use PHPUnit\Framework\TestCase;
  * Tests for twig parent layout node.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class ParentLayoutNodeTest extends TestCase
+final class ParentLayoutNodeTest extends TestCase
 {
-    public function testBasic()
+    public function testBasic(): void
     {
-        /* @var \Twig_Node_Expression $variables */
+        /** @var \Twig_Node_Expression $variables */
         $variables = $this->getMockBuilder(\Twig_Node_Expression::class)->disableOriginalConstructor()->getMock();
-        /* @var \Twig_Compiler|\PHPUnit_Framework_MockObject_MockObject $compiler */
+        /** @var \PHPUnit_Framework_MockObject_MockObject|\Twig_Compiler $compiler */
         $compiler = $this->getMockBuilder(\Twig_Compiler::class)->disableOriginalConstructor()->getMock();
         $compiler->expects($this->any())
             ->method('raw')
-            ->will($this->returnValue($compiler));
+            ->will($this->returnValue($compiler))
+        ;
 
         $compiler->expects($this->any())
             ->method('subcompile')
-            ->will($this->returnValue($compiler));
+            ->will($this->returnValue($compiler))
+        ;
 
         $node = new ParentLayoutNode($variables, 42, 'test');
 

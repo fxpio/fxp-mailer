@@ -28,7 +28,7 @@ interface MailTranslationInterface extends TemplateTranslationInterface
     /**
      * Set the subject.
      *
-     * @param string|null $subject The subject
+     * @param null|string $subject The subject
      *
      * @return self
      */
@@ -37,14 +37,14 @@ interface MailTranslationInterface extends TemplateTranslationInterface
     /**
      * Get the subject.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getSubject();
 
     /**
      * Set the html body.
      *
-     * @param string|null $htmlBody The html body
+     * @param null|string $htmlBody The html body
      *
      * @return self
      */
@@ -53,7 +53,7 @@ interface MailTranslationInterface extends TemplateTranslationInterface
     /**
      * Get the html body.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getHtmlBody();
 }

@@ -36,7 +36,7 @@ class ParentLayoutNode extends \Twig_Node_Expression
      *
      * @param \Twig_Compiler $compiler A Twig_Compiler instance
      */
-    public function compile(\Twig_Compiler $compiler)
+    public function compile(\Twig_Compiler $compiler): void
     {
         $compiler
             ->raw('$this->env->getExtension(\'Fxp\Component\Mailer\Twig\Extension\TemplaterExtension\')')

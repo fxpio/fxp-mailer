@@ -23,14 +23,16 @@ use PHPUnit\Framework\TestCase;
  * Tests for mail template model.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class MailTest extends TestCase
+final class MailTest extends TestCase
 {
-    public function testModel()
+    public function testModel(): void
     {
-        /* @var LayoutInterface $layout */
+        /** @var LayoutInterface $layout */
         $layout = $this->getMockBuilder(LayoutInterface::class)->getMock();
-        /* @var MailTranslationInterface $translation */
+        /** @var MailTranslationInterface $translation */
         $translation = $this->getMockBuilder(MailTranslationInterface::class)->getMock();
 
         $mail = new Mail();
@@ -59,10 +61,10 @@ class MailTest extends TestCase
         $this->assertSame('domain', $mail->getTranslationDomain());
     }
 
-    public function testGetTranslation()
+    public function testGetTranslation(): void
     {
-        /* @var Mail $mail */
-        /* @var MailTranslation $translation */
+        /** @var Mail $mail */
+        /** @var MailTranslation $translation */
         list($mail, $translation) = $this->getModels('fr_fr');
 
         $translated = $mail->getTranslation('fr_fr');
@@ -76,10 +78,10 @@ class MailTest extends TestCase
         $this->assertSame($translated, $mail->getTranslation('fr_fr'));
     }
 
-    public function testGetFallbackTranslation()
+    public function testGetFallbackTranslation(): void
     {
-        /* @var Mail $mail */
-        /* @var MailTranslation $translation */
+        /** @var Mail $mail */
+        /** @var MailTranslation $translation */
         list($mail, $translation) = $this->getModels('fr');
 
         $translated = $mail->getTranslation('fr_fr');
@@ -93,10 +95,10 @@ class MailTest extends TestCase
         $this->assertSame($translated, $mail->getTranslation('fr_fr'));
     }
 
-    public function testGetNotTranslation()
+    public function testGetNotTranslation(): void
     {
-        /* @var Mail $mail */
-        /* @var MailTranslation $translation */
+        /** @var Mail $mail */
+        /** @var MailTranslation $translation */
         list($mail, $translation) = $this->getModels('fr_fr');
 
         $translated = $mail->getTranslation('fr');

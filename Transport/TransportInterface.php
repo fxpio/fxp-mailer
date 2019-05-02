@@ -34,11 +34,11 @@ interface TransportInterface
      * Call the TransportInterface::validate() method.
      *
      * @param mixed                      $message      The message for the specific transport
-     * @param MailRenderedInterface|null $mailRendered The rendered mail
-     *
-     * @return bool
+     * @param null|MailRenderedInterface $mailRendered The rendered mail
      *
      * @throws UnexpectedTypeException When the instance of message isn't valid for this transport
+     *
+     * @return bool
      */
     public function send($message, MailRenderedInterface $mailRendered = null);
 

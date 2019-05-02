@@ -30,8 +30,10 @@ use Symfony\Component\Translation\TranslatorInterface;
  * Tests for mail templater.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class MailTemplaterTest extends TestCase
+final class MailTemplaterTest extends TestCase
 {
     /**
      * @var MailLoaderInterface|\PHPUnit_Framework_MockObject_MockObject
@@ -39,12 +41,12 @@ class MailTemplaterTest extends TestCase
     protected $loader;
 
     /**
-     * @var \Twig_Environment|\PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit_Framework_MockObject_MockObject|\Twig_Environment
      */
     protected $twig;
 
     /**
-     * @var \Twig_Template|\PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit_Framework_MockObject_MockObject|\Twig_Template
      */
     protected $twigTemplate;
 
@@ -58,7 +60,7 @@ class MailTemplaterTest extends TestCase
      */
     protected $templater;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->loader = $this->getMockBuilder(MailLoaderInterface::class)->getMock();
         $this->twig = $this->getMockBuilder(\Twig_Environment::class)->disableOriginalConstructor()->getMock();
@@ -69,20 +71,23 @@ class MailTemplaterTest extends TestCase
 
         $this->twig->expects($this->any())
             ->method('createTemplate')
-            ->will($this->returnValue($this->twigTemplate));
+            ->will($this->returnValue($this->twigTemplate))
+        ;
 
         $this->twig->expects($this->any())
             ->method('load')
-            ->will($this->returnValue($templateWrapper));
+            ->will($this->returnValue($templateWrapper))
+        ;
 
         $this->twig->expects($this->any())
             ->method('mergeGlobals')
             ->willReturnCallback(function ($v) {
                 return $v;
-            });
+            })
+        ;
     }
 
-    public function testLocale()
+    public function testLocale(): void
     {
         $this->assertSame(\Locale::getDefault(), $this->templater->getLocale());
 
@@ -90,7 +95,7 @@ class MailTemplaterTest extends TestCase
         $this->assertSame('fr', $this->templater->getLocale());
     }
 
-    public function testRender()
+    public function testRender(): void
     {
         $this->templater->setLocale('fr');
 
@@ -111,13 +116,15 @@ class MailTemplaterTest extends TestCase
         $this->loader->expects($this->once())
             ->method('load')
             ->with('test', MailTypes::TYPE_ALL)
-            ->will($this->returnValue($mail));
+            ->will($this->returnValue($mail))
+        ;
 
         // render subject
         $this->twigTemplate->expects($this->at(0))
             ->method('render')
             ->with($twigVariables)
-            ->will($this->returnValue($trans->getSubject()));
+            ->will($this->returnValue($trans->getSubject()))
+        ;
 
         $twigVariables['_subject'] = $trans->getSubject();
 
@@ -125,7 +132,8 @@ class MailTemplaterTest extends TestCase
         $this->twigTemplate->expects($this->at(1))
             ->method('render')
             ->with($twigVariables)
-            ->will($this->returnValue($trans->getHtmlBody()));
+            ->will($this->returnValue($trans->getHtmlBody()))
+        ;
 
         $twigVariables['_html_body'] = $trans->getHtmlBody();
 
@@ -133,7 +141,8 @@ class MailTemplaterTest extends TestCase
         $this->twigTemplate->expects($this->at(2))
             ->method('render')
             ->with($twigVariables)
-            ->will($this->returnValue($trans->getBody()));
+            ->will($this->returnValue($trans->getBody()))
+        ;
 
         $twigVariables['_body'] = $trans->getBody();
 
@@ -141,7 +150,8 @@ class MailTemplaterTest extends TestCase
         $this->twigTemplate->expects($this->at(3))
             ->method('render')
             ->with($twigVariables)
-            ->will($this->returnValue($htmlRendered));
+            ->will($this->returnValue($htmlRendered))
+        ;
 
         $rendered = $this->templater->render('test', [], MailTypes::TYPE_ALL);
 
@@ -150,9 +160,9 @@ class MailTemplaterTest extends TestCase
         $this->assertSame($htmlRendered, $rendered->getHtmlBody());
     }
 
-    public function testRenderWithTranslator()
+    public function testRenderWithTranslator(): void
     {
-        /* @var TranslatorInterface|\PHPUnit_Framework_MockObject_MockObject $translator */
+        /** @var \PHPUnit_Framework_MockObject_MockObject|TranslatorInterface $translator */
         $translator = $this->getMockBuilder(TranslatorInterface::class)->getMock();
         $this->templater->setTranslator($translator);
 
@@ -173,7 +183,8 @@ class MailTemplaterTest extends TestCase
         $this->loader->expects($this->once())
             ->method('load')
             ->with('test', MailTypes::TYPE_ALL)
-            ->will($this->returnValue($mail));
+            ->will($this->returnValue($mail))
+        ;
 
         // translator mail
         $mailTransLabel = 'Test translated';
@@ -185,27 +196,32 @@ class MailTemplaterTest extends TestCase
         $translator->expects($this->at(0))
             ->method('trans')
             ->with('Test', [], 'domain')
-            ->will($this->returnValue($mailTransLabel));
+            ->will($this->returnValue($mailTransLabel))
+        ;
 
         $translator->expects($this->at(1))
             ->method('trans')
             ->with('Description of template', [], 'domain')
-            ->will($this->returnValue($mailTransDescription));
+            ->will($this->returnValue($mailTransDescription))
+        ;
 
         $translator->expects($this->at(2))
             ->method('trans')
             ->with('Body of template', [], 'domain')
-            ->will($this->returnValue($mailTransBody));
+            ->will($this->returnValue($mailTransBody))
+        ;
 
         $translator->expects($this->at(3))
             ->method('trans')
             ->with('Subject of template', [], 'domain')
-            ->will($this->returnValue($mailTransSubject));
+            ->will($this->returnValue($mailTransSubject))
+        ;
 
         $translator->expects($this->at(4))
             ->method('trans')
             ->with('HTML Body of template', [], 'domain')
-            ->will($this->returnValue($mailTransHtmlBody));
+            ->will($this->returnValue($mailTransHtmlBody))
+        ;
 
         // translator layout
         $layoutTransLabel = 'Test translated';
@@ -215,23 +231,27 @@ class MailTemplaterTest extends TestCase
         $translator->expects($this->at(5))
             ->method('trans')
             ->with('Test', [], 'domain')
-            ->will($this->returnValue($layoutTransLabel));
+            ->will($this->returnValue($layoutTransLabel))
+        ;
 
         $translator->expects($this->at(6))
             ->method('trans')
             ->with('Description of template', [], 'domain')
-            ->will($this->returnValue($layoutTransDescription));
+            ->will($this->returnValue($layoutTransDescription))
+        ;
 
         $translator->expects($this->at(7))
             ->method('trans')
             ->with('Body of template', [], 'domain')
-            ->will($this->returnValue($layoutTransBody));
+            ->will($this->returnValue($layoutTransBody))
+        ;
 
         // render subject
         $this->twigTemplate->expects($this->at(0))
             ->method('render')
             ->with($twigVariables)
-            ->will($this->returnValue($mailTransSubject));
+            ->will($this->returnValue($mailTransSubject))
+        ;
 
         $twigVariables['_subject'] = $mailTransSubject;
 
@@ -239,7 +259,8 @@ class MailTemplaterTest extends TestCase
         $this->twigTemplate->expects($this->at(1))
             ->method('render')
             ->with($twigVariables)
-            ->will($this->returnValue($mailTransHtmlBody));
+            ->will($this->returnValue($mailTransHtmlBody))
+        ;
 
         $twigVariables['_html_body'] = $mailTransHtmlBody;
 
@@ -247,7 +268,8 @@ class MailTemplaterTest extends TestCase
         $this->twigTemplate->expects($this->at(2))
             ->method('render')
             ->with($twigVariables)
-            ->will($this->returnValue($mailTransBody));
+            ->will($this->returnValue($mailTransBody))
+        ;
 
         $twigVariables['_body'] = $mailTransBody;
 
@@ -257,7 +279,8 @@ class MailTemplaterTest extends TestCase
         $this->twigTemplate->expects($this->at(3))
             ->method('render')
             ->with($twigVariables)
-            ->will($this->returnValue($htmlRendered));
+            ->will($this->returnValue($htmlRendered))
+        ;
 
         $rendered = $this->templater->render('test', [], MailTypes::TYPE_ALL);
 
@@ -266,7 +289,7 @@ class MailTemplaterTest extends TestCase
         $this->assertSame($htmlRendered, $rendered->getHtmlBody());
     }
 
-    public function testRenderWithTwig()
+    public function testRenderWithTwig(): void
     {
         $this->templater->setLocale('fr');
 
@@ -296,15 +319,17 @@ class MailTemplaterTest extends TestCase
         $this->loader->expects($this->once())
             ->method('load')
             ->with('test', MailTypes::TYPE_ALL)
-            ->will($this->returnValue($mail));
+            ->will($this->returnValue($mail))
+        ;
 
         // render subject
         $this->twigTemplate->expects($this->at(0))
             ->method('displayBlock')
             ->with('subject', $twigVariables)
-            ->willReturnCallback(function () use ($trans) {
+            ->willReturnCallback(function () use ($trans): void {
                 echo $trans->getSubject();
-            });
+            })
+        ;
 
         $twigVariables['_subject'] = $trans->getSubject();
 
@@ -312,9 +337,10 @@ class MailTemplaterTest extends TestCase
         $this->twigTemplate->expects($this->at(1))
             ->method('displayBlock')
             ->with('html_body', $twigVariables)
-            ->willReturnCallback(function () use ($trans) {
+            ->willReturnCallback(function () use ($trans): void {
                 echo $trans->getHtmlBody();
-            });
+            })
+        ;
 
         $twigVariables['_html_body'] = $trans->getHtmlBody();
 
@@ -322,9 +348,10 @@ class MailTemplaterTest extends TestCase
         $this->twigTemplate->expects($this->at(2))
             ->method('displayBlock')
             ->with('body', $twigVariables)
-            ->willReturnCallback(function () use ($trans) {
+            ->willReturnCallback(function () use ($trans): void {
                 echo $trans->getBody();
-            });
+            })
+        ;
 
         $twigVariables['_body'] = $trans->getBody();
 
@@ -332,9 +359,10 @@ class MailTemplaterTest extends TestCase
         $this->twigTemplate->expects($this->at(3))
             ->method('displayBlock')
             ->with('body', $twigVariables)
-            ->willReturnCallback(function () use ($htmlRendered) {
+            ->willReturnCallback(function () use ($htmlRendered): void {
                 echo $htmlRendered;
-            });
+            })
+        ;
 
         $rendered = $this->templater->render('test', [], MailTypes::TYPE_ALL);
 

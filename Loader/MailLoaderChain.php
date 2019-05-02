@@ -45,7 +45,7 @@ class MailLoaderChain implements MailLoaderInterface
      *
      * @param MailLoaderInterface $loader The layout loader
      */
-    public function addLoader(MailLoaderInterface $loader)
+    public function addLoader(MailLoaderInterface $loader): void
     {
         $this->loaders[] = $loader;
     }

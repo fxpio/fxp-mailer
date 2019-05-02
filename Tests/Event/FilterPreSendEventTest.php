@@ -19,14 +19,16 @@ use PHPUnit\Framework\TestCase;
  * Tests for filter pre send event.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class FilterPreSendEventTest extends TestCase
+final class FilterPreSendEventTest extends TestCase
 {
-    public function testModel()
+    public function testModel(): void
     {
         $transport = 'transport_name';
         $message = new \stdClass();
-        /* @var MailRenderedInterface $mailRendered */
+        /** @var MailRenderedInterface $mailRendered */
         $mailRendered = $this->getMockBuilder(MailRenderedInterface::class)->getMock();
 
         $event = new FilterPreSendEvent($transport, $message, $mailRendered);

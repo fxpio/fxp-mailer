@@ -21,34 +21,37 @@ use PHPUnit\Framework\TestCase;
  * Tests for chain mail loader.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class LayoutLoaderChainTest extends TestCase
+final class LayoutLoaderChainTest extends TestCase
 {
-    public function testLoad()
+    public function testLoad(): void
     {
         $template = $this->getMockBuilder(LayoutInterface::class)->getMock();
 
         $loader1 = $this->getMockBuilder(LayoutLoaderInterface::class)->getMock();
         $loader1->expects($this->once())
             ->method('load')
-            ->willThrowException(new UnknownLayoutException('test'));
+            ->willThrowException(new UnknownLayoutException('test'))
+        ;
 
         $loader2 = $this->getMockBuilder(LayoutLoaderInterface::class)->getMock();
         $loader2->expects($this->once())
             ->method('load')
-            ->will($this->returnValue($template));
+            ->will($this->returnValue($template))
+        ;
 
         $chainLoader = new LayoutLoaderChain([$loader1, $loader2]);
 
         $this->assertSame($template, $chainLoader->load('test'));
     }
 
-    /**
-     * @expectedException \Fxp\Component\Mailer\Exception\UnknownLayoutException
-     * @expectedExceptionMessage The "test" layout template does not exist
-     */
-    public function testLoadUnknownTemplate()
+    public function testLoadUnknownTemplate(): void
     {
+        $this->expectException(\Fxp\Component\Mailer\Exception\UnknownLayoutException::class);
+        $this->expectExceptionMessage('The "test" layout template does not exist');
+
         $loader = new LayoutLoaderChain([]);
 
         $loader->load('test');

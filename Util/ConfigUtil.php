@@ -27,21 +27,20 @@ abstract class ConfigUtil
      *
      * @param array      $config  The config
      * @param string     $field   The field
-     * @param mixed|null $default The default value if the field does not exist
+     * @param null|mixed $default The default value if the field does not exist
      *
      * @return mixed
      */
     public static function getValue(array $config, $field, $default = null)
     {
-        return isset($config[$field])
-            ? $config[$field]
-            : $default;
+        return $config[$field]
+            ?? $default;
     }
 
     /**
      * Format the string config to array config with "file" attribute.
      *
-     * @param string|array $config The config
+     * @param array|string $config The config
      *
      * @return array
      */
@@ -57,6 +56,7 @@ abstract class ConfigUtil
 
         if (!isset($config['file'])) {
             $msg = 'The "file" attribute must be defined in config of layout template';
+
             throw new InvalidConfigurationException($msg);
         }
 
@@ -66,7 +66,7 @@ abstract class ConfigUtil
     /**
      * Format the string config to array config with "file" attribute and translations.
      *
-     * @param string|array    $config The config
+     * @param array|string    $config The config
      * @param KernelInterface $kernel The kernel
      *
      * @return array
@@ -77,7 +77,7 @@ abstract class ConfigUtil
         $config['file'] = $kernel->locateResource($config['file']);
 
         if (isset($config['translations']) && \is_array($config['translations'])) {
-            /* @var array $translation */
+            /** @var array $translation */
             foreach ($config['translations'] as &$translation) {
                 $translation['file'] = $kernel->locateResource($translation['file']);
             }

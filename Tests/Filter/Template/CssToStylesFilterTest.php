@@ -21,8 +21,10 @@ use PHPUnit\Framework\TestCase;
  * Tests for css to styles filter.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class CssToStylesFilterTest extends TestCase
+final class CssToStylesFilterTest extends TestCase
 {
     public function getSupportTests()
     {
@@ -39,9 +41,9 @@ class CssToStylesFilterTest extends TestCase
      * @param string $type      The mail type
      * @param bool   $supported Check if the mail type is supported
      */
-    public function testSupports($type, $supported)
+    public function testSupports($type, $supported): void
     {
-        /* @var MailRenderedInterface|\PHPUnit_Framework_MockObject_MockObject $mailRendered */
+        /** @var MailRenderedInterface|\PHPUnit_Framework_MockObject_MockObject $mailRendered */
         $mailRendered = $this->getMockBuilder(MailRenderedInterface::class)->getMock();
         $mailRendered->expects($this->once())
             ->method('getTemplate')
@@ -49,17 +51,19 @@ class CssToStylesFilterTest extends TestCase
                 $template = $this->getMockBuilder(MailInterface::class)->getMock();
                 $template->expects($this->once())
                     ->method('getType')
-                    ->will($this->returnValue($type));
+                    ->will($this->returnValue($type))
+                ;
 
                 return $template;
-            }));
+            }))
+        ;
 
         $filter = new CssToStylesFilter();
 
         $this->assertSame($supported, $filter->supports($mailRendered));
     }
 
-    public function testFilter()
+    public function testFilter(): void
     {
         if (\defined('HHVM_VERSION')) {
             $this->markTestSkipped('Bug: CssToInlineStyles::inlineCssOnElement() return a boolean on HHVM');
@@ -74,19 +78,22 @@ class CssToStylesFilterTest extends TestCase
         $document->formatOutput = true;
         $htmlConverted = trim($document->saveHTML($document));
 
-        /* @var MailRenderedInterface|\PHPUnit_Framework_MockObject_MockObject $mailRendered */
+        /** @var MailRenderedInterface|\PHPUnit_Framework_MockObject_MockObject $mailRendered */
         $mailRendered = $this->getMockBuilder(MailRenderedInterface::class)->getMock();
         $mailRendered->expects($this->at(0))
             ->method('getHtmlBody')
-            ->will($this->returnValue($html));
+            ->will($this->returnValue($html))
+        ;
 
         $mailRendered->expects($this->once())
             ->method('setHtmlBody')
-            ->with($htmlConverted);
+            ->with($htmlConverted)
+        ;
 
         $mailRendered->expects($this->at(2))
             ->method('getHtmlBody')
-            ->will($this->returnValue($htmlConverted));
+            ->will($this->returnValue($htmlConverted))
+        ;
 
         $filter = new CssToStylesFilter();
         $filter->filter($mailRendered);

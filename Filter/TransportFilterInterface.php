@@ -25,7 +25,7 @@ interface TransportFilterInterface
      *
      * @param string                     $transport    The name of transport
      * @param mixed                      $message      The message for the specific transport
-     * @param MailRenderedInterface|null $mailRendered The mail rendered
+     * @param null|MailRenderedInterface $mailRendered The mail rendered
      */
     public function filter($transport, $message, MailRenderedInterface $mailRendered = null);
 
@@ -34,7 +34,7 @@ interface TransportFilterInterface
      *
      * @param string                     $transport    The name of transport
      * @param mixed                      $message      The message for the specific transport
-     * @param MailRenderedInterface|null $mailRendered The mail rendered
+     * @param null|MailRenderedInterface $mailRendered The mail rendered
      *
      * @return bool
      */

@@ -19,12 +19,14 @@ use PHPUnit\Framework\TestCase;
  * Tests for mail rendered.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class MailRenderedTest extends TestCase
+final class MailRenderedTest extends TestCase
 {
-    public function testModel()
+    public function testModel(): void
     {
-        /* @var MailInterface $template */
+        /** @var MailInterface $template */
         $template = $this->getMockBuilder(MailInterface::class)->getMock();
         $subject = 'Subject of mail';
         $htmlBody = 'HTML body of mail';

@@ -20,8 +20,10 @@ use PHPUnit\Framework\TestCase;
  * Tests for util mail.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class MailUtilTest extends TestCase
+final class MailUtilTest extends TestCase
 {
     public function getCheckIsValidMailTypes()
     {
@@ -56,16 +58,18 @@ class MailUtilTest extends TestCase
      * @param bool   $mailEnabled The value of mail field 'enabled'
      * @param string $mailType    The value of mail field 'type'
      */
-    public function testIsValid($result, $entryType, $mailEnabled, $mailType)
+    public function testIsValid($result, $entryType, $mailEnabled, $mailType): void
     {
-        /* @var MailInterface|\PHPUnit_Framework_MockObject_MockObject $mail */
+        /** @var MailInterface|\PHPUnit_Framework_MockObject_MockObject $mail */
         $mail = $this->getMockBuilder(MailInterface::class)->getMock();
         $mail->expects($this->any())
             ->method('isEnabled')
-            ->will($this->returnValue($mailEnabled));
+            ->will($this->returnValue($mailEnabled))
+        ;
         $mail->expects($this->any())
             ->method('getType')
-            ->will($this->returnValue($mailType));
+            ->will($this->returnValue($mailType))
+        ;
 
         $this->assertSame($result, MailUtil::isValid($mail, $entryType));
     }
@@ -86,7 +90,7 @@ class MailUtilTest extends TestCase
      * @param string   $type       The entry type
      * @param string[] $validTypes The valid types for entry
      */
-    public function testGetValidTypes($type, $validTypes)
+    public function testGetValidTypes($type, $validTypes): void
     {
         $this->assertEquals($validTypes, MailUtil::getValidTypes($type));
     }

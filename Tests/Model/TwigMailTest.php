@@ -19,40 +19,41 @@ use Symfony\Component\Filesystem\Filesystem;
  * Tests for twig mail template model.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class TwigMailTest extends TestCase
+final class TwigMailTest extends TestCase
 {
     /**
      * @var string
      */
     protected $file;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->file = sys_get_temp_dir().'/fxp_mailer_tests/file.html.twig';
         $fs = new Filesystem();
         $fs->dumpFile($this->file, 'content');
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $fs = new Filesystem();
         $fs->remove(\dirname($this->file));
     }
 
-    public function testModel()
+    public function testModel(): void
     {
         $mail = new TwigMail($this->file);
 
         $this->assertSame($this->file, $mail->getFile());
     }
 
-    /**
-     * @expectedException \Fxp\Component\Mailer\Exception\InvalidArgumentException
-     * @expectedExceptionMessage The "file.ext" file is not supported by the mail file template
-     */
-    public function testInvalidFile()
+    public function testInvalidFile(): void
     {
+        $this->expectException(\Fxp\Component\Mailer\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The "file.ext" file is not supported by the mail file template');
+
         new TwigMail('file.ext');
     }
 }

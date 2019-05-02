@@ -33,7 +33,7 @@ class EmbedImagePlugin extends AbstractPlugin
     /**
      * Constructor.
      *
-     * @param string|null $webDir      The web directory
+     * @param null|string $webDir      The web directory
      * @param string      $hostPattern The pattern of allowed host
      */
     public function __construct($webDir = null, $hostPattern = '/(.*)+/')
@@ -45,12 +45,12 @@ class EmbedImagePlugin extends AbstractPlugin
     /**
      * {@inheritdoc}
      */
-    public function beforeSendPerformed(\Swift_Events_SendEvent $event)
+    public function beforeSendPerformed(\Swift_Events_SendEvent $event): void
     {
         $message = $event->getMessage();
 
         if (!$this->isEnabled() || !$message instanceof \Swift_Message
-                || \in_array($message->getId(), $this->performed) || null === $message->getBody()) {
+                || \in_array($message->getId(), $this->performed, true) || null === $message->getBody()) {
             return;
         }
 
@@ -73,7 +73,7 @@ class EmbedImagePlugin extends AbstractPlugin
     /**
      * {@inheritdoc}
      */
-    public function sendPerformed(\Swift_Events_SendEvent $event)
+    public function sendPerformed(\Swift_Events_SendEvent $event): void
     {
         // not used
     }
@@ -85,7 +85,7 @@ class EmbedImagePlugin extends AbstractPlugin
      * @param \DOMAttr       $node    The dom attribute of image
      * @param array          $images  The map of image ids passed by reference
      */
-    protected function embedImage(\Swift_Message $message, \DOMAttr $node, array &$images)
+    protected function embedImage(\Swift_Message $message, \DOMAttr $node, array &$images): void
     {
         if (0 === strpos($node->nodeValue, 'cid:')) {
             return;

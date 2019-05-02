@@ -40,7 +40,7 @@ class LayoutTokenParser extends \Twig_TokenParser_Include
             new \Twig_Token(\Twig_Token::BLOCK_END_TYPE, '', $token->getLine()),
         ]);
 
-        /* @var \Twig_Node_Module $module */
+        /** @var \Twig_Node_Module $module */
         $module = $this->parser->parse($stream, [$this, 'decideBlockEnd'], true);
         // override the parent with the correct one
         $module->setNode('parent', $parent);

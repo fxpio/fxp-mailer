@@ -37,7 +37,7 @@ interface TemplateInterface
     /**
      * Set the label.
      *
-     * @param string|null $label The label
+     * @param null|string $label The label
      *
      * @return self
      */
@@ -46,14 +46,14 @@ interface TemplateInterface
     /**
      * Get the label.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getLabel();
 
     /**
      * Set the description.
      *
-     * @param string|null $description The description
+     * @param null|string $description The description
      *
      * @return self
      */
@@ -62,7 +62,7 @@ interface TemplateInterface
     /**
      * Get the description.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDescription();
 
@@ -85,7 +85,7 @@ interface TemplateInterface
     /**
      * Set the body.
      *
-     * @param string|null $body The body
+     * @param null|string $body The body
      *
      * @return self
      */
@@ -94,14 +94,14 @@ interface TemplateInterface
     /**
      * Get the body.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getBody();
 
     /**
      * Set the translation domain to use the translator.
      *
-     * @param string|null $domain The translation domain
+     * @param null|string $domain The translation domain
      *
      * @return self
      */
@@ -110,7 +110,7 @@ interface TemplateInterface
     /**
      * Get the translation domain to use the translator.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getTranslationDomain();
 }

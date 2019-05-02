@@ -19,8 +19,10 @@ use Symfony\Component\Filesystem\Filesystem;
  * Tests for swift mailer dkim signer plugin.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class DkimSignerPluginTest extends TestCase
+final class DkimSignerPluginTest extends TestCase
 {
     /**
      * @var Filesystem
@@ -32,12 +34,12 @@ class DkimSignerPluginTest extends TestCase
     protected $cache;
 
     /**
-     * @var \Swift_Message|\PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit_Framework_MockObject_MockObject|\Swift_Message
      */
     protected $message;
 
     /**
-     * @var \Swift_Events_SendEvent|\PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit_Framework_MockObject_MockObject|\Swift_Events_SendEvent
      */
     protected $event;
 
@@ -46,7 +48,7 @@ class DkimSignerPluginTest extends TestCase
      */
     protected $plugin;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->fs = new Filesystem();
         $this->cache = sys_get_temp_dir().'/fxp_mailer_bundle_swiftmailer_dkim_signer';
@@ -63,60 +65,65 @@ class DkimSignerPluginTest extends TestCase
 
         $this->event->expects($this->any())
             ->method('getMessage')
-            ->will($this->returnValue($this->message));
+            ->will($this->returnValue($this->message))
+        ;
 
         $this->plugin = new DkimSignerPlugin($path, 'domain', 'selector');
     }
 
-    public function testBeforeSendPerformed()
+    public function testBeforeSendPerformed(): void
     {
         $this->message->expects($this->once())
-            ->method('attachSigner');
+            ->method('attachSigner')
+        ;
 
         $this->plugin->beforeSendPerformed($this->event);
     }
 
-    /**
-     * @expectedException \Fxp\Component\Mailer\Exception\RuntimeException
-     * @expectedExceptionMessageRegExp /Impossible to read the private key of the DKIM swiftmailer signer "([\w.~:\\\/]+)\/private_key"/
-     */
-    public function testBeforeSendPerformedWithInvalidPrivateKey()
+    public function testBeforeSendPerformedWithInvalidPrivateKey(): void
     {
+        $this->expectException(\Fxp\Component\Mailer\Exception\RuntimeException::class);
+        $this->expectExceptionMessageRegExp('/Impossible to read the private key of the DKIM swiftmailer signer "([\\w.~:\\\\\\/]+)\\/private_key"/');
+
         $path = $this->cache.'/private_key';
         $this->fs->remove($path);
 
         $this->message->expects($this->never())
-            ->method('attachSigner');
+            ->method('attachSigner')
+        ;
 
         $this->plugin->beforeSendPerformed($this->event);
     }
 
-    public function testBeforeSendPerformedWithInvalidMessage()
+    public function testBeforeSendPerformedWithInvalidMessage(): void
     {
         $this->event = $this->getMockBuilder(\Swift_Events_SendEvent::class)
             ->disableOriginalConstructor()->getMock();
 
         $this->event->expects($this->any())
             ->method('getMessage')
-            ->will($this->returnValue(new \stdClass()));
+            ->will($this->returnValue(new \stdClass()))
+        ;
 
         $this->message->expects($this->never())
-            ->method('attachSigner');
+            ->method('attachSigner')
+        ;
 
         $this->plugin->beforeSendPerformed($this->event);
     }
 
-    public function testBeforeSendPerformedWithDisabledPlugin()
+    public function testBeforeSendPerformedWithDisabledPlugin(): void
     {
         $this->plugin->setEnabled(false);
 
         $this->message->expects($this->never())
-            ->method('attachSigner');
+            ->method('attachSigner')
+        ;
 
         $this->plugin->beforeSendPerformed($this->event);
     }
 
-    public function testSendPerformed()
+    public function testSendPerformed(): void
     {
         $this->assertNull($this->plugin->sendPerformed($this->event));
     }

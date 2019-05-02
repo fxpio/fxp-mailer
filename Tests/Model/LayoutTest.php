@@ -21,12 +21,14 @@ use PHPUnit\Framework\TestCase;
  * Tests for layout template model.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class LayoutTest extends TestCase
+final class LayoutTest extends TestCase
 {
-    public function testModel()
+    public function testModel(): void
     {
-        /* @var LayoutTranslationInterface $translation */
+        /** @var LayoutTranslationInterface $translation */
         $translation = $this->getMockBuilder(LayoutTranslationInterface::class)->getMock();
 
         $layout = new Layout();
@@ -43,10 +45,10 @@ class LayoutTest extends TestCase
         $this->assertSame('domain', $layout->getTranslationDomain());
     }
 
-    public function testGetTranslation()
+    public function testGetTranslation(): void
     {
-        /* @var Layout $layout */
-        /* @var LayoutTranslation $translation */
+        /** @var Layout $layout */
+        /** @var LayoutTranslation $translation */
         list($layout, $translation) = $this->getModels('fr_fr');
 
         $translated = $layout->getTranslation('fr_fr');
@@ -60,10 +62,10 @@ class LayoutTest extends TestCase
         $this->assertSame($translated, $layout->getTranslation('fr_fr'));
     }
 
-    public function testGetFallbackTranslation()
+    public function testGetFallbackTranslation(): void
     {
-        /* @var Layout $layout */
-        /* @var LayoutTranslation $translation */
+        /** @var Layout $layout */
+        /** @var LayoutTranslation $translation */
         list($layout, $translation) = $this->getModels('fr');
 
         $translated = $layout->getTranslation('fr_fr');
@@ -77,10 +79,10 @@ class LayoutTest extends TestCase
         $this->assertSame($translated, $layout->getTranslation('fr_fr'));
     }
 
-    public function testGetNotTranslation()
+    public function testGetNotTranslation(): void
     {
-        /* @var Layout $layout */
-        /* @var LayoutTranslation $translation */
+        /** @var Layout $layout */
+        /** @var LayoutTranslation $translation */
         list($layout, $translation) = $this->getModels('fr_fr');
 
         $translated = $layout->getTranslation('fr');

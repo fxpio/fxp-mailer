@@ -59,7 +59,7 @@ class FilterSubscriber implements EventSubscriberInterface
      *
      * @param FilterPostRenderEvent $event The event
      */
-    public function onPostRender(FilterPostRenderEvent $event)
+    public function onPostRender(FilterPostRenderEvent $event): void
     {
         foreach ($this->registry->getTemplateFilters() as $filter) {
             if (null !== ($mailRendered = $event->getMailRendered())
@@ -74,7 +74,7 @@ class FilterSubscriber implements EventSubscriberInterface
      *
      * @param FilterPreSendEvent $event The event
      */
-    public function onPreSend(FilterPreSendEvent $event)
+    public function onPreSend(FilterPreSendEvent $event): void
     {
         foreach ($this->registry->getTransportFilters() as $filter) {
             if ($filter->supports($event->getTransport(), $event->getMessage(), $event->getMailRendered())) {

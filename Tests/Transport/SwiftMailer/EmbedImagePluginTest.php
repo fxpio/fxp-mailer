@@ -18,16 +18,18 @@ use PHPUnit\Framework\TestCase;
  * Tests for swift mailer embed image plugin.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class EmbedImagePluginTest extends TestCase
+final class EmbedImagePluginTest extends TestCase
 {
     /**
-     * @var \Swift_Message|\PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit_Framework_MockObject_MockObject|\Swift_Message
      */
     protected $message;
 
     /**
-     * @var \Swift_Events_SendEvent|\PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit_Framework_MockObject_MockObject|\Swift_Events_SendEvent
      */
     protected $event;
 
@@ -36,7 +38,7 @@ class EmbedImagePluginTest extends TestCase
      */
     protected $plugin;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->message = $this->getMockBuilder(\Swift_Message::class)
             ->disableOriginalConstructor()->getMock();
@@ -46,12 +48,13 @@ class EmbedImagePluginTest extends TestCase
 
         $this->event->expects($this->any())
             ->method('getMessage')
-            ->will($this->returnValue($this->message));
+            ->will($this->returnValue($this->message))
+        ;
 
         $this->plugin = new EmbedImagePlugin();
     }
 
-    public function testBeforeSendPerformed()
+    public function testBeforeSendPerformed(): void
     {
         $messageId = 'message_id';
         $html = '<html><body><img src="test.png"><p>Test.</p><img src="test.png"></body></html>';
@@ -62,24 +65,28 @@ class EmbedImagePluginTest extends TestCase
 
         $this->message->expects($this->atLeastOnce())
             ->method('getBody')
-            ->will($this->returnValue($html));
+            ->will($this->returnValue($html))
+        ;
 
         $this->message->expects($this->atLeastOnce())
             ->method('getId')
-            ->will($this->returnValue($messageId));
+            ->will($this->returnValue($messageId))
+        ;
 
         $this->message->expects($this->once())
             ->method('embed')
-            ->will($this->returnValue('cid:EMBED_CID'));
+            ->will($this->returnValue('cid:EMBED_CID'))
+        ;
 
         $this->message->expects($this->once())
             ->method('setBody')
-            ->with($htmlConverted);
+            ->with($htmlConverted)
+        ;
 
         $this->plugin->beforeSendPerformed($this->event);
     }
 
-    public function testBeforeSendPerformedWithAlreadyEmbeddedImage()
+    public function testBeforeSendPerformedWithAlreadyEmbeddedImage(): void
     {
         $messageId = 'message_id';
         $html = '<html><body><img src="cid:ALREADY_EMBED_CID"><p>Test.</p><img src="test.png"></body></html>';
@@ -90,70 +97,82 @@ class EmbedImagePluginTest extends TestCase
 
         $this->message->expects($this->atLeastOnce())
             ->method('getBody')
-            ->will($this->returnValue($html));
+            ->will($this->returnValue($html))
+        ;
 
         $this->message->expects($this->atLeastOnce())
             ->method('getId')
-            ->will($this->returnValue($messageId));
+            ->will($this->returnValue($messageId))
+        ;
 
         $this->message->expects($this->once())
             ->method('embed')
-            ->will($this->returnValue('cid:EMBED_CID'));
+            ->will($this->returnValue('cid:EMBED_CID'))
+        ;
 
         $this->message->expects($this->once())
             ->method('setBody')
-            ->with($htmlConverted);
+            ->with($htmlConverted)
+        ;
 
         $this->plugin->beforeSendPerformed($this->event);
     }
 
-    public function testBeforeSendPerformedWithInvalidMessage()
+    public function testBeforeSendPerformedWithInvalidMessage(): void
     {
         $this->event = $this->getMockBuilder(\Swift_Events_SendEvent::class)
             ->disableOriginalConstructor()->getMock();
 
         $this->event->expects($this->any())
             ->method('getMessage')
-            ->will($this->returnValue(new \stdClass()));
+            ->will($this->returnValue(new \stdClass()))
+        ;
 
         $this->message->expects($this->never())
-            ->method('embed');
+            ->method('embed')
+        ;
 
         $this->message->expects($this->never())
-            ->method('setBody');
+            ->method('setBody')
+        ;
 
         $this->plugin->beforeSendPerformed($this->event);
     }
 
-    public function testBeforeSendPerformedWithEmptyBody()
+    public function testBeforeSendPerformedWithEmptyBody(): void
     {
         $this->message->expects($this->once())
             ->method('getBody')
-            ->will($this->returnValue(null));
+            ->will($this->returnValue(null))
+        ;
 
         $this->message->expects($this->never())
-            ->method('embed');
+            ->method('embed')
+        ;
 
         $this->message->expects($this->never())
-            ->method('setBody');
+            ->method('setBody')
+        ;
 
         $this->plugin->beforeSendPerformed($this->event);
     }
 
-    public function testBeforeSendPerformedWithDisabledPlugin()
+    public function testBeforeSendPerformedWithDisabledPlugin(): void
     {
         $this->plugin->setEnabled(false);
 
         $this->message->expects($this->never())
-            ->method('embed');
+            ->method('embed')
+        ;
 
         $this->message->expects($this->never())
-            ->method('setBody');
+            ->method('setBody')
+        ;
 
         $this->plugin->beforeSendPerformed($this->event);
     }
 
-    public function testSendPerformed()
+    public function testSendPerformed(): void
     {
         $this->assertNull($this->plugin->sendPerformed($this->event));
     }

@@ -19,10 +19,12 @@ use PHPUnit\Framework\TestCase;
  * Tests for filter pre render event.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class FilterPreRenderEventTest extends TestCase
+final class FilterPreRenderEventTest extends TestCase
 {
-    public function testModel()
+    public function testModel(): void
     {
         $template = 'template_name';
         $variables = ['foo' => 'bar'];

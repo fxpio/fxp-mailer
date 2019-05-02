@@ -22,49 +22,54 @@ use Symfony\Component\HttpKernel\KernelInterface;
  * Tests for yaml mail loader.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class YamlMailLoaderTest extends TestCase
+final class YamlMailLoaderTest extends TestCase
 {
-    public function testLoad()
+    public function testLoad(): void
     {
         // layout
         $templateLayout = $this->getMockBuilder(LayoutInterface::class)->getMock();
         $templateLayout->expects($this->any())
             ->method('getName')
-            ->will($this->returnValue('test'));
+            ->will($this->returnValue('test'))
+        ;
         $templateLayout->expects($this->any())
             ->method('isEnabled')
-            ->will($this->returnValue(true));
+            ->will($this->returnValue(true))
+        ;
 
         // loader
-        /* @var LayoutLoaderInterface|\PHPUnit_Framework_MockObject_MockObject $layoutLoader */
+        /** @var LayoutLoaderInterface|\PHPUnit_Framework_MockObject_MockObject $layoutLoader */
         $layoutLoader = $this->getMockBuilder(LayoutLoaderInterface::class)->getMock();
         $layoutLoader->expects($this->once())
             ->method('load')
-            ->will($this->returnValue($templateLayout));
+            ->will($this->returnValue($templateLayout))
+        ;
 
-        /* @var KernelInterface|\PHPUnit_Framework_MockObject_MockObject $kernel */
+        /** @var KernelInterface|\PHPUnit_Framework_MockObject_MockObject $kernel */
         $kernel = $this->getMockBuilder(KernelInterface::class)->getMock();
         $template = '@AcmeDemoBundle/Resources/loaders/mail.yml';
 
         $kernel->expects($this->once())
             ->method('locateResource')
-            ->will($this->returnValue(__DIR__.'/../Fixtures/loaders/mail.yml'));
+            ->will($this->returnValue(__DIR__.'/../Fixtures/loaders/mail.yml'))
+        ;
 
         $loader = new YamlMailLoader([$template], $layoutLoader, $kernel);
 
         $this->assertInstanceOf(MailInterface::class, $loader->load('test'));
     }
 
-    /**
-     * @expectedException \Fxp\Component\Mailer\Exception\UnknownMailException
-     * @expectedExceptionMessage The "test" mail template does not exist with the "all" type
-     */
-    public function testLoadUnknownTemplate()
+    public function testLoadUnknownTemplate(): void
     {
-        /* @var LayoutLoaderInterface $layoutLoader */
+        $this->expectException(\Fxp\Component\Mailer\Exception\UnknownMailException::class);
+        $this->expectExceptionMessage('The "test" mail template does not exist with the "all" type');
+
+        /** @var LayoutLoaderInterface $layoutLoader */
         $layoutLoader = $this->getMockBuilder(LayoutLoaderInterface::class)->getMock();
-        /* @var KernelInterface $kernel */
+        /** @var KernelInterface $kernel */
         $kernel = $this->getMockBuilder(KernelInterface::class)->getMock();
 
         $loader = new YamlMailLoader([], $layoutLoader, $kernel);

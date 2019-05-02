@@ -37,7 +37,7 @@ interface TemplateTranslationInterface
     /**
      * Set the label.
      *
-     * @param string|null $label The label
+     * @param null|string $label The label
      *
      * @return self
      */
@@ -46,14 +46,14 @@ interface TemplateTranslationInterface
     /**
      * Get the label.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getLabel();
 
     /**
      * Set the description.
      *
-     * @param string|null $description The description
+     * @param null|string $description The description
      *
      * @return self
      */
@@ -62,14 +62,14 @@ interface TemplateTranslationInterface
     /**
      * Get the description.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getDescription();
 
     /**
      * Set the body.
      *
-     * @param string|null $body The body
+     * @param null|string $body The body
      *
      * @return self
      */
@@ -78,7 +78,7 @@ interface TemplateTranslationInterface
     /**
      * Get the body.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getBody();
 }

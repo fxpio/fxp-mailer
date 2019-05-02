@@ -30,22 +30,22 @@ class Mail extends AbstractTemplate implements MailInterface
     protected $type = MailTypes::TYPE_ALL;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $subject;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $htmlBody;
 
     /**
-     * @var LayoutInterface|null
+     * @var null|LayoutInterface
      */
     protected $layout;
 
     /**
-     * @var MailTranslationInterface[]|Collection
+     * @var Collection|MailTranslationInterface[]
      */
     protected $translations = [];
 

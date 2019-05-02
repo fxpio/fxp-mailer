@@ -20,8 +20,10 @@ use Symfony\Component\Filesystem\Filesystem;
  * Tests for twig mail translation template model.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class TwigMailTranslationTest extends TestCase
+final class TwigMailTranslationTest extends TestCase
 {
     /**
      * @var string
@@ -33,7 +35,7 @@ class TwigMailTranslationTest extends TestCase
      */
     protected $mail;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->file = sys_get_temp_dir().'/fxp_mailer_tests/file.html.twig';
         $this->mail = $this->getMockBuilder(MailInterface::class)->getMock();
@@ -41,25 +43,24 @@ class TwigMailTranslationTest extends TestCase
         $fs->dumpFile($this->file, 'content');
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $fs = new Filesystem();
         $fs->remove(\dirname($this->file));
     }
 
-    public function testModel()
+    public function testModel(): void
     {
         $mail = new TwigMailTranslation($this->mail, $this->file);
 
         $this->assertSame($this->file, $mail->getFile());
     }
 
-    /**
-     * @expectedException \Fxp\Component\Mailer\Exception\InvalidArgumentException
-     * @expectedExceptionMessage The "file.ext" file is not supported by the mail translation file template
-     */
-    public function testInvalidFile()
+    public function testInvalidFile(): void
     {
+        $this->expectException(\Fxp\Component\Mailer\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The "file.ext" file is not supported by the mail translation file template');
+
         new TwigMailTranslation($this->mail, 'file.ext');
     }
 }

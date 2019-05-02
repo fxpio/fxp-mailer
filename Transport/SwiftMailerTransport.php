@@ -66,7 +66,7 @@ class SwiftMailerTransport implements TransportInterface
     /**
      * {@inheritdoc}
      */
-    public function validate($message)
+    public function validate($message): void
     {
         if (!$message instanceof \Swift_Message) {
             throw new UnexpectedTypeException($message, \Swift_Message::class);
@@ -79,7 +79,7 @@ class SwiftMailerTransport implements TransportInterface
      * @param \Swift_Message        $message      The swiftmailer message
      * @param MailRenderedInterface $mailRendered The rendered mail
      */
-    protected function addBodies(\Swift_Message $message, MailRenderedInterface $mailRendered)
+    protected function addBodies(\Swift_Message $message, MailRenderedInterface $mailRendered): void
     {
         $textPlain = $mailRendered->getBody();
         $html = $mailRendered->getHtmlBody();

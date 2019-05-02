@@ -33,7 +33,7 @@ abstract class AbstractPlugin implements \Swift_Events_SendListener
      *
      * @param bool $enabled The enabled value
      */
-    public function setEnabled($enabled)
+    public function setEnabled($enabled): void
     {
         $this->enabled = (bool) $enabled;
     }

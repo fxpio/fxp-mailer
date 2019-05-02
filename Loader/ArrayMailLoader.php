@@ -47,7 +47,7 @@ class ArrayMailLoader implements MailLoaderInterface
      *
      * @param MailInterface $mail The mail template
      */
-    public function addMail(MailInterface $mail)
+    public function addMail(MailInterface $mail): void
     {
         $this->mails[$mail->getName()] = $mail;
     }

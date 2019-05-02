@@ -28,9 +28,9 @@ interface MailLoaderInterface
      * @param string $name The unique name of mail template
      * @param string $type The mail type defined in MailTypes::TYPE_*
      *
-     * @return MailInterface
-     *
      * @throws UnknownMailException When the mail template does not exist
+     *
+     * @return MailInterface
      */
     public function load($name, $type = MailTypes::TYPE_ALL);
 }

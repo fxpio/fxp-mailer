@@ -32,7 +32,7 @@ abstract class EmbedImageUtil
         if (false !== strpos($path, '://')) {
             $url = parse_url($path);
 
-            if (isset($url['host']) && isset($url['path'])
+            if (isset($url['host'], $url['path'])
                     && preg_match($hostPattern, $url['host'], $matches)) {
                 $path = static::getExistingPath($url['path'], $webDir, $path);
             }
@@ -48,7 +48,7 @@ abstract class EmbedImageUtil
      *
      * @param string      $path         The path
      * @param string      $webDir       The absolute web directory
-     * @param string|null $fallbackPath The fallback if path is not in locale file system
+     * @param null|string $fallbackPath The fallback if path is not in locale file system
      *
      * @return string
      */

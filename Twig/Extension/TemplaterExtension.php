@@ -36,7 +36,7 @@ class TemplaterExtension extends \Twig_Extension
     public $container;
 
     /**
-     * @var MailTemplaterInterface|null
+     * @var null|MailTemplaterInterface
      */
     protected $templater;
 
@@ -157,7 +157,7 @@ class TemplaterExtension extends \Twig_Extension
     /**
      * @param string $template The mail template name
      */
-    public function cleanRendered($template)
+    public function cleanRendered($template): void
     {
         unset($this->cache[$template]);
     }
@@ -167,10 +167,10 @@ class TemplaterExtension extends \Twig_Extension
      *
      * @param string $layout The name of layout
      *
-     * @return TwigLayout
-     *
      * @throws UnknownLayoutException   When the layout template does not exist
      * @throws InvalidArgumentException When the layout is not a twig layout
+     *
+     * @return TwigLayout
      */
     public function getTranslatedLayout($layout)
     {
@@ -179,6 +179,7 @@ class TemplaterExtension extends \Twig_Extension
 
         if (!$template instanceof TwigLayout) {
             $msg = 'The "%s" layout is not a twig layout';
+
             throw new InvalidArgumentException(sprintf($msg, $layout));
         }
 

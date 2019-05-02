@@ -44,9 +44,11 @@ class Mailer implements MailerInterface
      * @param TransportInterface[]     $transports The transports
      * @param EventDispatcherInterface $dispatcher The event dispatcher
      */
-    public function __construct(MailTemplaterInterface $templater, array $transports,
-                                EventDispatcherInterface $dispatcher)
-    {
+    public function __construct(
+        MailTemplaterInterface $templater,
+        array $transports,
+        EventDispatcherInterface $dispatcher
+    ) {
         $this->templater = $templater;
         $this->dispatcher = $dispatcher;
 
@@ -80,6 +82,7 @@ class Mailer implements MailerInterface
     {
         if (!isset($this->transports[$name])) {
             $msg = sprintf('The "%s" transport does not exist', $name);
+
             throw new InvalidArgumentException($msg);
         }
 
@@ -89,9 +92,13 @@ class Mailer implements MailerInterface
     /**
      * {@inheritdoc}
      */
-    public function send($transport, $message, $template = null, array $variables = [],
-                         $type = MailTypes::TYPE_ALL)
-    {
+    public function send(
+        $transport,
+        $message,
+        $template = null,
+        array $variables = [],
+        $type = MailTypes::TYPE_ALL
+    ) {
         $transportName = $transport;
         $transport = $this->getTransport($transport);
         $mailRendered = null !== $template

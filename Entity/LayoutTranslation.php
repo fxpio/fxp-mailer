@@ -21,14 +21,14 @@ use Fxp\Component\Mailer\Model\LayoutTranslation as BaseLayoutTranslation;
 class LayoutTranslation extends BaseLayoutTranslation
 {
     /**
-     * @var int|string|null
+     * @var null|int|string
      */
     protected $id;
 
     /**
      * Get the id.
      *
-     * @return int|string|null
+     * @return null|int|string
      */
     public function getId()
     {

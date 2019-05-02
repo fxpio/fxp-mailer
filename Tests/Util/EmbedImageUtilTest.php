@@ -18,8 +18,10 @@ use PHPUnit\Framework\TestCase;
  * Tests for util of swiftmailer embed image.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class EmbedImageUtilTest extends TestCase
+final class EmbedImageUtilTest extends TestCase
 {
     public function getLocalePathData()
     {
@@ -45,7 +47,7 @@ class EmbedImageUtilTest extends TestCase
      * @param string $hostPattern
      * @param string $valid
      */
-    public function testGetLocalPath($path, $webDir, $hostPattern, $valid)
+    public function testGetLocalPath($path, $webDir, $hostPattern, $valid): void
     {
         $this->assertSame($valid, EmbedImageUtil::getLocalPath($path, $webDir, $hostPattern));
     }

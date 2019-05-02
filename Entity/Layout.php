@@ -22,19 +22,9 @@ use Fxp\Component\Mailer\Model\Layout as BaseLayout;
 class Layout extends BaseLayout
 {
     /**
-     * @var int|string|null
+     * @var null|int|string
      */
     protected $id;
-
-    /**
-     * Get the id.
-     *
-     * @return int|string|null
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Constructor.
@@ -43,5 +33,15 @@ class Layout extends BaseLayout
     {
         $this->mails = new ArrayCollection();
         $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * Get the id.
+     *
+     * @return null|int|string
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

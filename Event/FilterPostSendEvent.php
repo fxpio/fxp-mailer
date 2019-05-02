@@ -31,7 +31,7 @@ class FilterPostSendEvent extends AbstractFilterSendEvent
      * @param bool                       $result       The send result
      * @param string                     $transport    The name of transport
      * @param mixed                      $message      The message for the specific transport
-     * @param MailRenderedInterface|null $mailRendered The mail rendered
+     * @param null|MailRenderedInterface $mailRendered The mail rendered
      */
     public function __construct($result, $transport, $message, MailRenderedInterface $mailRendered = null)
     {

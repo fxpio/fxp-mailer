@@ -28,7 +28,7 @@ class TwigLayoutLoader extends AbstractFileLayoutLoader
      */
     protected function createLayout(array $config)
     {
-        /* @var $layout TwigLayout */
+        /** @var TwigLayout $layout */
         $layout = parent::createLayout($config);
         $layout->setFile(ConfigUtil::getValue($config, 'file'));
 
@@ -40,7 +40,7 @@ class TwigLayoutLoader extends AbstractFileLayoutLoader
      */
     protected function createLayoutTranslation(LayoutInterface $layout, array $config)
     {
-        /* @var $translation TwigLayoutTranslation */
+        /** @var TwigLayoutTranslation $translation */
         $translation = parent::createLayoutTranslation($layout, $config);
         $translation->setFile(ConfigUtil::getValue($config, 'file'));
 

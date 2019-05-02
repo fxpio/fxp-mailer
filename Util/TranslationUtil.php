@@ -30,7 +30,7 @@ abstract class TranslationUtil
      *
      * @param LayoutInterface          $template   The template
      * @param string                   $locale     The locale
-     * @param TranslatorInterface|null $translator The translator
+     * @param null|TranslatorInterface $translator The translator
      *
      * @return LayoutInterface
      */
@@ -50,7 +50,7 @@ abstract class TranslationUtil
      *
      * @param MailInterface            $template   The template
      * @param string                   $locale     The locale
-     * @param TranslatorInterface|null $translator The translator
+     * @param null|TranslatorInterface $translator The translator
      *
      * @return LayoutInterface
      */
@@ -97,13 +97,28 @@ abstract class TranslationUtil
     }
 
     /**
+     * Inject the translation file in template.
+     *
+     * @param TemplateInterface            $template    The template instance
+     * @param TemplateTranslationInterface $translation The template translation instance
+     */
+    public static function injectFile(TemplateInterface $template, TemplateTranslationInterface $translation): void
+    {
+        if ($template instanceof TemplateFileInterface && $translation instanceof TemplateFileInterface) {
+            /** @var TemplateInterface $template */
+            /** @var TemplateTranslationInterface $translation */
+            static::injectValue($template, $translation, 'file');
+        }
+    }
+
+    /**
      * Inject the translation value in template.
      *
      * @param TemplateInterface            $template    The template instance
      * @param TemplateTranslationInterface $translation The template translation instance
      * @param string                       $field       The field
      */
-    protected static function injectValue(TemplateInterface $template, TemplateTranslationInterface $translation, $field)
+    protected static function injectValue(TemplateInterface $template, TemplateTranslationInterface $translation, $field): void
     {
         $setter = 'set'.ucfirst($field);
         $getter = 'get'.ucfirst($field);
@@ -120,27 +135,12 @@ abstract class TranslationUtil
     }
 
     /**
-     * Inject the translation file in template.
-     *
-     * @param TemplateInterface            $template    The template instance
-     * @param TemplateTranslationInterface $translation The template translation instance
-     */
-    public static function injectFile(TemplateInterface $template, TemplateTranslationInterface $translation)
-    {
-        if ($template instanceof TemplateFileInterface && $translation instanceof TemplateFileInterface) {
-            /* @var TemplateInterface $template */
-            /* @var TemplateTranslationInterface $translation */
-            static::injectValue($template, $translation, 'file');
-        }
-    }
-
-    /**
      * Inject the translation values of translator in template.
      *
      * @param TranslatorInterface $translator The translator
      * @param TemplateInterface   $template   The template instance
      */
-    protected static function injectTranslatorValues(TranslatorInterface $translator, TemplateInterface $template)
+    protected static function injectTranslatorValues(TranslatorInterface $translator, TemplateInterface $template): void
     {
         static::injectTranslatorValue($translator, $template, 'label');
         static::injectTranslatorValue($translator, $template, 'description');
@@ -159,7 +159,7 @@ abstract class TranslationUtil
      * @param TemplateInterface   $template   The template instance
      * @param string              $field      The field
      */
-    protected static function injectTranslatorValue(TranslatorInterface $translator, TemplateInterface $template, $field)
+    protected static function injectTranslatorValue(TranslatorInterface $translator, TemplateInterface $template, $field): void
     {
         $setter = 'set'.ucfirst($field);
         $getter = 'get'.ucfirst($field);

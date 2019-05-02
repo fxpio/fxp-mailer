@@ -29,17 +29,17 @@ class LayoutTranslation implements LayoutTranslationInterface
     protected $locale;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $label;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $description;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $body;
 

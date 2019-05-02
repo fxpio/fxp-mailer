@@ -19,30 +19,33 @@ use PHPUnit\Framework\TestCase;
  * Tests for Array layout loader.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class ArrayLayoutLoaderTest extends TestCase
+final class ArrayLayoutLoaderTest extends TestCase
 {
-    public function testLoad()
+    public function testLoad(): void
     {
         $template = $this->getMockBuilder(LayoutInterface::class)->getMock();
         $template->expects($this->any())
             ->method('getName')
-            ->will($this->returnValue('test'));
+            ->will($this->returnValue('test'))
+        ;
         $template->expects($this->any())
             ->method('isEnabled')
-            ->will($this->returnValue(true));
+            ->will($this->returnValue(true))
+        ;
 
         $loader = new ArrayLayoutLoader([$template]);
 
         $this->assertSame($template, $loader->load('test'));
     }
 
-    /**
-     * @expectedException \Fxp\Component\Mailer\Exception\UnknownLayoutException
-     * @expectedExceptionMessage The "test" layout template does not exist
-     */
-    public function testLoadUnknownTemplate()
+    public function testLoadUnknownTemplate(): void
     {
+        $this->expectException(\Fxp\Component\Mailer\Exception\UnknownLayoutException::class);
+        $this->expectExceptionMessage('The "test" layout template does not exist');
+
         $loader = new ArrayLayoutLoader([]);
 
         $loader->load('test');

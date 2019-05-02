@@ -26,7 +26,7 @@ trait TranslationTrait
     protected $cacheTranslation = [];
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $translationDomain;
 
@@ -41,7 +41,7 @@ trait TranslationTrait
             return $this->cacheTranslation[$locale];
         }
 
-        /* @var \Fxp\Component\Mailer\Model\LayoutInterface|\Fxp\Component\Mailer\Model\MailInterface|TranslationTrait $this */
+        /** @var \Fxp\Component\Mailer\Model\LayoutInterface|\Fxp\Component\Mailer\Model\MailInterface|TranslationTrait $this */
         $self = clone $this;
 
         if (!TranslationUtil::find($self, $locale) && false !== ($pos = strrpos($locale, '_'))) {

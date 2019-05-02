@@ -18,10 +18,12 @@ use PHPUnit\Framework\TestCase;
  * Tests for config util.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class ConfigUtilTest extends TestCase
+final class ConfigUtilTest extends TestCase
 {
-    public function testFormatConfigWithString()
+    public function testFormatConfigWithString(): void
     {
         $config = 'filename.file';
 
@@ -32,23 +34,21 @@ class ConfigUtilTest extends TestCase
         $this->assertEquals($valid, ConfigUtil::formatConfig($config));
     }
 
-    /**
-     * @expectedException \Fxp\Component\Mailer\Exception\UnexpectedTypeException
-     * @expectedExceptionMessage Expected argument of type "array", "integer" given
-     */
-    public function testFormatConfigWithoutFile()
+    public function testFormatConfigWithoutFile(): void
     {
+        $this->expectException(\Fxp\Component\Mailer\Exception\UnexpectedTypeException::class);
+        $this->expectExceptionMessage('Expected argument of type "array", "integer" given');
+
         $config = 42;
 
         ConfigUtil::formatConfig($config);
     }
 
-    /**
-     * @expectedException \Fxp\Component\Mailer\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The "file" attribute must be defined in config of layout template
-     */
-    public function testFormatConfigWithInvalidFilename()
+    public function testFormatConfigWithInvalidFilename(): void
     {
+        $this->expectException(\Fxp\Component\Mailer\Exception\InvalidConfigurationException::class);
+        $this->expectExceptionMessage('The "file" attribute must be defined in config of layout template');
+
         $config = [
             'name' => 'test',
         ];

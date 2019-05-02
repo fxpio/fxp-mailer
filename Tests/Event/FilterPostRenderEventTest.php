@@ -19,12 +19,14 @@ use PHPUnit\Framework\TestCase;
  * Tests for filter post render event.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class FilterPostRenderEventTest extends TestCase
+final class FilterPostRenderEventTest extends TestCase
 {
-    public function testModel()
+    public function testModel(): void
     {
-        /* @var MailRenderedInterface $mailRendered */
+        /** @var MailRenderedInterface $mailRendered */
         $mailRendered = $this->getMockBuilder(MailRenderedInterface::class)->getMock();
         $event = new FilterPostRenderEvent($mailRendered);
 

@@ -26,9 +26,9 @@ interface LayoutLoaderInterface
      *
      * @param string $name The unique name of layout template
      *
-     * @return LayoutInterface
-     *
      * @throws UnknownLayoutException When the layout template does not exist
+     *
+     * @return LayoutInterface
      */
     public function load($name);
 }

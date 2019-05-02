@@ -45,7 +45,7 @@ trait FileTrait
     /**
      * Check if the file is supported.
      *
-     * @param string|null $file The file name
+     * @param null|string $file The file name
      *
      * @throws \Fxp\Component\Mailer\Exception\InvalidArgumentException When the file is not supported
      */

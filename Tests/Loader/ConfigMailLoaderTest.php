@@ -22,19 +22,23 @@ use PHPUnit\Framework\TestCase;
  * Tests for config mail loader.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class ConfigMailLoaderTest extends TestCase
+final class ConfigMailLoaderTest extends TestCase
 {
-    public function testLoad()
+    public function testLoad(): void
     {
         // layout
         $templateLayout = $this->getMockBuilder(LayoutInterface::class)->getMock();
         $templateLayout->expects($this->any())
             ->method('getName')
-            ->will($this->returnValue('test'));
+            ->will($this->returnValue('test'))
+        ;
         $templateLayout->expects($this->any())
             ->method('isEnabled')
-            ->will($this->returnValue(true));
+            ->will($this->returnValue(true))
+        ;
 
         // mail
         $template = [
@@ -59,11 +63,12 @@ class ConfigMailLoaderTest extends TestCase
             ],
         ];
 
-        /* @var LayoutLoaderInterface|\PHPUnit_Framework_MockObject_MockObject $layoutLoader */
+        /** @var LayoutLoaderInterface|\PHPUnit_Framework_MockObject_MockObject $layoutLoader */
         $layoutLoader = $this->getMockBuilder(LayoutLoaderInterface::class)->getMock();
         $layoutLoader->expects($this->once())
             ->method('load')
-            ->will($this->returnValue($templateLayout));
+            ->will($this->returnValue($templateLayout))
+        ;
 
         $loader = new ConfigMailLoader([$template], $layoutLoader);
 
@@ -73,13 +78,12 @@ class ConfigMailLoaderTest extends TestCase
         $this->assertInstanceOf(LayoutInterface::class, $mail->getLayout());
     }
 
-    /**
-     * @expectedException \Fxp\Component\Mailer\Exception\UnknownMailException
-     * @expectedExceptionMessage The "test" mail template does not exist with the "all" type
-     */
-    public function testLoadUnknownTemplate()
+    public function testLoadUnknownTemplate(): void
     {
-        /* @var LayoutLoaderInterface $layoutLoader */
+        $this->expectException(\Fxp\Component\Mailer\Exception\UnknownMailException::class);
+        $this->expectExceptionMessage('The "test" mail template does not exist with the "all" type');
+
+        /** @var LayoutLoaderInterface $layoutLoader */
         $layoutLoader = $this->getMockBuilder(LayoutLoaderInterface::class)->getMock();
 
         $loader = new ConfigMailLoader([], $layoutLoader);

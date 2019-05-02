@@ -19,12 +19,14 @@ use PHPUnit\Framework\TestCase;
  * Tests for abstract template model.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class AbstractTemplateTest extends TestCase
+final class AbstractTemplateTest extends TestCase
 {
-    public function testModel()
+    public function testModel(): void
     {
-        /* @var TemplateInterface $template */
+        /** @var TemplateInterface $template */
         $template = $this->getMockForAbstractClass(AbstractTemplate::class);
         $template
             ->setName('test')

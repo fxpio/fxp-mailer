@@ -19,15 +19,17 @@ use PHPUnit\Framework\TestCase;
  * Tests for filter post send event.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class FilterPostSendEventTest extends TestCase
+final class FilterPostSendEventTest extends TestCase
 {
-    public function testModel()
+    public function testModel(): void
     {
         $result = true;
         $transport = 'transport_name';
         $message = new \stdClass();
-        /* @var MailRenderedInterface $mailRendered */
+        /** @var MailRenderedInterface $mailRendered */
         $mailRendered = $this->getMockBuilder(MailRenderedInterface::class)->getMock();
 
         $event = new FilterPostSendEvent($result, $transport, $message, $mailRendered);

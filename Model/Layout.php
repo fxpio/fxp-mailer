@@ -24,12 +24,12 @@ class Layout extends AbstractTemplate implements LayoutInterface
     use TranslationTrait;
 
     /**
-     * @var MailInterface[]|Collection
+     * @var Collection|MailInterface[]
      */
     protected $mails = [];
 
     /**
-     * @var LayoutTranslationInterface[]|Collection
+     * @var Collection|LayoutTranslationInterface[]
      */
     protected $translations = [];
 

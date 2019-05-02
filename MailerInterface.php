@@ -44,9 +44,9 @@ interface MailerInterface
      *
      * @param string $name The name of the mail transport
      *
-     * @return TransportInterface
-     *
      * @throws InvalidArgumentException When the transport does not exist
+     *
+     * @return TransportInterface
      */
     public function getTransport($name);
 
@@ -55,7 +55,7 @@ interface MailerInterface
      *
      * @param string      $transport The name of transport
      * @param mixed       $message   The message for the specific transport
-     * @param string|null $template  The mail template name
+     * @param null|string $template  The mail template name
      * @param array       $variables The variables of template
      * @param string      $type      The mail type defined in MailTypes::TYPE_*
      *

@@ -26,7 +26,7 @@ class TwigLayout extends Layout implements TwigTemplateInterface
     /**
      * Constructor.
      *
-     * @param string|null $file The file name
+     * @param null|string $file The file name
      */
     public function __construct($file = null)
     {
@@ -37,10 +37,11 @@ class TwigLayout extends Layout implements TwigTemplateInterface
     /**
      * {@inheritdoc}
      */
-    protected function support($file)
+    protected function support($file): void
     {
         if (null !== $file && 'twig' !== pathinfo($file, PATHINFO_EXTENSION)) {
             $msg = 'The "%s" file is not supported by the layout file template';
+
             throw new InvalidArgumentException(sprintf($msg, $file));
         }
     }

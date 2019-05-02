@@ -32,7 +32,7 @@ abstract class AbstractFilterSendEvent extends Event
     protected $message;
 
     /**
-     * @var MailRenderedInterface|null
+     * @var null|MailRenderedInterface
      */
     protected $mailRendered;
 
@@ -41,7 +41,7 @@ abstract class AbstractFilterSendEvent extends Event
      *
      * @param string                     $transport    The name of transport
      * @param mixed                      $message      The message for the specific transport
-     * @param MailRenderedInterface|null $mailRendered The mail rendered
+     * @param null|MailRenderedInterface $mailRendered The mail rendered
      */
     public function __construct($transport, $message, MailRenderedInterface $mailRendered = null)
     {
@@ -73,7 +73,7 @@ abstract class AbstractFilterSendEvent extends Event
     /**
      * Get the mail rendered.
      *
-     * @return MailRenderedInterface|null
+     * @return null|MailRenderedInterface
      */
     public function getMailRendered()
     {

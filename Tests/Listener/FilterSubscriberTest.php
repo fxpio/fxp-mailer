@@ -25,8 +25,10 @@ use PHPUnit\Framework\TestCase;
  * Tests for filter subscriber.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class FilterSubscriberTest extends TestCase
+final class FilterSubscriberTest extends TestCase
 {
     /**
      * @var FilterRegistryInterface|\PHPUnit_Framework_MockObject_MockObject
@@ -38,13 +40,13 @@ class FilterSubscriberTest extends TestCase
      */
     protected $listener;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->registry = $this->getMockBuilder(FilterRegistryInterface::class)->getMock();
         $this->listener = new FilterSubscriber($this->registry);
     }
 
-    public function testGetSubscribedEvents()
+    public function testGetSubscribedEvents(): void
     {
         $events = $this->listener->getSubscribedEvents();
         $valid = [
@@ -55,69 +57,79 @@ class FilterSubscriberTest extends TestCase
         $this->assertSame($valid, array_keys($events));
     }
 
-    public function testTemplateFilters()
+    public function testTemplateFilters(): void
     {
-        /* @var MailRenderedInterface|\PHPUnit_Framework_MockObject_MockObject $mailRendered */
+        /** @var MailRenderedInterface|\PHPUnit_Framework_MockObject_MockObject $mailRendered */
         $mailRendered = $this->getMockBuilder(MailRenderedInterface::class)->getMock();
 
-        /* @var FilterPostRenderEvent|\PHPUnit_Framework_MockObject_MockObject $event */
+        /** @var FilterPostRenderEvent|\PHPUnit_Framework_MockObject_MockObject $event */
         $event = $this->getMockBuilder(FilterPostRenderEvent::class)->disableOriginalConstructor()->getMock();
         $event->expects($this->once())
             ->method('getMailRendered')
-            ->will($this->returnValue($mailRendered));
+            ->will($this->returnValue($mailRendered))
+        ;
 
-        /* @var TemplateFilterInterface|\PHPUnit_Framework_MockObject_MockObject $templateFilter */
+        /** @var \PHPUnit_Framework_MockObject_MockObject|TemplateFilterInterface $templateFilter */
         $templateFilter = $this->getMockBuilder(TemplateFilterInterface::class)->getMock();
         $templateFilter->expects($this->once())
             ->method('supports')
             ->with($mailRendered)
-            ->will($this->returnValue(true));
+            ->will($this->returnValue(true))
+        ;
 
         $templateFilter->expects($this->once())
             ->method('filter')
-            ->with($mailRendered);
+            ->with($mailRendered)
+        ;
 
         $this->registry->expects($this->once())
             ->method('getTemplateFilters')
-            ->will($this->returnValue([$templateFilter]));
+            ->will($this->returnValue([$templateFilter]))
+        ;
 
         $this->listener->onPostRender($event);
     }
 
-    public function testTransportFilters()
+    public function testTransportFilters(): void
     {
         $transport = 'transport_test';
         $message = new \stdClass();
 
-        /* @var MailRenderedInterface|\PHPUnit_Framework_MockObject_MockObject $mailRendered */
+        /** @var MailRenderedInterface|\PHPUnit_Framework_MockObject_MockObject $mailRendered */
         $mailRendered = $this->getMockBuilder(MailRenderedInterface::class)->getMock();
 
-        /* @var FilterPreSendEvent|\PHPUnit_Framework_MockObject_MockObject $event */
+        /** @var FilterPreSendEvent|\PHPUnit_Framework_MockObject_MockObject $event */
         $event = $this->getMockBuilder(FilterPreSendEvent::class)->disableOriginalConstructor()->getMock();
         $event->expects($this->atLeastOnce())
             ->method('getTransport')
-            ->will($this->returnValue($transport));
+            ->will($this->returnValue($transport))
+        ;
         $event->expects($this->atLeastOnce())
             ->method('getMessage')
-            ->will($this->returnValue($message));
+            ->will($this->returnValue($message))
+        ;
         $event->expects($this->atLeastOnce())
             ->method('getMailRendered')
-            ->will($this->returnValue($mailRendered));
+            ->will($this->returnValue($mailRendered))
+        ;
 
-        /* @var TransportFilterInterface|\PHPUnit_Framework_MockObject_MockObject $transportFilter */
+        /** @var \PHPUnit_Framework_MockObject_MockObject|TransportFilterInterface $transportFilter */
         $transportFilter = $this->getMockBuilder(TransportFilterInterface::class)->getMock();
         $transportFilter->expects($this->once())
             ->method('supports')
             ->with($transport, $message, $mailRendered)
-            ->will($this->returnValue(true));
+            ->will($this->returnValue(true))
+        ;
 
         $transportFilter->expects($this->once())
             ->method('filter')
-            ->with($transport, $message, $mailRendered);
+            ->with($transport, $message, $mailRendered)
+        ;
 
         $this->registry->expects($this->once())
             ->method('getTransportFilters')
-            ->will($this->returnValue([$transportFilter]));
+            ->will($this->returnValue([$transportFilter]))
+        ;
 
         $this->listener->onPreSend($event);
     }

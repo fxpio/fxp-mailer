@@ -45,7 +45,7 @@ class MailTemplater implements MailTemplaterInterface
     protected $dispatcher;
 
     /**
-     * @var TranslatorInterface|null
+     * @var null|TranslatorInterface
      */
     protected $translator;
 
@@ -61,9 +61,11 @@ class MailTemplater implements MailTemplaterInterface
      * @param \Twig_Environment        $renderer   The twig environment
      * @param EventDispatcherInterface $dispatcher The event dispatcher
      */
-    public function __construct(MailLoaderInterface $loader, \Twig_Environment $renderer,
-                                EventDispatcherInterface $dispatcher)
-    {
+    public function __construct(
+        MailLoaderInterface $loader,
+        \Twig_Environment $renderer,
+        EventDispatcherInterface $dispatcher
+    ) {
         $this->loader = $loader;
         $this->renderer = $renderer;
         $this->locale = \Locale::getDefault();
@@ -73,7 +75,7 @@ class MailTemplater implements MailTemplaterInterface
     /**
      * {@inheritdoc}
      */
-    public function setTranslator(TranslatorInterface $translator)
+    public function setTranslator(TranslatorInterface $translator): void
     {
         $this->translator = $translator;
     }
@@ -162,7 +164,7 @@ class MailTemplater implements MailTemplaterInterface
      *
      * @param MailInterface $mail The mail
      *
-     * @return LayoutInterface|null
+     * @return null|LayoutInterface
      */
     protected function getTranslatedLayout(MailInterface $mail)
     {
@@ -182,9 +184,9 @@ class MailTemplater implements MailTemplaterInterface
      * @param LayoutInterface|MailInterface $templateInstance The template instance
      * @param array                         $variables        The variables of template
      *
-     * @return string The rendered template
-     *
      * @throws \Exception
+     *
+     * @return string The rendered template
      */
     protected function renderTemplate($template, $templateInstance, array $variables = [])
     {

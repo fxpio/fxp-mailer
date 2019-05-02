@@ -20,33 +20,37 @@ use PHPUnit\Framework\TestCase;
  * Tests for Array mail loader.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class ArrayMailLoaderTest extends TestCase
+final class ArrayMailLoaderTest extends TestCase
 {
-    public function testLoad()
+    public function testLoad(): void
     {
         $template = $this->getMockBuilder(MailInterface::class)->getMock();
         $template->expects($this->any())
             ->method('getName')
-            ->will($this->returnValue('test'));
+            ->will($this->returnValue('test'))
+        ;
         $template->expects($this->any())
             ->method('isEnabled')
-            ->will($this->returnValue(true));
+            ->will($this->returnValue(true))
+        ;
         $template->expects($this->any())
             ->method('getType')
-            ->will($this->returnValue(MailTypes::TYPE_ALL));
+            ->will($this->returnValue(MailTypes::TYPE_ALL))
+        ;
 
         $loader = new ArrayMailLoader([$template]);
 
         $this->assertSame($template, $loader->load('test'));
     }
 
-    /**
-     * @expectedException \Fxp\Component\Mailer\Exception\UnknownMailException
-     * @expectedExceptionMessage The "test" mail template does not exist with the "all" type
-     */
-    public function testLoadUnknownTemplate()
+    public function testLoadUnknownTemplate(): void
     {
+        $this->expectException(\Fxp\Component\Mailer\Exception\UnknownMailException::class);
+        $this->expectExceptionMessage('The "test" mail template does not exist with the "all" type');
+
         $loader = new ArrayMailLoader([]);
 
         $loader->load('test');

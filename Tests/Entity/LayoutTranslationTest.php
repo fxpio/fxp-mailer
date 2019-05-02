@@ -19,12 +19,14 @@ use PHPUnit\Framework\TestCase;
  * Tests for layout translation template entity.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class LayoutTranslationTest extends TestCase
+final class LayoutTranslationTest extends TestCase
 {
-    public function testEntity()
+    public function testEntity(): void
     {
-        /* @var LayoutInterface $layout */
+        /** @var LayoutInterface $layout */
         $layout = $this->getMockBuilder(LayoutInterface::class)->getMock();
         $translation = new LayoutTranslation($layout);
 

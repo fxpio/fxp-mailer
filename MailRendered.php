@@ -26,17 +26,17 @@ class MailRendered implements MailRenderedInterface
     protected $template;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $subject;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $htmlBody;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $body;
 
@@ -44,9 +44,9 @@ class MailRendered implements MailRenderedInterface
      * Constructor.
      *
      * @param MailInterface $template The mail template
-     * @param string|null   $subject  The subject rendered
-     * @param string|null   $htmlBody The HTML body rendered
-     * @param string|null   $body     The body rendered
+     * @param null|string   $subject  The subject rendered
+     * @param null|string   $htmlBody The HTML body rendered
+     * @param null|string   $body     The body rendered
      */
     public function __construct(MailInterface $template, $subject, $htmlBody, $body)
     {

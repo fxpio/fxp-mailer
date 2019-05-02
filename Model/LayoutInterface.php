@@ -19,14 +19,14 @@ namespace Fxp\Component\Mailer\Model;
 interface LayoutInterface extends TemplateInterface
 {
     /**
-     * @return MailInterface[]|\Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection|MailInterface[]
      */
     public function getMails();
 
     /**
      * Get the layout translations.
      *
-     * @return LayoutTranslationInterface[]|\Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection|LayoutTranslationInterface[]
      */
     public function getTranslations();
 

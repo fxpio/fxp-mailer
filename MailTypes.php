@@ -16,9 +16,9 @@ namespace Fxp\Component\Mailer;
  */
 abstract class MailTypes
 {
-    const TYPE_ALL = 'all';
+    public const TYPE_ALL = 'all';
 
-    const TYPE_PRINT = 'print';
+    public const TYPE_PRINT = 'print';
 
-    const TYPE_SCREEN = 'screen';
+    public const TYPE_SCREEN = 'screen';
 }

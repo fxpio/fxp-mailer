@@ -50,12 +50,12 @@ class DkimSignerPlugin extends AbstractPlugin
     /**
      * {@inheritdoc}
      */
-    public function beforeSendPerformed(\Swift_Events_SendEvent $event)
+    public function beforeSendPerformed(\Swift_Events_SendEvent $event): void
     {
         $message = $event->getMessage();
 
         if (!$this->isEnabled() || !$message instanceof \Swift_Message
-                || \in_array($message->getId(), $this->performed)) {
+                || \in_array($message->getId(), $this->performed, true)) {
             return;
         }
 
@@ -67,7 +67,7 @@ class DkimSignerPlugin extends AbstractPlugin
     /**
      * {@inheritdoc}
      */
-    public function sendPerformed(\Swift_Events_SendEvent $event)
+    public function sendPerformed(\Swift_Events_SendEvent $event): void
     {
         // not used
     }
@@ -75,9 +75,9 @@ class DkimSignerPlugin extends AbstractPlugin
     /**
      * Get the private key.
      *
-     * @return string
-     *
      * @throws RuntimeException When the private key cannot be read
+     *
+     * @return string
      */
     protected function getPrivateKey()
     {
@@ -85,6 +85,7 @@ class DkimSignerPlugin extends AbstractPlugin
             $privateKey = file_get_contents($this->privateKeyPath);
         } catch (\Exception $e) {
             $msg = 'Impossible to read the private key of the DKIM swiftmailer signer "%s"';
+
             throw new RuntimeException(sprintf($msg, $this->privateKeyPath));
         }
 

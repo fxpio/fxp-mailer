@@ -20,10 +20,12 @@ use PHPUnit\Framework\TestCase;
  * Tests for filter registry.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class FilterRegistryTest extends TestCase
+final class FilterRegistryTest extends TestCase
 {
-    public function test()
+    public function test(): void
     {
         $templateFilter = $this->getMockBuilder(TemplateFilterInterface::class)->getMock();
         $transportFilter = $this->getMockBuilder(TransportFilterInterface::class)->getMock();

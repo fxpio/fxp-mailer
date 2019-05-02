@@ -51,7 +51,7 @@ class FilterPreSendEvent extends AbstractFilterSendEvent
     /**
      * Set the mail rendered.
      *
-     * @param MailRenderedInterface|null $mailRendered The mail rendered
+     * @param null|MailRenderedInterface $mailRendered The mail rendered
      *
      * @return self
      */

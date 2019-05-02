@@ -19,12 +19,14 @@ use PHPUnit\Framework\TestCase;
  * Tests for mail translation template entity.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class MailTranslationTest extends TestCase
+final class MailTranslationTest extends TestCase
 {
-    public function testEntity()
+    public function testEntity(): void
     {
-        /* @var MailInterface $mail */
+        /** @var MailInterface $mail */
         $mail = $this->getMockBuilder(MailInterface::class)->getMock();
         $translation = new MailTranslation($mail);
 

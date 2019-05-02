@@ -28,7 +28,7 @@ class TwigMailLoader extends AbstractFileMailLoader
      */
     protected function createMail(array $config)
     {
-        /* @var $mail TwigMail */
+        /** @var TwigMail $mail */
         $mail = parent::createMail($config);
         $mail->setFile(ConfigUtil::getValue($config, 'file'));
 
@@ -40,7 +40,7 @@ class TwigMailLoader extends AbstractFileMailLoader
      */
     protected function createMailTranslation(MailInterface $mail, array $config)
     {
-        /* @var $translation TwigMailTranslation */
+        /** @var TwigMailTranslation $translation */
         $translation = parent::createMailTranslation($mail, $config);
         $translation->setFile(ConfigUtil::getValue($config, 'file'));
 

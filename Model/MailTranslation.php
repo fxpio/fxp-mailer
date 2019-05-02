@@ -29,27 +29,27 @@ class MailTranslation implements MailTranslationInterface
     protected $locale;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $label;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $description;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $subject;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $htmlBody;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $body;
 

@@ -19,10 +19,12 @@ use PHPUnit\Framework\TestCase;
  * Tests for config layout loader.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class ConfigLayoutLoaderTest extends TestCase
+final class ConfigLayoutLoaderTest extends TestCase
 {
-    public function testLoad()
+    public function testLoad(): void
     {
         $template = [
             'name' => 'test',
@@ -45,12 +47,11 @@ class ConfigLayoutLoaderTest extends TestCase
         $this->assertInstanceOf(LayoutInterface::class, $loader->load('test'));
     }
 
-    /**
-     * @expectedException \Fxp\Component\Mailer\Exception\UnknownLayoutException
-     * @€@expectedExceptionMessage The "test" layout template does not exist
-     */
-    public function testLoadUnknownTemplate()
+    public function testLoadUnknownTemplate(): void
     {
+        $this->expectException(\Fxp\Component\Mailer\Exception\UnknownLayoutException::class);
+        $this->expectExceptionMessage('The "test" layout template does not exist');
+
         $loader = new ConfigLayoutLoader([]);
 
         $loader->load('test');

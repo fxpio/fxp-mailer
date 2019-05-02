@@ -45,7 +45,7 @@ class ArrayLayoutLoader implements LayoutLoaderInterface
      *
      * @param LayoutInterface $layout The layout template
      */
-    public function addLayout(LayoutInterface $layout)
+    public function addLayout(LayoutInterface $layout): void
     {
         $this->layouts[$layout->getName()] = $layout;
     }

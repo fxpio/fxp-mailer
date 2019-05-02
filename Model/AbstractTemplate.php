@@ -19,17 +19,17 @@ namespace Fxp\Component\Mailer\Model;
 abstract class AbstractTemplate implements TemplateInterface
 {
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $name;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $label;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $description;
 
@@ -39,7 +39,7 @@ abstract class AbstractTemplate implements TemplateInterface
     protected $enabled = true;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $body;
 

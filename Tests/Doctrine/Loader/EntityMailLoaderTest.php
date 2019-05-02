@@ -24,8 +24,10 @@ use PHPUnit\Framework\TestCase;
  * Tests for entity mail loader.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class EntityMailLoaderTest extends TestCase
+final class EntityMailLoaderTest extends TestCase
 {
     /**
      * @var ObjectManager|\PHPUnit_Framework_MockObject_MockObject
@@ -42,7 +44,7 @@ class EntityMailLoaderTest extends TestCase
      */
     protected $loader;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $class = Mail::class;
 
@@ -55,7 +57,7 @@ class EntityMailLoaderTest extends TestCase
             ->will($this->returnValue($this->repo))
         ;
 
-        /* @var ManagerRegistry|\PHPUnit_Framework_MockObject_MockObject $registry */
+        /** @var ManagerRegistry|\PHPUnit_Framework_MockObject_MockObject $registry */
         $registry = $this->getMockBuilder(ManagerRegistry::class)->getMock();
         $registry->expects($this->once())
             ->method('getManagerForClass')
@@ -66,7 +68,7 @@ class EntityMailLoaderTest extends TestCase
         $this->loader = new EntityMailLoader($registry, $class);
     }
 
-    public function testLoad()
+    public function testLoad(): void
     {
         $template = $this->getMockBuilder(Mail::class)->disableOriginalConstructor()->getMock();
         $this->repo->expects($this->once())
@@ -82,12 +84,11 @@ class EntityMailLoaderTest extends TestCase
         $this->assertSame($template, $this->loader->load('test'));
     }
 
-    /**
-     * @expectedException \Fxp\Component\Mailer\Exception\UnknownMailException
-     * @expectedExceptionMessage The "test" mail template does not exist with the "all" type
-     */
-    public function testLoadUnknownTemplate()
+    public function testLoadUnknownTemplate(): void
     {
+        $this->expectException(\Fxp\Component\Mailer\Exception\UnknownMailException::class);
+        $this->expectExceptionMessage('The "test" mail template does not exist with the "all" type');
+
         $this->loader->load('test');
     }
 }

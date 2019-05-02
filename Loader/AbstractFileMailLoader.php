@@ -28,7 +28,7 @@ abstract class AbstractFileMailLoader extends ConfigMailLoader
     protected $kernel;
 
     /**
-     * @var string[]|null
+     * @var null|string[]
      */
     protected $resources;
 

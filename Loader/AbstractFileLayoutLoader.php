@@ -27,14 +27,14 @@ abstract class AbstractFileLayoutLoader extends ConfigLayoutLoader
     protected $kernel;
 
     /**
-     * @var string[]|null
+     * @var null|string[]
      */
     protected $resources;
 
     /**
      * Constructor.
      *
-     * @param string|string[]|array[] $resources The resources
+     * @param array[]|string|string[] $resources The resources
      * @param KernelInterface         $kernel    The kernel
      */
     public function __construct($resources, KernelInterface $kernel)

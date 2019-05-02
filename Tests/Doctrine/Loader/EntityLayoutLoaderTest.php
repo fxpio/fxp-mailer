@@ -22,8 +22,10 @@ use PHPUnit\Framework\TestCase;
  * Tests for entity layout loader.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class EntityLayoutLoaderTest extends TestCase
+final class EntityLayoutLoaderTest extends TestCase
 {
     /**
      * @var ObjectManager|\PHPUnit_Framework_MockObject_MockObject
@@ -40,7 +42,7 @@ class EntityLayoutLoaderTest extends TestCase
      */
     protected $loader;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $class = Layout::class;
 
@@ -53,7 +55,7 @@ class EntityLayoutLoaderTest extends TestCase
             ->will($this->returnValue($this->repo))
         ;
 
-        /* @var ManagerRegistry|\PHPUnit_Framework_MockObject_MockObject $registry */
+        /** @var ManagerRegistry|\PHPUnit_Framework_MockObject_MockObject $registry */
         $registry = $this->getMockBuilder(ManagerRegistry::class)->getMock();
         $registry->expects($this->once())
             ->method('getManagerForClass')
@@ -64,7 +66,7 @@ class EntityLayoutLoaderTest extends TestCase
         $this->loader = new EntityLayoutLoader($registry, $class);
     }
 
-    public function testLoad()
+    public function testLoad(): void
     {
         $template = $this->getMockBuilder(Layout::class)->disableOriginalConstructor()->getMock();
         $this->repo->expects($this->once())
@@ -79,12 +81,11 @@ class EntityLayoutLoaderTest extends TestCase
         $this->assertSame($template, $this->loader->load('test'));
     }
 
-    /**
-     * @expectedException \Fxp\Component\Mailer\Exception\UnknownLayoutException
-     * @expectedExceptionMessage The "test" layout template does not exist
-     */
-    public function testLoadUnknownTemplate()
+    public function testLoadUnknownTemplate(): void
     {
+        $this->expectException(\Fxp\Component\Mailer\Exception\UnknownLayoutException::class);
+        $this->expectExceptionMessage('The "test" layout template does not exist');
+
         $this->loader->load('test');
     }
 }

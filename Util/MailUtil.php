@@ -33,7 +33,7 @@ abstract class MailUtil
     {
         $validTypes = static::getValidTypes($type);
 
-        return $mail->isEnabled() && \in_array($mail->getType(), $validTypes);
+        return $mail->isEnabled() && \in_array($mail->getType(), $validTypes, true);
     }
 
     /**
@@ -47,7 +47,8 @@ abstract class MailUtil
     {
         if (MailTypes::TYPE_PRINT === $type) {
             return [MailTypes::TYPE_ALL, MailTypes::TYPE_PRINT];
-        } elseif (MailTypes::TYPE_SCREEN === $type) {
+        }
+        if (MailTypes::TYPE_SCREEN === $type) {
             return [MailTypes::TYPE_ALL, MailTypes::TYPE_SCREEN];
         }
 

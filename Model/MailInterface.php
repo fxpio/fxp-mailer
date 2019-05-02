@@ -37,7 +37,7 @@ interface MailInterface extends TemplateInterface
     /**
      * Set the subject.
      *
-     * @param string|null $subject The subject
+     * @param null|string $subject The subject
      *
      * @return self
      */
@@ -46,14 +46,14 @@ interface MailInterface extends TemplateInterface
     /**
      * Get the subject.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getSubject();
 
     /**
      * Set the html body.
      *
-     * @param string|null $htmlBody The html body
+     * @param null|string $htmlBody The html body
      *
      * @return self
      */
@@ -62,7 +62,7 @@ interface MailInterface extends TemplateInterface
     /**
      * Get the html body.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getHtmlBody();
 
@@ -78,14 +78,14 @@ interface MailInterface extends TemplateInterface
     /**
      * Get the layout.
      *
-     * @return LayoutInterface|null
+     * @return null|LayoutInterface
      */
     public function getLayout();
 
     /**
      * Get the mail translations.
      *
-     * @return MailTranslationInterface[]|\Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection|MailTranslationInterface[]
      */
     public function getTranslations();
 

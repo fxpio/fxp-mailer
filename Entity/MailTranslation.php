@@ -21,14 +21,14 @@ use Fxp\Component\Mailer\Model\MailTranslation as BaseMailTranslation;
 class MailTranslation extends BaseMailTranslation
 {
     /**
-     * @var int|string|null
+     * @var null|int|string
      */
     protected $id;
 
     /**
      * Get the id.
      *
-     * @return int|string|null
+     * @return null|int|string
      */
     public function getId()
     {

@@ -30,7 +30,7 @@ interface MailRenderedInterface
     /**
      * Set the rendered subject.
      *
-     * @param string|null $subject The rendered subject
+     * @param null|string $subject The rendered subject
      *
      * @return self
      */
@@ -39,14 +39,14 @@ interface MailRenderedInterface
     /**
      * Get the rendered subject.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getSubject();
 
     /**
      * Set the rendered HTML body.
      *
-     * @param string|null $htmlBody The rendered HTML body
+     * @param null|string $htmlBody The rendered HTML body
      *
      * @return self
      */
@@ -55,14 +55,14 @@ interface MailRenderedInterface
     /**
      * Get the rendered HTML body.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getHtmlBody();
 
     /**
      * Set the rendered body.
      *
-     * @param string|null $body The rendered body
+     * @param null|string $body The rendered body
      *
      * @return self
      */
@@ -71,7 +71,7 @@ interface MailRenderedInterface
     /**
      * Get the rendered body.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getBody();
 }

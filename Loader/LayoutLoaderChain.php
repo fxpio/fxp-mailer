@@ -44,7 +44,7 @@ class LayoutLoaderChain implements LayoutLoaderInterface
      *
      * @param LayoutLoaderInterface $loader The layout loader
      */
-    public function addLoader(LayoutLoaderInterface $loader)
+    public function addLoader(LayoutLoaderInterface $loader): void
     {
         $this->loaders[] = $loader;
     }
