@@ -52,7 +52,7 @@ abstract class TranslationUtil
      * @param string                   $locale     The locale
      * @param null|TranslatorInterface $translator The translator
      *
-     * @return LayoutInterface
+     * @return MailInterface
      */
     public static function translateMail(MailInterface $template, $locale, TranslatorInterface $translator = null)
     {
@@ -117,6 +117,8 @@ abstract class TranslationUtil
      * @param TemplateInterface            $template    The template instance
      * @param TemplateTranslationInterface $translation The template translation instance
      * @param string                       $field       The field
+     *
+     * @throws
      */
     protected static function injectValue(TemplateInterface $template, TemplateTranslationInterface $translation, $field): void
     {
@@ -158,6 +160,8 @@ abstract class TranslationUtil
      * @param TranslatorInterface $translator The translator
      * @param TemplateInterface   $template   The template instance
      * @param string              $field      The field
+     *
+     * @throws
      */
     protected static function injectTranslatorValue(TranslatorInterface $translator, TemplateInterface $template, $field): void
     {
