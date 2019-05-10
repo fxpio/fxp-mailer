@@ -21,6 +21,7 @@ use Fxp\Component\Mailer\Util\MailUtil;
 use Fxp\Component\Mailer\Util\TranslationUtil;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Twig\Environment;
 
 /**
  * The mail templater.
@@ -35,7 +36,7 @@ class MailTemplater implements MailTemplaterInterface
     protected $loader;
 
     /**
-     * @var \Twig_Environment
+     * @var Environment
      */
     protected $renderer;
 
@@ -58,12 +59,12 @@ class MailTemplater implements MailTemplaterInterface
      * Constructor.
      *
      * @param MailLoaderInterface      $loader     The mail loader
-     * @param \Twig_Environment        $renderer   The twig environment
+     * @param Environment              $renderer   The twig environment
      * @param EventDispatcherInterface $dispatcher The event dispatcher
      */
     public function __construct(
         MailLoaderInterface $loader,
-        \Twig_Environment $renderer,
+        Environment $renderer,
         EventDispatcherInterface $dispatcher
     ) {
         $this->loader = $loader;
