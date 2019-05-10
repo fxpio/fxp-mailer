@@ -11,6 +11,8 @@
 
 namespace Fxp\Component\Mailer\Model;
 
+use Doctrine\Common\Collections\Collection;
+
 /**
  * Interface for the layout template.
  *
@@ -19,14 +21,14 @@ namespace Fxp\Component\Mailer\Model;
 interface LayoutInterface extends TemplateInterface
 {
     /**
-     * @return \Doctrine\Common\Collections\Collection|MailInterface[]
+     * @return array|Collection|MailInterface[]
      */
     public function getMails();
 
     /**
      * Get the layout translations.
      *
-     * @return \Doctrine\Common\Collections\Collection|LayoutTranslationInterface[]
+     * @return array|Collection|LayoutTranslationInterface[]
      */
     public function getTranslations();
 
@@ -35,7 +37,7 @@ interface LayoutInterface extends TemplateInterface
      *
      * @param LayoutTranslationInterface $translation The layout translation
      *
-     * @return self
+     * @return static
      */
     public function addTranslation(LayoutTranslationInterface $translation);
 
@@ -44,7 +46,7 @@ interface LayoutInterface extends TemplateInterface
      *
      * @param LayoutTranslationInterface $translation The layout translation
      *
-     * @return self
+     * @return static
      */
     public function removeTranslation(LayoutTranslationInterface $translation);
 
@@ -53,7 +55,7 @@ interface LayoutInterface extends TemplateInterface
      *
      * @param string $locale The locale
      *
-     * @return self
+     * @return static
      */
-    public function getTranslation($locale);
+    public function getTranslation(string $locale);
 }

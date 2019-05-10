@@ -52,7 +52,7 @@ class Layout extends AbstractTemplate implements LayoutInterface
     /**
      * {@inheritdoc}
      */
-    public function addTranslation(LayoutTranslationInterface $translation)
+    public function addTranslation(LayoutTranslationInterface $translation): self
     {
         if ($this->translations instanceof Collection) {
             if (!$this->translations->contains($translation)) {
@@ -68,7 +68,7 @@ class Layout extends AbstractTemplate implements LayoutInterface
     /**
      * {@inheritdoc}
      */
-    public function removeTranslation(LayoutTranslationInterface $translation)
+    public function removeTranslation(LayoutTranslationInterface $translation): self
     {
         if ($this->translations instanceof Collection) {
             if ($this->translations->contains($translation)) {

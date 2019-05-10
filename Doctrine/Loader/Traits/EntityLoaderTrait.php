@@ -12,6 +12,7 @@
 namespace Fxp\Component\Mailer\Doctrine\Loader\Traits;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Common\Persistence\ObjectManager;
 
 /**
  * Trait for entity loader.
@@ -21,7 +22,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 trait EntityLoaderTrait
 {
     /**
-     * @var \Doctrine\Common\Persistence\ObjectManager
+     * @var ObjectManager
      */
     protected $om;
 
@@ -36,7 +37,7 @@ trait EntityLoaderTrait
      * @param ManagerRegistry $registry The doctrine registry
      * @param string          $class    The template class name
      */
-    public function __construct(ManagerRegistry $registry, $class)
+    public function __construct(ManagerRegistry $registry, string $class)
     {
         $this->om = $registry->getManagerForClass($class);
         $this->class = $class;

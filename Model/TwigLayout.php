@@ -28,7 +28,7 @@ class TwigLayout extends Layout implements TwigTemplateInterface
      *
      * @param null|string $file The file name
      */
-    public function __construct($file = null)
+    public function __construct(?string $file = null)
     {
         $this->setFile($file);
         $this->body = 'body';
@@ -37,7 +37,7 @@ class TwigLayout extends Layout implements TwigTemplateInterface
     /**
      * {@inheritdoc}
      */
-    protected function support($file): void
+    protected function support(?string $file): void
     {
         if (null !== $file && 'twig' !== pathinfo($file, PATHINFO_EXTENSION)) {
             $msg = 'The "%s" file is not supported by the layout file template';

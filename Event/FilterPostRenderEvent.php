@@ -41,7 +41,7 @@ class FilterPostRenderEvent extends Event
      *
      * @return MailRenderedInterface
      */
-    public function getMailRendered()
+    public function getMailRendered(): MailRenderedInterface
     {
         return $this->mailRendered;
     }

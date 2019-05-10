@@ -27,7 +27,7 @@ interface TransportFilterInterface
      * @param mixed                      $message      The message for the specific transport
      * @param null|MailRenderedInterface $mailRendered The mail rendered
      */
-    public function filter($transport, $message, MailRenderedInterface $mailRendered = null);
+    public function filter(string $transport, $message, ?MailRenderedInterface $mailRendered = null): void;
 
     /**
      * Check if the filter is compatible with the mail rendered.
@@ -38,5 +38,5 @@ interface TransportFilterInterface
      *
      * @return bool
      */
-    public function supports($transport, $message, MailRenderedInterface $mailRendered = null);
+    public function supports(string $transport, $message, ?MailRenderedInterface $mailRendered = null): bool;
 }

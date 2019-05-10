@@ -60,7 +60,7 @@ class Mailer implements MailerInterface
     /**
      * {@inheritdoc}
      */
-    public function addTransport(TransportInterface $transport)
+    public function addTransport(TransportInterface $transport): self
     {
         $this->transports[$transport->getName()] = $transport;
 
@@ -70,7 +70,7 @@ class Mailer implements MailerInterface
     /**
      * {@inheritdoc}
      */
-    public function hasTransport($name)
+    public function hasTransport(string $name): bool
     {
         return isset($this->transports[$name]);
     }
@@ -78,7 +78,7 @@ class Mailer implements MailerInterface
     /**
      * {@inheritdoc}
      */
-    public function getTransport($name)
+    public function getTransport(string $name): TransportInterface
     {
         if (!isset($this->transports[$name])) {
             $msg = sprintf('The "%s" transport does not exist', $name);
@@ -93,24 +93,23 @@ class Mailer implements MailerInterface
      * {@inheritdoc}
      */
     public function send(
-        $transport,
+        string $transport,
         $message,
-        $template = null,
+        ?string $template = null,
         array $variables = [],
-        $type = MailTypes::TYPE_ALL
-    ) {
-        $transportName = $transport;
-        $transport = $this->getTransport($transport);
+        string $type = MailTypes::TYPE_ALL
+    ): bool {
+        $transportInstance = $this->getTransport($transport);
         $mailRendered = null !== $template
             ? $this->templater->render($template, $variables, $type)
             : null;
 
-        $preEvent = new FilterPreSendEvent($transportName, $message, $mailRendered);
+        $preEvent = new FilterPreSendEvent($transport, $message, $mailRendered);
         $this->dispatcher->dispatch(MailerEvents::TRANSPORT_PRE_SEND, $preEvent);
 
-        $res = $transport->send($preEvent->getMessage(), $preEvent->getMailRendered());
+        $res = $transportInstance->send($preEvent->getMessage(), $preEvent->getMailRendered());
 
-        $postEvent = new FilterPostSendEvent($res, $transportName, $message, $mailRendered);
+        $postEvent = new FilterPostSendEvent($res, $transport, $message, $mailRendered);
         $this->dispatcher->dispatch(MailerEvents::TRANSPORT_POST_SEND, $postEvent);
 
         return $res;

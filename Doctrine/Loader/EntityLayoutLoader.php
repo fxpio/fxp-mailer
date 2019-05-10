@@ -14,6 +14,7 @@ namespace Fxp\Component\Mailer\Doctrine\Loader;
 use Fxp\Component\Mailer\Doctrine\Loader\Traits\EntityLoaderTrait;
 use Fxp\Component\Mailer\Exception\UnknownLayoutException;
 use Fxp\Component\Mailer\Loader\LayoutLoaderInterface;
+use Fxp\Component\Mailer\Model\LayoutInterface;
 
 /**
  * Entity layout loader.
@@ -27,9 +28,10 @@ class EntityLayoutLoader implements LayoutLoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function load($name)
+    public function load(string $name): LayoutInterface
     {
         $repo = $this->om->getRepository($this->class);
+        /** @var null|LayoutInterface $layout */
         $layout = $repo->findOneBy([
             'name' => $name,
             'enabled' => true,

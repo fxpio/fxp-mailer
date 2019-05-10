@@ -42,7 +42,7 @@ final class SwiftMailerTransportTest extends TestCase
 
     public function testGetName(): void
     {
-        $this->assertSame('swiftmailer', $this->transport->getName());
+        $this->assertSame('email', $this->transport->getName());
     }
 
     public function testInvalidType(): void

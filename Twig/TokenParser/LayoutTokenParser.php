@@ -14,6 +14,7 @@ namespace Fxp\Component\Mailer\Twig\TokenParser;
 use Fxp\Component\Mailer\Twig\Node\ParentLayoutNode;
 use Twig\Node\EmbedNode;
 use Twig\Node\ModuleNode;
+use Twig\Node\Node;
 use Twig\Token;
 use Twig\TokenParser\IncludeTokenParser;
 
@@ -27,7 +28,7 @@ class LayoutTokenParser extends IncludeTokenParser
     /**
      * {@inheritdoc}
      */
-    public function parse(Token $token)
+    public function parse(Token $token): Node
     {
         $stream = $this->parser->getStream();
 
@@ -63,12 +64,12 @@ class LayoutTokenParser extends IncludeTokenParser
      *
      * @return bool
      */
-    public function decideBlockEnd(Token $token)
+    public function decideBlockEnd(Token $token): bool
     {
         return $token->test('endmailer_layout');
     }
 
-    public function getTag()
+    public function getTag(): string
     {
         return 'mailer_layout';
     }

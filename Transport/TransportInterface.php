@@ -26,7 +26,7 @@ interface TransportInterface
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Send a mail.
@@ -40,7 +40,7 @@ interface TransportInterface
      *
      * @return bool
      */
-    public function send($message, MailRenderedInterface $mailRendered = null);
+    public function send($message, ?MailRenderedInterface $mailRendered = null): bool;
 
     /**
      * Validate the message.

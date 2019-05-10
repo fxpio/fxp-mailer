@@ -23,14 +23,14 @@ interface TemplateFileInterface
      *
      * @param string $file
      *
-     * @return self
+     * @return static
      */
-    public function setFile($file);
+    public function setFile(?string $file);
 
     /**
      * Get the file name.
      *
      * @return string
      */
-    public function getFile();
+    public function getFile(): ?string;
 }

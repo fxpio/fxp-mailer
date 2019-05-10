@@ -34,7 +34,7 @@ abstract class TranslationUtil
      *
      * @return LayoutInterface
      */
-    public static function translateLayout(LayoutInterface $template, $locale, TranslatorInterface $translator = null)
+    public static function translateLayout(LayoutInterface $template, string $locale, ?TranslatorInterface $translator = null): LayoutInterface
     {
         if (null === $template->getTranslationDomain()) {
             $template = $template->getTranslation($locale);
@@ -54,7 +54,7 @@ abstract class TranslationUtil
      *
      * @return MailInterface
      */
-    public static function translateMail(MailInterface $template, $locale, TranslatorInterface $translator = null)
+    public static function translateMail(MailInterface $template, string $locale, ?TranslatorInterface $translator = null): MailInterface
     {
         if (null === $template->getTranslationDomain()) {
             $template = $template->getTranslation($locale);
@@ -73,7 +73,7 @@ abstract class TranslationUtil
      *
      * @return bool
      */
-    public static function find($template, $locale)
+    public static function find($template, string $locale): bool
     {
         $locale = strtolower($locale);
 
@@ -120,7 +120,7 @@ abstract class TranslationUtil
      *
      * @throws
      */
-    protected static function injectValue(TemplateInterface $template, TemplateTranslationInterface $translation, $field): void
+    protected static function injectValue(TemplateInterface $template, TemplateTranslationInterface $translation, string $field): void
     {
         $setter = 'set'.ucfirst($field);
         $getter = 'get'.ucfirst($field);
@@ -163,7 +163,7 @@ abstract class TranslationUtil
      *
      * @throws
      */
-    protected static function injectTranslatorValue(TranslatorInterface $translator, TemplateInterface $template, $field): void
+    protected static function injectTranslatorValue(TranslatorInterface $translator, TemplateInterface $template, string $field): void
     {
         $setter = 'set'.ucfirst($field);
         $getter = 'get'.ucfirst($field);

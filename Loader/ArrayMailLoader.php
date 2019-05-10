@@ -55,7 +55,7 @@ class ArrayMailLoader implements MailLoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function load($name, $type = MailTypes::TYPE_ALL)
+    public function load(string $name, string $type = MailTypes::TYPE_ALL): MailInterface
     {
         if (isset($this->mails[$name]) && MailUtil::isValid($this->mails[$name], $type)) {
             return $this->mails[$name];

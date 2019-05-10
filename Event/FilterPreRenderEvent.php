@@ -42,7 +42,7 @@ class FilterPreRenderEvent extends Event
      * @param array  $variables The variables of template
      * @param string $type      The mail type defined in MailTypes::TYPE_*
      */
-    public function __construct($template, array $variables, $type)
+    public function __construct(string $template, array $variables, string $type)
     {
         $this->template = $template;
         $this->variables = $variables;
@@ -54,9 +54,9 @@ class FilterPreRenderEvent extends Event
      *
      * @param string $template The template
      *
-     * @return self
+     * @return static
      */
-    public function setTemplate($template)
+    public function setTemplate(string $template): self
     {
         $this->template = $template;
 
@@ -68,7 +68,7 @@ class FilterPreRenderEvent extends Event
      *
      * @return string
      */
-    public function getTemplate()
+    public function getTemplate(): string
     {
         return $this->template;
     }
@@ -78,9 +78,9 @@ class FilterPreRenderEvent extends Event
      *
      * @param array $variables The variables
      *
-     * @return self
+     * @return static
      */
-    public function setVariables($variables)
+    public function setVariables(array $variables): self
     {
         $this->variables = $variables;
 
@@ -92,7 +92,7 @@ class FilterPreRenderEvent extends Event
      *
      * @return array
      */
-    public function getVariables()
+    public function getVariables(): array
     {
         return $this->variables;
     }
@@ -102,9 +102,9 @@ class FilterPreRenderEvent extends Event
      *
      * @param string $type The mail type defined in MailTypes::TYPE_*
      *
-     * @return self
+     * @return static
      */
-    public function setType($type)
+    public function setType(string $type): self
     {
         $this->type = $type;
 
@@ -116,7 +116,7 @@ class FilterPreRenderEvent extends Event
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }

@@ -55,7 +55,7 @@ class ConfigMailLoader extends ArrayMailLoader
      *
      * @return MailInterface
      */
-    protected function createMail(array $config)
+    protected function createMail(array $config): MailInterface
     {
         $mail = $this->newMailInstance();
 
@@ -90,7 +90,7 @@ class ConfigMailLoader extends ArrayMailLoader
      *
      * @return MailTranslationInterface
      */
-    protected function createMailTranslation(MailInterface $mail, array $config)
+    protected function createMailTranslation(MailInterface $mail, array $config): MailTranslationInterface
     {
         $translation = $this->newMailTranslationInstance($mail);
         $translation->setLocale(ConfigUtil::getValue($config, 'locale'));
@@ -108,7 +108,7 @@ class ConfigMailLoader extends ArrayMailLoader
      *
      * @return MailInterface
      */
-    protected function newMailInstance()
+    protected function newMailInstance(): MailInterface
     {
         return new Mail();
     }
@@ -120,7 +120,7 @@ class ConfigMailLoader extends ArrayMailLoader
      *
      * @return MailTranslationInterface
      */
-    protected function newMailTranslationInstance(MailInterface $mail)
+    protected function newMailTranslationInstance(MailInterface $mail): MailTranslationInterface
     {
         return new MailTranslation($mail);
     }

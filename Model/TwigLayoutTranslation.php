@@ -29,7 +29,7 @@ class TwigLayoutTranslation extends LayoutTranslation implements TwigTemplateInt
      * @param LayoutInterface $layout The layout
      * @param null|string     $file   The file name
      */
-    public function __construct(LayoutInterface $layout, $file = null)
+    public function __construct(LayoutInterface $layout, ?string $file = null)
     {
         parent::__construct($layout);
 
@@ -40,7 +40,7 @@ class TwigLayoutTranslation extends LayoutTranslation implements TwigTemplateInt
     /**
      * {@inheritdoc}
      */
-    protected function support($file): void
+    protected function support(?string $file): void
     {
         if (null !== $file && 'twig' !== pathinfo($file, PATHINFO_EXTENSION)) {
             $msg = 'The "%s" file is not supported by the layout translation file template';

@@ -11,6 +11,7 @@
 
 namespace Fxp\Component\Mailer\Loader;
 
+use Fxp\Component\Mailer\Model\LayoutInterface;
 use Fxp\Component\Mailer\Util\ConfigUtil;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -48,7 +49,7 @@ abstract class AbstractFileLayoutLoader extends ConfigLayoutLoader
     /**
      * {@inheritdoc}
      */
-    public function load($name)
+    public function load(string $name): LayoutInterface
     {
         if (\is_array($this->resources)) {
             foreach ($this->resources as $resource) {

@@ -23,94 +23,94 @@ interface TemplateInterface
      *
      * @param string $name The name
      *
-     * @return self
+     * @return static
      */
-    public function setName($name);
+    public function setName(string $name);
 
     /**
      * Gets the unique template name.
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Set the label.
      *
      * @param null|string $label The label
      *
-     * @return self
+     * @return static
      */
-    public function setLabel($label);
+    public function setLabel(?string $label);
 
     /**
      * Get the label.
      *
      * @return null|string
      */
-    public function getLabel();
+    public function getLabel(): ?string;
 
     /**
      * Set the description.
      *
      * @param null|string $description The description
      *
-     * @return self
+     * @return static
      */
-    public function setDescription($description);
+    public function setDescription(?string $description);
 
     /**
      * Get the description.
      *
      * @return null|string
      */
-    public function getDescription();
+    public function getDescription(): ?string;
 
     /**
      * Set if the model is enabled.
      *
      * @param bool $enabled The enabled value
      *
-     * @return self
+     * @return static
      */
-    public function setEnabled($enabled);
+    public function setEnabled(bool $enabled);
 
     /**
      * Check if the model is enabled.
      *
      * @return bool
      */
-    public function isEnabled();
+    public function isEnabled(): bool;
 
     /**
      * Set the body.
      *
      * @param null|string $body The body
      *
-     * @return self
+     * @return static
      */
-    public function setBody($body);
+    public function setBody(?string $body);
 
     /**
      * Get the body.
      *
      * @return null|string
      */
-    public function getBody();
+    public function getBody(): ?string;
 
     /**
      * Set the translation domain to use the translator.
      *
      * @param null|string $domain The translation domain
      *
-     * @return self
+     * @return static
      */
-    public function setTranslationDomain($domain);
+    public function setTranslationDomain(?string $domain);
 
     /**
      * Get the translation domain to use the translator.
      *
      * @return null|string
      */
-    public function getTranslationDomain();
+    public function getTranslationDomain(): ?string;
 }

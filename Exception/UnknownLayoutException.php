@@ -23,7 +23,7 @@ class UnknownLayoutException extends UnknownTemplateException
      *
      * @param string $name The layout template name
      */
-    public function __construct($name)
+    public function __construct(string $name)
     {
         parent::__construct(sprintf('The "%s" layout template does not exist', $name));
     }

@@ -31,10 +31,9 @@ abstract class ConfigUtil
      *
      * @return mixed
      */
-    public static function getValue(array $config, $field, $default = null)
+    public static function getValue(array $config, string $field, $default = null)
     {
-        return $config[$field]
-            ?? $default;
+        return $config[$field] ?? $default;
     }
 
     /**
@@ -44,7 +43,7 @@ abstract class ConfigUtil
      *
      * @return array
      */
-    public static function formatConfig($config)
+    public static function formatConfig($config): array
     {
         if (\is_string($config)) {
             $config = ['file' => $config];
@@ -71,7 +70,7 @@ abstract class ConfigUtil
      *
      * @return array
      */
-    public static function formatTranslationConfig($config, KernelInterface $kernel)
+    public static function formatTranslationConfig($config, KernelInterface $kernel): array
     {
         $config = static::formatConfig($config);
         $config['file'] = $kernel->locateResource($config['file']);

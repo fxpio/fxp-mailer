@@ -25,53 +25,53 @@ interface MailRenderedInterface
      *
      * @return MailInterface
      */
-    public function getTemplate();
+    public function getTemplate(): MailInterface;
 
     /**
      * Set the rendered subject.
      *
      * @param null|string $subject The rendered subject
      *
-     * @return self
+     * @return static
      */
-    public function setSubject($subject);
+    public function setSubject(?string $subject);
 
     /**
      * Get the rendered subject.
      *
      * @return null|string
      */
-    public function getSubject();
+    public function getSubject(): ?string;
 
     /**
      * Set the rendered HTML body.
      *
      * @param null|string $htmlBody The rendered HTML body
      *
-     * @return self
+     * @return static
      */
-    public function setHtmlBody($htmlBody);
+    public function setHtmlBody(?string $htmlBody);
 
     /**
      * Get the rendered HTML body.
      *
      * @return null|string
      */
-    public function getHtmlBody();
+    public function getHtmlBody(): ?string;
 
     /**
      * Set the rendered body.
      *
      * @param null|string $body The rendered body
      *
-     * @return self
+     * @return static
      */
-    public function setBody($body);
+    public function setBody(?string $body);
 
     /**
      * Get the rendered body.
      *
      * @return null|string
      */
-    public function getBody();
+    public function getBody(): ?string;
 }

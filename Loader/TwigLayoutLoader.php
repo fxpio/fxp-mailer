@@ -12,6 +12,7 @@
 namespace Fxp\Component\Mailer\Loader;
 
 use Fxp\Component\Mailer\Model\LayoutInterface;
+use Fxp\Component\Mailer\Model\LayoutTranslationInterface;
 use Fxp\Component\Mailer\Model\TwigLayout;
 use Fxp\Component\Mailer\Model\TwigLayoutTranslation;
 use Fxp\Component\Mailer\Util\ConfigUtil;
@@ -26,7 +27,7 @@ class TwigLayoutLoader extends AbstractFileLayoutLoader
     /**
      * {@inheritdoc}
      */
-    protected function createLayout(array $config)
+    protected function createLayout(array $config): LayoutInterface
     {
         /** @var TwigLayout $layout */
         $layout = parent::createLayout($config);
@@ -38,7 +39,7 @@ class TwigLayoutLoader extends AbstractFileLayoutLoader
     /**
      * {@inheritdoc}
      */
-    protected function createLayoutTranslation(LayoutInterface $layout, array $config)
+    protected function createLayoutTranslation(LayoutInterface $layout, array $config): LayoutTranslationInterface
     {
         /** @var TwigLayoutTranslation $translation */
         $translation = parent::createLayoutTranslation($layout, $config);
@@ -50,7 +51,7 @@ class TwigLayoutLoader extends AbstractFileLayoutLoader
     /**
      * {@inheritdoc}
      */
-    protected function newLayoutInstance()
+    protected function newLayoutInstance(): LayoutInterface
     {
         return new TwigLayout();
     }
@@ -58,7 +59,7 @@ class TwigLayoutLoader extends AbstractFileLayoutLoader
     /**
      * {@inheritdoc}
      */
-    protected function newLayoutTranslationInstance(LayoutInterface $layout)
+    protected function newLayoutTranslationInstance(LayoutInterface $layout): LayoutTranslationInterface
     {
         return new TwigLayoutTranslation($layout);
     }

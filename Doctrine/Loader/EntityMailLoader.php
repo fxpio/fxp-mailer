@@ -15,6 +15,7 @@ use Fxp\Component\Mailer\Doctrine\Loader\Traits\EntityLoaderTrait;
 use Fxp\Component\Mailer\Exception\UnknownMailException;
 use Fxp\Component\Mailer\Loader\MailLoaderInterface;
 use Fxp\Component\Mailer\MailTypes;
+use Fxp\Component\Mailer\Model\MailInterface;
 use Fxp\Component\Mailer\Util\MailUtil;
 
 /**
@@ -29,9 +30,10 @@ class EntityMailLoader implements MailLoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function load($name, $type = MailTypes::TYPE_ALL)
+    public function load(string $name, string $type = MailTypes::TYPE_ALL): MailInterface
     {
         $repo = $this->om->getRepository($this->class);
+        /** @var null|MailInterface $mail */
         $mail = $repo->findOneBy([
             'name' => $name,
             'enabled' => true,

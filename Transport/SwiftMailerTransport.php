@@ -39,15 +39,15 @@ class SwiftMailerTransport implements TransportInterface
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
-        return 'swiftmailer';
+        return 'email';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function send($message, MailRenderedInterface $mailRendered = null)
+    public function send($message, ?MailRenderedInterface $mailRendered = null): bool
     {
         $this->validate($message);
 

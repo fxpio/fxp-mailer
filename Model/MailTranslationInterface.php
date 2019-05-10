@@ -23,37 +23,37 @@ interface MailTranslationInterface extends TemplateTranslationInterface
      *
      * @return MailInterface
      */
-    public function getMail();
+    public function getMail(): MailInterface;
 
     /**
      * Set the subject.
      *
      * @param null|string $subject The subject
      *
-     * @return self
+     * @return static
      */
-    public function setSubject($subject);
+    public function setSubject(?string $subject);
 
     /**
      * Get the subject.
      *
      * @return null|string
      */
-    public function getSubject();
+    public function getSubject(): ?string;
 
     /**
      * Set the html body.
      *
      * @param null|string $htmlBody The html body
      *
-     * @return self
+     * @return static
      */
-    public function setHtmlBody($htmlBody);
+    public function setHtmlBody(?string $htmlBody);
 
     /**
      * Get the html body.
      *
      * @return null|string
      */
-    public function getHtmlBody();
+    public function getHtmlBody(): ?string;
 }

@@ -12,6 +12,7 @@
 namespace Fxp\Component\Mailer\Loader;
 
 use Fxp\Component\Mailer\Exception\UnknownLayoutException;
+use Fxp\Component\Mailer\Model\LayoutInterface;
 
 /**
  * Layout loader chain.
@@ -52,7 +53,7 @@ class LayoutLoaderChain implements LayoutLoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function load($name)
+    public function load(string $name): LayoutInterface
     {
         foreach ($this->loaders as $loader) {
             try {

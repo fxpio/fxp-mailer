@@ -67,7 +67,7 @@ class MailTranslation implements MailTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function getMail()
+    public function getMail(): MailInterface
     {
         return $this->mail;
     }
@@ -75,7 +75,7 @@ class MailTranslation implements MailTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function setLocale($locale)
+    public function setLocale(?string $locale): self
     {
         $this->locale = $locale;
 
@@ -85,7 +85,7 @@ class MailTranslation implements MailTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function getLocale()
+    public function getLocale(): ?string
     {
         return $this->locale;
     }
@@ -93,7 +93,7 @@ class MailTranslation implements MailTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function setLabel($label)
+    public function setLabel(?string $label): self
     {
         $this->label = $label;
 
@@ -103,7 +103,7 @@ class MailTranslation implements MailTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function getLabel()
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -111,7 +111,7 @@ class MailTranslation implements MailTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -121,7 +121,7 @@ class MailTranslation implements MailTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -129,7 +129,7 @@ class MailTranslation implements MailTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function setSubject($subject)
+    public function setSubject(?string $subject): self
     {
         $this->subject = $subject;
 
@@ -139,7 +139,7 @@ class MailTranslation implements MailTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function getSubject()
+    public function getSubject(): ?string
     {
         return $this->subject;
     }
@@ -147,7 +147,7 @@ class MailTranslation implements MailTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function setHtmlBody($htmlBody)
+    public function setHtmlBody(?string $htmlBody): self
     {
         $this->htmlBody = $htmlBody;
 
@@ -157,7 +157,7 @@ class MailTranslation implements MailTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function getHtmlBody()
+    public function getHtmlBody(): ?string
     {
         return $this->htmlBody;
     }
@@ -165,7 +165,7 @@ class MailTranslation implements MailTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function setBody($body)
+    public function setBody(?string $body): self
     {
         $this->body = $body;
 
@@ -175,7 +175,7 @@ class MailTranslation implements MailTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function getBody()
+    public function getBody(): ?string
     {
         return $this->body;
     }

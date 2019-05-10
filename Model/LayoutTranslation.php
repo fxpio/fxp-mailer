@@ -57,7 +57,7 @@ class LayoutTranslation implements LayoutTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function getLayout()
+    public function getLayout(): LayoutInterface
     {
         return $this->layout;
     }
@@ -65,7 +65,7 @@ class LayoutTranslation implements LayoutTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function setLocale($locale)
+    public function setLocale(?string $locale): self
     {
         $this->locale = $locale;
 
@@ -75,7 +75,7 @@ class LayoutTranslation implements LayoutTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function getLocale()
+    public function getLocale(): ?string
     {
         return $this->locale;
     }
@@ -83,7 +83,7 @@ class LayoutTranslation implements LayoutTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function setLabel($label)
+    public function setLabel(?string $label): self
     {
         $this->label = $label;
 
@@ -93,7 +93,7 @@ class LayoutTranslation implements LayoutTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function getLabel()
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -101,7 +101,7 @@ class LayoutTranslation implements LayoutTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -111,7 +111,7 @@ class LayoutTranslation implements LayoutTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -119,7 +119,7 @@ class LayoutTranslation implements LayoutTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function setBody($body)
+    public function setBody(?string $body): self
     {
         $this->body = $body;
 
@@ -129,7 +129,7 @@ class LayoutTranslation implements LayoutTranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function getBody()
+    public function getBody(): ?string
     {
         return $this->body;
     }

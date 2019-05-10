@@ -29,7 +29,7 @@ abstract class MailUtil
      *
      * @return bool
      */
-    public static function isValid(MailInterface $mail, $type)
+    public static function isValid(MailInterface $mail, string $type): bool
     {
         $validTypes = static::getValidTypes($type);
 
@@ -43,7 +43,7 @@ abstract class MailUtil
      *
      * @return string[]
      */
-    public static function getValidTypes($type)
+    public static function getValidTypes(string $type): array
     {
         if (MailTypes::TYPE_PRINT === $type) {
             return [MailTypes::TYPE_ALL, MailTypes::TYPE_PRINT];
@@ -62,7 +62,7 @@ abstract class MailUtil
      *
      * @return bool
      */
-    public static function isRootBody($htmlBody)
+    public static function isRootBody(string $htmlBody): bool
     {
         return preg_match('%(<html[^>]*>)%im', $htmlBody, $regs);
     }

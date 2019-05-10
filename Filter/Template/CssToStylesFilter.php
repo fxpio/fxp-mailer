@@ -37,7 +37,7 @@ class CssToStylesFilter implements TemplateFilterInterface
     /**
      * {@inheritdoc}
      */
-    public function supports(MailRenderedInterface $mailRendered)
+    public function supports(MailRenderedInterface $mailRendered): bool
     {
         $validTypes = MailUtil::getValidTypes($mailRendered->getTemplate()->getType());
 

@@ -26,7 +26,7 @@ interface MailerInterface
      *
      * @param TransportInterface $transport The mail transport
      *
-     * @return self
+     * @return static
      */
     public function addTransport(TransportInterface $transport);
 
@@ -37,7 +37,7 @@ interface MailerInterface
      *
      * @return bool
      */
-    public function hasTransport($name);
+    public function hasTransport(string $name): bool;
 
     /**
      * Get the mail transport.
@@ -48,7 +48,7 @@ interface MailerInterface
      *
      * @return TransportInterface
      */
-    public function getTransport($name);
+    public function getTransport(string $name): TransportInterface;
 
     /**
      * Send the message with a specific transport.
@@ -61,5 +61,5 @@ interface MailerInterface
      *
      * @return bool
      */
-    public function send($transport, $message, $template = null, array $variables = [], $type = MailTypes::TYPE_ALL);
+    public function send(string $transport, $message, ?string $template = null, array $variables = [], string $type = MailTypes::TYPE_ALL): bool;
 }

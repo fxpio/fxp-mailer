@@ -24,6 +24,8 @@ interface MailTemplaterInterface
      * Set the translator.
      *
      * @param TranslatorInterface $translator The translator
+     *
+     * @return static
      */
     public function setTranslator(TranslatorInterface $translator);
 
@@ -32,16 +34,16 @@ interface MailTemplaterInterface
      *
      * @param string $locale The locale
      *
-     * @return self
+     * @return static
      */
-    public function setLocale($locale);
+    public function setLocale(string $locale);
 
     /**
      * Get the locale.
      *
      * @return string
      */
-    public function getLocale();
+    public function getLocale(): string;
 
     /**
      * Render the mail template.
@@ -52,5 +54,5 @@ interface MailTemplaterInterface
      *
      * @return MailRenderedInterface
      */
-    public function render($template, array $variables = [], $type = MailTypes::TYPE_ALL);
+    public function render(string $template, array $variables = [], string $type = MailTypes::TYPE_ALL): MailRenderedInterface;
 }

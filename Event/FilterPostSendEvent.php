@@ -33,7 +33,7 @@ class FilterPostSendEvent extends AbstractFilterSendEvent
      * @param mixed                      $message      The message for the specific transport
      * @param null|MailRenderedInterface $mailRendered The mail rendered
      */
-    public function __construct($result, $transport, $message, MailRenderedInterface $mailRendered = null)
+    public function __construct($result, $transport, $message, ?MailRenderedInterface $mailRendered = null)
     {
         parent::__construct($transport, $message, $mailRendered);
 
@@ -45,7 +45,7 @@ class FilterPostSendEvent extends AbstractFilterSendEvent
      *
      * @return bool
      */
-    public function isSend()
+    public function isSend(): bool
     {
         return $this->result;
     }

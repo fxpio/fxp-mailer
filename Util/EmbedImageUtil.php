@@ -27,7 +27,7 @@ abstract class EmbedImageUtil
      *
      * @return string
      */
-    public static function getLocalPath($path, $webDir, $hostPattern = '/(.*)+/')
+    public static function getLocalPath(string $path, string $webDir, string $hostPattern = '/(.*)+/'): string
     {
         if (false !== strpos($path, '://')) {
             $url = parse_url($path);
@@ -52,10 +52,10 @@ abstract class EmbedImageUtil
      *
      * @return string
      */
-    protected static function getExistingPath($path, $webDir, $fallbackPath = null)
+    protected static function getExistingPath(string $path, string $webDir, ?string $fallbackPath = null): string
     {
         return file_exists($webDir.'/'.$path)
             ? realpath($webDir.'/'.$path)
-            : (null !== $fallbackPath ? $fallbackPath : $path);
+            : $fallbackPath ?? $path;
     }
 }

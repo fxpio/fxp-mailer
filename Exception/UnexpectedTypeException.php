@@ -24,7 +24,7 @@ class UnexpectedTypeException extends InvalidArgumentException
      * @param mixed  $value        The value given
      * @param string $expectedType The expected type
      */
-    public function __construct($value, $expectedType)
+    public function __construct($value, string $expectedType)
     {
         $msg = sprintf('Expected argument of type "%s", "%s" given', $expectedType, \is_object($value) ? \get_class((object) $value) : \gettype($value));
 

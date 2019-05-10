@@ -24,7 +24,7 @@ class UnknownMailException extends UnknownTemplateException
      * @param string $name The mail template name
      * @param string $type The mail type defined in MailTypes::TYPE_*
      */
-    public function __construct($name, $type)
+    public function __construct(string $name, string $type)
     {
         parent::__construct(sprintf('The "%s" mail template does not exist with the "%s" type', $name, $type));
     }

@@ -75,15 +75,17 @@ class MailTemplater implements MailTemplaterInterface
     /**
      * {@inheritdoc}
      */
-    public function setTranslator(TranslatorInterface $translator): void
+    public function setTranslator(TranslatorInterface $translator): self
     {
         $this->translator = $translator;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setLocale($locale)
+    public function setLocale(string $locale): self
     {
         $this->locale = $locale;
 
@@ -93,7 +95,7 @@ class MailTemplater implements MailTemplaterInterface
     /**
      * {@inheritdoc}
      */
-    public function getLocale()
+    public function getLocale(): string
     {
         return $this->locale;
     }
@@ -101,7 +103,7 @@ class MailTemplater implements MailTemplaterInterface
     /**
      * {@inheritdoc}
      */
-    public function render($template, array $variables = [], $type = MailTypes::TYPE_ALL)
+    public function render(string $template, array $variables = [], string $type = MailTypes::TYPE_ALL): MailRenderedInterface
     {
         $preEvent = new FilterPreRenderEvent($template, $variables, $type);
         $this->dispatcher->dispatch(MailerEvents::TEMPLATE_PRE_RENDER, $preEvent);
@@ -121,9 +123,11 @@ class MailTemplater implements MailTemplaterInterface
      * @param FilterPreRenderEvent $preEvent The template pre event
      * @param MailInterface        $mail     The mail
      *
+     * @throws
+     *
      * @return MailRendered
      */
-    protected function doRender(FilterPreRenderEvent $preEvent, MailInterface $mail)
+    protected function doRender(FilterPreRenderEvent $preEvent, MailInterface $mail): MailRendered
     {
         $variables = $preEvent->getVariables();
         $variables['_mail_type'] = $mail->getType();
@@ -152,7 +156,7 @@ class MailTemplater implements MailTemplaterInterface
      *
      * @return MailInterface
      */
-    protected function getTranslatedMail($template, $type)
+    protected function getTranslatedMail(string $template, string $type): MailInterface
     {
         $mail = $this->loader->load($template, $type);
 
@@ -166,7 +170,7 @@ class MailTemplater implements MailTemplaterInterface
      *
      * @return null|LayoutInterface
      */
-    protected function getTranslatedLayout(MailInterface $mail)
+    protected function getTranslatedLayout(MailInterface $mail): ?LayoutInterface
     {
         $layout = $mail->getLayout();
 
@@ -185,22 +189,25 @@ class MailTemplater implements MailTemplaterInterface
      * @param array                         $variables        The variables of template
      *
      * @throws \Exception
+     * @throws \Throwable
      *
-     * @return string The rendered template
+     * @return null|string The rendered template
      */
-    protected function renderTemplate($template, $templateInstance, array $variables = [])
+    protected function renderTemplate(string $template, $templateInstance, array $variables = []): ?string
     {
+        $rendered = null;
+
         if (null !== $template) {
             if ($templateInstance instanceof TwigTemplateInterface) {
                 $tpl = $this->renderer->load($templateInstance->getFile());
-                $template = $tpl->renderBlock($template, $variables);
-                $template = '' === $template ? null : $template;
+                $rendered = $tpl->renderBlock($template, $variables);
+                $rendered = '' === $rendered ? null : $rendered;
             } else {
-                $tpl = $this->renderer->createTemplate($template);
-                $template = $tpl->render($variables);
+                $tpl = $this->renderer->createTemplate($rendered);
+                $rendered = $tpl->render($variables);
             }
         }
 
-        return $template;
+        return $rendered;
     }
 }

@@ -46,7 +46,7 @@ abstract class AbstractTemplate implements TemplateInterface
     /**
      * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -56,7 +56,7 @@ abstract class AbstractTemplate implements TemplateInterface
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -64,7 +64,7 @@ abstract class AbstractTemplate implements TemplateInterface
     /**
      * {@inheritdoc}
      */
-    public function setLabel($label)
+    public function setLabel(?string $label): self
     {
         $this->label = $label;
 
@@ -74,7 +74,7 @@ abstract class AbstractTemplate implements TemplateInterface
     /**
      * {@inheritdoc}
      */
-    public function getLabel()
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -82,7 +82,7 @@ abstract class AbstractTemplate implements TemplateInterface
     /**
      * {@inheritdoc}
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -92,7 +92,7 @@ abstract class AbstractTemplate implements TemplateInterface
     /**
      * {@inheritdoc}
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -100,9 +100,9 @@ abstract class AbstractTemplate implements TemplateInterface
     /**
      * {@inheritdoc}
      */
-    public function setEnabled($enabled)
+    public function setEnabled(bool $enabled): self
     {
-        $this->enabled = (bool) $enabled;
+        $this->enabled = $enabled;
 
         return $this;
     }
@@ -110,7 +110,7 @@ abstract class AbstractTemplate implements TemplateInterface
     /**
      * {@inheritdoc}
      */
-    public function isEnabled()
+    public function isEnabled(): bool
     {
         return $this->enabled;
     }
@@ -118,7 +118,7 @@ abstract class AbstractTemplate implements TemplateInterface
     /**
      * {@inheritdoc}
      */
-    public function setBody($body)
+    public function setBody(?string $body): self
     {
         $this->body = $body;
 
@@ -128,7 +128,7 @@ abstract class AbstractTemplate implements TemplateInterface
     /**
      * {@inheritdoc}
      */
-    public function getBody()
+    public function getBody(): ?string
     {
         return $this->body;
     }

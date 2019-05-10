@@ -12,6 +12,7 @@
 namespace Fxp\Component\Mailer\Loader;
 
 use Fxp\Component\Mailer\MailTypes;
+use Fxp\Component\Mailer\Model\MailInterface;
 use Fxp\Component\Mailer\Util\ConfigUtil;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -50,7 +51,7 @@ abstract class AbstractFileMailLoader extends ConfigMailLoader
     /**
      * {@inheritdoc}
      */
-    public function load($name, $type = MailTypes::TYPE_ALL)
+    public function load(string $name, string $type = MailTypes::TYPE_ALL): MailInterface
     {
         if (\is_array($this->resources)) {
             foreach ($this->resources as $resource) {

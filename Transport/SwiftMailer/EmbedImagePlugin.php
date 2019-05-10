@@ -36,7 +36,7 @@ class EmbedImagePlugin extends AbstractPlugin
      * @param null|string $webDir      The web directory
      * @param string      $hostPattern The pattern of allowed host
      */
-    public function __construct($webDir = null, $hostPattern = '/(.*)+/')
+    public function __construct(?string $webDir = null, $hostPattern = '/(.*)+/')
     {
         $this->webDir = (string) $webDir;
         $this->hostPattern = $hostPattern;

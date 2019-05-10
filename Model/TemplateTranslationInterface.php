@@ -21,64 +21,64 @@ interface TemplateTranslationInterface
     /**
      * Set the locale.
      *
-     * @param string $locale The locale
+     * @param null|string $locale The locale
      *
-     * @return self
+     * @return static
      */
-    public function setLocale($locale);
+    public function setLocale(?string $locale);
 
     /**
      * Get the locale.
      *
      * @return string
      */
-    public function getLocale();
+    public function getLocale(): ?string;
 
     /**
      * Set the label.
      *
      * @param null|string $label The label
      *
-     * @return self
+     * @return static
      */
-    public function setLabel($label);
+    public function setLabel(?string $label);
 
     /**
      * Get the label.
      *
      * @return null|string
      */
-    public function getLabel();
+    public function getLabel(): ?string;
 
     /**
      * Set the description.
      *
      * @param null|string $description The description
      *
-     * @return self
+     * @return static
      */
-    public function setDescription($description);
+    public function setDescription(?string $description);
 
     /**
      * Get the description.
      *
      * @return null|string
      */
-    public function getDescription();
+    public function getDescription(): ?string;
 
     /**
      * Set the body.
      *
      * @param null|string $body The body
      *
-     * @return self
+     * @return static
      */
-    public function setBody($body);
+    public function setBody(?string $body);
 
     /**
      * Get the body.
      *
      * @return null|string
      */
-    public function getBody();
+    public function getBody(): ?string;
 }

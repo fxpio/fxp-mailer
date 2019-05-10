@@ -29,7 +29,7 @@ class TwigMailTranslation extends MailTranslation implements TwigTemplateInterfa
      * @param MailInterface $mail The mail
      * @param null|string   $file The file name
      */
-    public function __construct(MailInterface $mail, $file = null)
+    public function __construct(MailInterface $mail, ?string $file = null)
     {
         parent::__construct($mail);
 
@@ -42,7 +42,7 @@ class TwigMailTranslation extends MailTranslation implements TwigTemplateInterfa
     /**
      * {@inheritdoc}
      */
-    protected function support($file): void
+    protected function support(?string $file): void
     {
         if (null !== $file && 'twig' !== pathinfo($file, PATHINFO_EXTENSION)) {
             $msg = 'The "%s" file is not supported by the mail translation file template';

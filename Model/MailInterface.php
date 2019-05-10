@@ -11,6 +11,8 @@
 
 namespace Fxp\Component\Mailer\Model;
 
+use Doctrine\Common\Collections\Collection;
+
 /**
  * Interface for the mail template.
  *
@@ -23,69 +25,69 @@ interface MailInterface extends TemplateInterface
      *
      * @param string $type The mail type
      *
-     * @return self
+     * @return static
      */
-    public function setType($type);
+    public function setType(string $type);
 
     /**
      * Get the mail type.
      *
      * @return string
      */
-    public function getType();
+    public function getType(): string;
 
     /**
      * Set the subject.
      *
      * @param null|string $subject The subject
      *
-     * @return self
+     * @return static
      */
-    public function setSubject($subject);
+    public function setSubject(?string $subject);
 
     /**
      * Get the subject.
      *
      * @return null|string
      */
-    public function getSubject();
+    public function getSubject(): ?string;
 
     /**
      * Set the html body.
      *
      * @param null|string $htmlBody The html body
      *
-     * @return self
+     * @return static
      */
-    public function setHtmlBody($htmlBody);
+    public function setHtmlBody(?string $htmlBody);
 
     /**
      * Get the html body.
      *
      * @return null|string
      */
-    public function getHtmlBody();
+    public function getHtmlBody(): ?string;
 
     /**
      * Set the layout.
      *
      * @param LayoutInterface $layout The layout
      *
-     * @return self
+     * @return static
      */
-    public function setLayout(LayoutInterface $layout);
+    public function setLayout(?LayoutInterface $layout);
 
     /**
      * Get the layout.
      *
      * @return null|LayoutInterface
      */
-    public function getLayout();
+    public function getLayout(): ?LayoutInterface;
 
     /**
      * Get the mail translations.
      *
-     * @return \Doctrine\Common\Collections\Collection|MailTranslationInterface[]
+     * @return array|Collection|MailTranslationInterface[]
      */
     public function getTranslations();
 
@@ -94,7 +96,7 @@ interface MailInterface extends TemplateInterface
      *
      * @param MailTranslationInterface $translation The mail translation
      *
-     * @return self
+     * @return static
      */
     public function addTranslation(MailTranslationInterface $translation);
 
@@ -103,7 +105,7 @@ interface MailInterface extends TemplateInterface
      *
      * @param MailTranslationInterface $translation The mail translation
      *
-     * @return self
+     * @return static
      */
     public function removeTranslation(MailTranslationInterface $translation);
 
@@ -112,7 +114,7 @@ interface MailInterface extends TemplateInterface
      *
      * @param string $locale The locale
      *
-     * @return self
+     * @return static
      */
-    public function getTranslation($locale);
+    public function getTranslation(string $locale);
 }

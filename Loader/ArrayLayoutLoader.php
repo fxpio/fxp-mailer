@@ -53,7 +53,7 @@ class ArrayLayoutLoader implements LayoutLoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function load($name)
+    public function load(string $name): LayoutInterface
     {
         if (isset($this->layouts[$name]) && $this->layouts[$name]->isEnabled()) {
             return $this->layouts[$name];

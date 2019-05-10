@@ -23,7 +23,7 @@ interface FilterRegistryInterface
      *
      * @param TemplateFilterInterface $filter The template filter
      *
-     * @return self
+     * @return static
      */
     public function addTemplateFilter(TemplateFilterInterface $filter);
 
@@ -32,14 +32,14 @@ interface FilterRegistryInterface
      *
      * @return TemplateFilterInterface[]
      */
-    public function getTemplateFilters();
+    public function getTemplateFilters(): array;
 
     /**
      * Add the transport filter.
      *
      * @param TransportFilterInterface $filter The transport filter
      *
-     * @return self
+     * @return static
      */
     public function addTransportFilter(TransportFilterInterface $filter);
 
@@ -48,5 +48,5 @@ interface FilterRegistryInterface
      *
      * @return TransportFilterInterface[]
      */
-    public function getTransportFilters();
+    public function getTransportFilters(): array;
 }

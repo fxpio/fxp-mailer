@@ -12,6 +12,7 @@
 namespace Fxp\Component\Mailer\Loader;
 
 use Fxp\Component\Mailer\Model\MailInterface;
+use Fxp\Component\Mailer\Model\MailTranslationInterface;
 use Fxp\Component\Mailer\Model\TwigMail;
 use Fxp\Component\Mailer\Model\TwigMailTranslation;
 use Fxp\Component\Mailer\Util\ConfigUtil;
@@ -26,7 +27,7 @@ class TwigMailLoader extends AbstractFileMailLoader
     /**
      * {@inheritdoc}
      */
-    protected function createMail(array $config)
+    protected function createMail(array $config): MailInterface
     {
         /** @var TwigMail $mail */
         $mail = parent::createMail($config);
@@ -38,7 +39,7 @@ class TwigMailLoader extends AbstractFileMailLoader
     /**
      * {@inheritdoc}
      */
-    protected function createMailTranslation(MailInterface $mail, array $config)
+    protected function createMailTranslation(MailInterface $mail, array $config): MailTranslationInterface
     {
         /** @var TwigMailTranslation $translation */
         $translation = parent::createMailTranslation($mail, $config);
@@ -50,7 +51,7 @@ class TwigMailLoader extends AbstractFileMailLoader
     /**
      * {@inheritdoc}
      */
-    protected function newMailInstance()
+    protected function newMailInstance(): MailInterface
     {
         return new TwigMail();
     }
@@ -58,7 +59,7 @@ class TwigMailLoader extends AbstractFileMailLoader
     /**
      * {@inheritdoc}
      */
-    protected function newMailTranslationInstance(MailInterface $mail)
+    protected function newMailTranslationInstance(MailInterface $mail): MailTranslationInterface
     {
         return new TwigMailTranslation($mail);
     }

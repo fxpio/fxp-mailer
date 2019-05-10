@@ -47,7 +47,7 @@ class ConfigLayoutLoader extends ArrayLayoutLoader
      *
      * @return LayoutInterface
      */
-    protected function createLayout(array $config)
+    protected function createLayout(array $config): LayoutInterface
     {
         $layout = $this->newLayoutInstance();
 
@@ -73,9 +73,9 @@ class ConfigLayoutLoader extends ArrayLayoutLoader
      * @param LayoutInterface $layout The layout
      * @param array           $config The config of layout translation
      *
-     * @return LayoutTranslation
+     * @return LayoutTranslationInterface
      */
-    protected function createLayoutTranslation(LayoutInterface $layout, array $config)
+    protected function createLayoutTranslation(LayoutInterface $layout, array $config): LayoutTranslationInterface
     {
         $translation = $this->newLayoutTranslationInstance($layout);
         $translation->setLocale(ConfigUtil::getValue($config, 'locale'));
@@ -91,7 +91,7 @@ class ConfigLayoutLoader extends ArrayLayoutLoader
      *
      * @return LayoutInterface
      */
-    protected function newLayoutInstance()
+    protected function newLayoutInstance(): LayoutInterface
     {
         return new Layout();
     }
@@ -103,7 +103,7 @@ class ConfigLayoutLoader extends ArrayLayoutLoader
      *
      * @return LayoutTranslationInterface
      */
-    protected function newLayoutTranslationInstance(LayoutInterface $layout)
+    protected function newLayoutTranslationInstance(LayoutInterface $layout): LayoutTranslationInterface
     {
         return new LayoutTranslation($layout);
     }

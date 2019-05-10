@@ -11,6 +11,8 @@
 
 namespace Fxp\Component\Mailer\Model\Traits;
 
+use Fxp\Component\Mailer\Model\LayoutInterface;
+use Fxp\Component\Mailer\Model\MailInterface;
 use Fxp\Component\Mailer\Util\TranslationUtil;
 
 /**
@@ -33,7 +35,7 @@ trait TranslationTrait
     /**
      * {@inheritdoc}
      */
-    public function getTranslation($locale)
+    public function getTranslation(string $locale): self
     {
         $locale = strtolower($locale);
 
@@ -41,7 +43,7 @@ trait TranslationTrait
             return $this->cacheTranslation[$locale];
         }
 
-        /** @var \Fxp\Component\Mailer\Model\LayoutInterface|\Fxp\Component\Mailer\Model\MailInterface|TranslationTrait $this */
+        /** @var LayoutInterface|MailInterface|TranslationTrait $this */
         $self = clone $this;
 
         if (!TranslationUtil::find($self, $locale) && false !== ($pos = strrpos($locale, '_'))) {
@@ -56,7 +58,7 @@ trait TranslationTrait
     /**
      * {@inheritdoc}
      */
-    public function setTranslationDomain($domain)
+    public function setTranslationDomain(?string $domain): self
     {
         $this->translationDomain = $domain;
 
@@ -66,7 +68,7 @@ trait TranslationTrait
     /**
      * {@inheritdoc}
      */
-    public function getTranslationDomain()
+    public function getTranslationDomain(): ?string
     {
         return $this->translationDomain;
     }

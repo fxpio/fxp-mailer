@@ -23,5 +23,5 @@ interface LayoutTranslationInterface extends TemplateTranslationInterface
      *
      * @return LayoutInterface
      */
-    public function getLayout();
+    public function getLayout(): LayoutInterface;
 }

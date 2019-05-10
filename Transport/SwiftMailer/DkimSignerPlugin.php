@@ -40,7 +40,7 @@ class DkimSignerPlugin extends AbstractPlugin
      * @param string $domain         The DKIM domain
      * @param string $selector       The DKIM selector
      */
-    public function __construct($privateKeyPath, $domain, $selector)
+    public function __construct(string $privateKeyPath, string $domain, string $selector)
     {
         $this->privateKeyPath = $privateKeyPath;
         $this->domain = $domain;
@@ -79,7 +79,7 @@ class DkimSignerPlugin extends AbstractPlugin
      *
      * @return string
      */
-    protected function getPrivateKey()
+    protected function getPrivateKey(): string
     {
         try {
             $privateKey = file_get_contents($this->privateKeyPath);

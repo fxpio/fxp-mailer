@@ -13,6 +13,7 @@ namespace Fxp\Component\Mailer\Loader;
 
 use Fxp\Component\Mailer\Exception\UnknownMailException;
 use Fxp\Component\Mailer\MailTypes;
+use Fxp\Component\Mailer\Model\MailInterface;
 
 /**
  * Mail loader chain.
@@ -53,7 +54,7 @@ class MailLoaderChain implements MailLoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function load($name, $type = MailTypes::TYPE_ALL)
+    public function load(string $name, string $type = MailTypes::TYPE_ALL): MailInterface
     {
         foreach ($this->loaders as $loader) {
             try {

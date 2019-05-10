@@ -52,7 +52,7 @@ class Mail extends AbstractTemplate implements MailInterface
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -60,7 +60,7 @@ class Mail extends AbstractTemplate implements MailInterface
     /**
      * {@inheritdoc}
      */
-    public function setType($type)
+    public function setType(string $type): self
     {
         $this->type = $type;
 
@@ -70,7 +70,7 @@ class Mail extends AbstractTemplate implements MailInterface
     /**
      * {@inheritdoc}
      */
-    public function setSubject($subject)
+    public function setSubject(?string $subject): self
     {
         $this->subject = $subject;
 
@@ -80,7 +80,7 @@ class Mail extends AbstractTemplate implements MailInterface
     /**
      * {@inheritdoc}
      */
-    public function getSubject()
+    public function getSubject(): ?string
     {
         return $this->subject;
     }
@@ -88,7 +88,7 @@ class Mail extends AbstractTemplate implements MailInterface
     /**
      * {@inheritdoc}
      */
-    public function setHtmlBody($htmlBody)
+    public function setHtmlBody(?string $htmlBody): self
     {
         $this->htmlBody = $htmlBody;
 
@@ -98,7 +98,7 @@ class Mail extends AbstractTemplate implements MailInterface
     /**
      * {@inheritdoc}
      */
-    public function getHtmlBody()
+    public function getHtmlBody(): ?string
     {
         return $this->htmlBody;
     }
@@ -106,7 +106,7 @@ class Mail extends AbstractTemplate implements MailInterface
     /**
      * {@inheritdoc}
      */
-    public function setLayout(LayoutInterface $layout)
+    public function setLayout(?LayoutInterface $layout): self
     {
         $this->layout = $layout;
 
@@ -116,7 +116,7 @@ class Mail extends AbstractTemplate implements MailInterface
     /**
      * {@inheritdoc}
      */
-    public function getLayout()
+    public function getLayout(): LayoutInterface
     {
         return $this->layout;
     }
@@ -132,7 +132,7 @@ class Mail extends AbstractTemplate implements MailInterface
     /**
      * {@inheritdoc}
      */
-    public function addTranslation(MailTranslationInterface $translation)
+    public function addTranslation(MailTranslationInterface $translation): self
     {
         if ($this->translations instanceof Collection) {
             if (!$this->translations->contains($translation)) {
@@ -148,7 +148,7 @@ class Mail extends AbstractTemplate implements MailInterface
     /**
      * {@inheritdoc}
      */
-    public function removeTranslation(MailTranslationInterface $translation)
+    public function removeTranslation(MailTranslationInterface $translation): self
     {
         if ($this->translations instanceof Collection) {
             if ($this->translations->contains($translation)) {

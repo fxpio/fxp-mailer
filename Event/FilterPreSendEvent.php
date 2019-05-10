@@ -25,9 +25,9 @@ class FilterPreSendEvent extends AbstractFilterSendEvent
      *
      * @param string $transport The name of transport
      *
-     * @return self
+     * @return static
      */
-    public function setTransport($transport)
+    public function setTransport(string $transport): self
     {
         $this->transport = $transport;
 
@@ -39,9 +39,9 @@ class FilterPreSendEvent extends AbstractFilterSendEvent
      *
      * @param mixed $message The message for the specific transport
      *
-     * @return self
+     * @return static
      */
-    public function setMessage($message)
+    public function setMessage($message): self
     {
         $this->message = $message;
 
@@ -53,9 +53,9 @@ class FilterPreSendEvent extends AbstractFilterSendEvent
      *
      * @param null|MailRenderedInterface $mailRendered The mail rendered
      *
-     * @return self
+     * @return static
      */
-    public function setMailRendered(MailRenderedInterface $mailRendered = null)
+    public function setMailRendered(?MailRenderedInterface $mailRendered = null): self
     {
         $this->mailRendered = $mailRendered;
 

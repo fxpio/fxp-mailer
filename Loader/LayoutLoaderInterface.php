@@ -30,5 +30,5 @@ interface LayoutLoaderInterface
      *
      * @return LayoutInterface
      */
-    public function load($name);
+    public function load(string $name): LayoutInterface;
 }

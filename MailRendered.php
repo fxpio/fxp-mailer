@@ -48,7 +48,7 @@ class MailRendered implements MailRenderedInterface
      * @param null|string   $htmlBody The HTML body rendered
      * @param null|string   $body     The body rendered
      */
-    public function __construct(MailInterface $template, $subject, $htmlBody, $body)
+    public function __construct(MailInterface $template, ?string $subject, ?string $htmlBody, ?string $body)
     {
         $this->template = $template;
         $this->subject = $subject;
@@ -59,7 +59,7 @@ class MailRendered implements MailRenderedInterface
     /**
      * {@inheritdoc}
      */
-    public function getTemplate()
+    public function getTemplate(): MailInterface
     {
         return $this->template;
     }
@@ -67,7 +67,7 @@ class MailRendered implements MailRenderedInterface
     /**
      * {@inheritdoc}
      */
-    public function setSubject($subject)
+    public function setSubject(?string $subject): self
     {
         $this->subject = $subject;
 
@@ -77,7 +77,7 @@ class MailRendered implements MailRenderedInterface
     /**
      * {@inheritdoc}
      */
-    public function getSubject()
+    public function getSubject(): ?string
     {
         return $this->subject;
     }
@@ -85,7 +85,7 @@ class MailRendered implements MailRenderedInterface
     /**
      * {@inheritdoc}
      */
-    public function setHtmlBody($htmlBody)
+    public function setHtmlBody(?string $htmlBody): self
     {
         $this->htmlBody = $htmlBody;
 
@@ -95,7 +95,7 @@ class MailRendered implements MailRenderedInterface
     /**
      * {@inheritdoc}
      */
-    public function getHtmlBody()
+    public function getHtmlBody(): ?string
     {
         return $this->htmlBody;
     }
@@ -103,7 +103,7 @@ class MailRendered implements MailRenderedInterface
     /**
      * {@inheritdoc}
      */
-    public function setBody($body)
+    public function setBody(?string $body): self
     {
         $this->body = $body;
 
@@ -113,7 +113,7 @@ class MailRendered implements MailRenderedInterface
     /**
      * {@inheritdoc}
      */
-    public function getBody()
+    public function getBody(): ?string
     {
         return $this->body;
     }

@@ -26,7 +26,7 @@ trait FileTrait
     /**
      * {@inheritdoc}
      */
-    public function setFile($file)
+    public function setFile(?string $file): ?string
     {
         $this->support($file);
         $this->file = $file;
@@ -37,7 +37,7 @@ trait FileTrait
     /**
      * {@inheritdoc}
      */
-    public function getFile()
+    public function getFile(): ?string
     {
         return $this->file;
     }
@@ -49,5 +49,5 @@ trait FileTrait
      *
      * @throws \Fxp\Component\Mailer\Exception\InvalidArgumentException When the file is not supported
      */
-    abstract protected function support($file);
+    abstract protected function support(?string $file): void;
 }

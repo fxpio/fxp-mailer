@@ -73,7 +73,7 @@ class TemplaterExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('fxp_mailer_render_subject', [$this, 'renderSubject']),
@@ -87,7 +87,7 @@ class TemplaterExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
-    public function getTokenParsers()
+    public function getTokenParsers(): array
     {
         return [
             new LayoutTokenParser(),
@@ -103,7 +103,7 @@ class TemplaterExtension extends AbstractExtension
      *
      * @return string
      */
-    public function renderSubject($template, array $variables = [], $type = MailTypes::TYPE_ALL)
+    public function renderSubject(string $template, array $variables = [], string $type = MailTypes::TYPE_ALL): string
     {
         return $this->getMailRendered($template, $variables, $type)->getSubject();
     }
@@ -117,7 +117,7 @@ class TemplaterExtension extends AbstractExtension
      *
      * @return string
      */
-    public function renderHtml($template, array $variables = [], $type = MailTypes::TYPE_ALL)
+    public function renderHtml(string $template, array $variables = [], string $type = MailTypes::TYPE_ALL): string
     {
         return $this->getMailRendered($template, $variables, $type)->getHtmlBody();
     }
@@ -131,7 +131,7 @@ class TemplaterExtension extends AbstractExtension
      *
      * @return string
      */
-    public function renderPlainText($template, array $variables = [], $type = MailTypes::TYPE_ALL)
+    public function renderPlainText(string $template, array $variables = [], string $type = MailTypes::TYPE_ALL): string
     {
         return $this->getMailRendered($template, $variables, $type)->getBody();
     }
@@ -145,7 +145,7 @@ class TemplaterExtension extends AbstractExtension
      *
      * @return MailRenderedInterface
      */
-    public function getMailRendered($template, array $variables = [], $type = MailTypes::TYPE_ALL)
+    public function getMailRendered(string $template, array $variables = [], string $type = MailTypes::TYPE_ALL): MailRenderedInterface
     {
         $id = $this->getCacheId($template, $variables, $type);
 
@@ -159,7 +159,7 @@ class TemplaterExtension extends AbstractExtension
     /**
      * @param string $template The mail template name
      */
-    public function cleanRendered($template): void
+    public function cleanRendered(string $template): void
     {
         unset($this->cache[$template]);
     }
@@ -174,7 +174,7 @@ class TemplaterExtension extends AbstractExtension
      *
      * @return TwigLayout
      */
-    public function getTranslatedLayout($layout)
+    public function getTranslatedLayout(string $layout): TwigLayout
     {
         $template = $this->layoutLoader->load($layout);
         $template = TranslationUtil::translateLayout($template, $this->getTemplater()->getLocale(), $this->translator);
@@ -197,7 +197,7 @@ class TemplaterExtension extends AbstractExtension
      *
      * @return string
      */
-    protected function getCacheId($template, array $variables = [], $type = MailTypes::TYPE_ALL)
+    protected function getCacheId(string $template, array $variables = [], string $type = MailTypes::TYPE_ALL): string
     {
         $serialize = serialize($variables);
 
@@ -209,7 +209,7 @@ class TemplaterExtension extends AbstractExtension
      *
      * @return MailTemplaterInterface
      */
-    protected function getTemplater()
+    protected function getTemplater(): MailTemplaterInterface
     {
         if (null !== $this->container) {
             $this->templater = $this->container->get('fxp_mailer.mail_templater');

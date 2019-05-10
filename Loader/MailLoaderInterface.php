@@ -32,5 +32,5 @@ interface MailLoaderInterface
      *
      * @return MailInterface
      */
-    public function load($name, $type = MailTypes::TYPE_ALL);
+    public function load(string $name, string $type = MailTypes::TYPE_ALL): MailInterface;
 }

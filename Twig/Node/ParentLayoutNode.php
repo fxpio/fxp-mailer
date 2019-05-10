@@ -26,9 +26,9 @@ class ParentLayoutNode extends AbstractExpression
      *
      * @param AbstractExpression $variables
      * @param int                $lineno
-     * @param string             $tag
+     * @param null|string        $tag
      */
-    public function __construct(AbstractExpression $variables, $lineno, $tag = null)
+    public function __construct(AbstractExpression $variables, int $lineno, ?string $tag = null)
     {
         $attr = ['variables' => $variables];
         parent::__construct([], $attr, $lineno, $tag);

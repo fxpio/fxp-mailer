@@ -43,7 +43,7 @@ abstract class AbstractFilterSendEvent extends Event
      * @param mixed                      $message      The message for the specific transport
      * @param null|MailRenderedInterface $mailRendered The mail rendered
      */
-    public function __construct($transport, $message, MailRenderedInterface $mailRendered = null)
+    public function __construct(string $transport, $message, ?MailRenderedInterface $mailRendered = null)
     {
         $this->transport = $transport;
         $this->message = $message;
@@ -55,7 +55,7 @@ abstract class AbstractFilterSendEvent extends Event
      *
      * @return string
      */
-    public function getTransport()
+    public function getTransport(): string
     {
         return $this->transport;
     }
@@ -75,7 +75,7 @@ abstract class AbstractFilterSendEvent extends Event
      *
      * @return null|MailRenderedInterface
      */
-    public function getMailRendered()
+    public function getMailRendered(): ?MailRenderedInterface
     {
         return $this->mailRendered;
     }

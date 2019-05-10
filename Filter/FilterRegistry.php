@@ -51,7 +51,7 @@ class FilterRegistry implements FilterRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function addTemplateFilter(TemplateFilterInterface $filter)
+    public function addTemplateFilter(TemplateFilterInterface $filter): self
     {
         $this->templateFilters[] = $filter;
 
@@ -61,7 +61,7 @@ class FilterRegistry implements FilterRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function getTemplateFilters()
+    public function getTemplateFilters(): array
     {
         return $this->templateFilters;
     }
@@ -69,7 +69,7 @@ class FilterRegistry implements FilterRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function addTransportFilter(TransportFilterInterface $filter)
+    public function addTransportFilter(TransportFilterInterface $filter): self
     {
         $this->transportFilters[] = $filter;
 
@@ -79,7 +79,7 @@ class FilterRegistry implements FilterRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function getTransportFilters()
+    public function getTransportFilters(): array
     {
         return $this->transportFilters;
     }
