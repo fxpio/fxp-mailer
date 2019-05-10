@@ -11,7 +11,7 @@
 
 namespace Fxp\Component\Mailer;
 
-use Fxp\Component\Mailer\Model\MailInterface;
+use Fxp\Component\Mailer\Model\TemplateMailInterface;
 
 /**
  * Interface for the mail rendered.
@@ -23,9 +23,9 @@ interface MailRenderedInterface
     /**
      * Get the mail template.
      *
-     * @return MailInterface
+     * @return TemplateMailInterface
      */
-    public function getTemplate(): MailInterface;
+    public function getTemplate(): TemplateMailInterface;
 
     /**
      * Set the rendered subject.

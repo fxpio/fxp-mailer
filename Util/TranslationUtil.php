@@ -11,10 +11,10 @@
 
 namespace Fxp\Component\Mailer\Util;
 
-use Fxp\Component\Mailer\Model\LayoutInterface;
-use Fxp\Component\Mailer\Model\MailInterface;
 use Fxp\Component\Mailer\Model\TemplateFileInterface;
 use Fxp\Component\Mailer\Model\TemplateInterface;
+use Fxp\Component\Mailer\Model\TemplateLayoutInterface;
+use Fxp\Component\Mailer\Model\TemplateMailInterface;
 use Fxp\Component\Mailer\Model\TemplateTranslationInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -28,13 +28,13 @@ abstract class TranslationUtil
     /**
      * Translate the layout template with the translator.
      *
-     * @param LayoutInterface          $template   The template
+     * @param TemplateLayoutInterface  $template   The template
      * @param string                   $locale     The locale
      * @param null|TranslatorInterface $translator The translator
      *
-     * @return LayoutInterface
+     * @return TemplateLayoutInterface
      */
-    public static function translateLayout(LayoutInterface $template, string $locale, ?TranslatorInterface $translator = null): LayoutInterface
+    public static function translateLayout(TemplateLayoutInterface $template, string $locale, ?TranslatorInterface $translator = null): TemplateLayoutInterface
     {
         if (null === $template->getTranslationDomain()) {
             $template = $template->getTranslation($locale);
@@ -48,13 +48,13 @@ abstract class TranslationUtil
     /**
      * Translate the mail template with the translator.
      *
-     * @param MailInterface            $template   The template
+     * @param TemplateMailInterface    $template   The template
      * @param string                   $locale     The locale
      * @param null|TranslatorInterface $translator The translator
      *
-     * @return MailInterface
+     * @return TemplateMailInterface
      */
-    public static function translateMail(MailInterface $template, string $locale, ?TranslatorInterface $translator = null): MailInterface
+    public static function translateMail(TemplateMailInterface $template, string $locale, ?TranslatorInterface $translator = null): TemplateMailInterface
     {
         if (null === $template->getTranslationDomain()) {
             $template = $template->getTranslation($locale);
@@ -68,8 +68,8 @@ abstract class TranslationUtil
     /**
      * Find the translation and translate the template if translation is found.
      *
-     * @param LayoutInterface|MailInterface $template The template
-     * @param string                        $locale   The locale
+     * @param TemplateLayoutInterface|TemplateMailInterface $template The template
+     * @param string                                        $locale   The locale
      *
      * @return bool
      */
@@ -84,7 +84,7 @@ abstract class TranslationUtil
                 static::injectValue($template, $translation, 'body');
                 static::injectFile($template, $translation);
 
-                if ($template instanceof MailInterface) {
+                if ($template instanceof TemplateMailInterface) {
                     static::injectValue($template, $translation, 'subject');
                     static::injectValue($template, $translation, 'htmlBody');
                 }
@@ -148,7 +148,7 @@ abstract class TranslationUtil
         static::injectTranslatorValue($translator, $template, 'description');
         static::injectTranslatorValue($translator, $template, 'body');
 
-        if ($template instanceof MailInterface) {
+        if ($template instanceof TemplateMailInterface) {
             static::injectTranslatorValue($translator, $template, 'subject');
             static::injectTranslatorValue($translator, $template, 'htmlBody');
         }

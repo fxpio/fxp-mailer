@@ -14,7 +14,7 @@ namespace Fxp\Component\Mailer\Tests\Filter\Template;
 use Fxp\Component\Mailer\Filter\Template\CssToStylesFilter;
 use Fxp\Component\Mailer\MailRenderedInterface;
 use Fxp\Component\Mailer\MailTypes;
-use Fxp\Component\Mailer\Model\MailInterface;
+use Fxp\Component\Mailer\Model\TemplateMailInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -48,7 +48,7 @@ final class CssToStylesFilterTest extends TestCase
         $mailRendered->expects($this->once())
             ->method('getTemplate')
             ->will($this->returnCallback(function () use ($type) {
-                $template = $this->getMockBuilder(MailInterface::class)->getMock();
+                $template = $this->getMockBuilder(TemplateMailInterface::class)->getMock();
                 $template->expects($this->once())
                     ->method('getType')
                     ->will($this->returnValue($type))

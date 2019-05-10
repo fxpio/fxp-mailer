@@ -11,17 +11,17 @@
 
 namespace Fxp\Component\Mailer\Tests;
 
-use Fxp\Component\Mailer\Loader\MailLoaderInterface;
+use Fxp\Component\Mailer\Loader\TemplateMailLoaderInterface;
 use Fxp\Component\Mailer\MailTemplater;
 use Fxp\Component\Mailer\MailTypes;
-use Fxp\Component\Mailer\Model\Layout;
-use Fxp\Component\Mailer\Model\LayoutTranslation;
-use Fxp\Component\Mailer\Model\Mail;
-use Fxp\Component\Mailer\Model\MailTranslation;
-use Fxp\Component\Mailer\Model\TwigLayout;
-use Fxp\Component\Mailer\Model\TwigLayoutTranslation;
-use Fxp\Component\Mailer\Model\TwigMail;
-use Fxp\Component\Mailer\Model\TwigMailTranslation;
+use Fxp\Component\Mailer\Model\TemplateLayout;
+use Fxp\Component\Mailer\Model\TemplateLayoutTranslation;
+use Fxp\Component\Mailer\Model\TemplateMail;
+use Fxp\Component\Mailer\Model\TemplateMailTranslation;
+use Fxp\Component\Mailer\Model\TwigTemplateLayout;
+use Fxp\Component\Mailer\Model\TwigTemplateLayoutTranslation;
+use Fxp\Component\Mailer\Model\TwigTemplateMail;
+use Fxp\Component\Mailer\Model\TwigTemplateMailTranslation;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -39,7 +39,7 @@ use Twig\TemplateWrapper;
 final class MailTemplaterTest extends TestCase
 {
     /**
-     * @var MailLoaderInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit_Framework_MockObject_MockObject|TemplateMailLoaderInterface
      */
     protected $loader;
 
@@ -65,7 +65,7 @@ final class MailTemplaterTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->loader = $this->getMockBuilder(MailLoaderInterface::class)->getMock();
+        $this->loader = $this->getMockBuilder(TemplateMailLoaderInterface::class)->getMock();
         $this->twig = $this->getMockBuilder(Environment::class)->disableOriginalConstructor()->getMock();
         $this->twigTemplate = $this->getMockBuilder(Template::class)->disableOriginalConstructor()->getMock();
         $this->dispatcher = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
@@ -296,13 +296,13 @@ final class MailTemplaterTest extends TestCase
     {
         $this->templater->setLocale('fr');
 
-        $layout = new TwigLayout(__DIR__.'/../Fixtures/loaders/layout.html.twig');
+        $layout = new TwigTemplateLayout(__DIR__.'/../Fixtures/loaders/layout.html.twig');
         $layout->setName('test');
-        $layoutTrans = new TwigLayoutTranslation($layout, __DIR__.'/../Fixtures/loaders/layout.fr.html.twig');
+        $layoutTrans = new TwigTemplateLayoutTranslation($layout, __DIR__.'/../Fixtures/loaders/layout.fr.html.twig');
         $layoutTrans->setLocale('fr');
 
-        $mail = new TwigMail(__DIR__.'/../Fixtures/loaders/mail.html.twig');
-        $mailTrans = new TwigMailTranslation($mail, __DIR__.'/../Fixtures/loaders/mail.fr.html.twig');
+        $mail = new TwigTemplateMail(__DIR__.'/../Fixtures/loaders/mail.html.twig');
+        $mailTrans = new TwigTemplateMailTranslation($mail, __DIR__.'/../Fixtures/loaders/mail.fr.html.twig');
         $mailTrans->setLocale('fr');
         $mail->setLayout($layout);
 
@@ -381,11 +381,11 @@ final class MailTemplaterTest extends TestCase
      * @param bool $withTranslation
      * @param bool $withTranslationDomain
      *
-     * @return Mail
+     * @return TemplateMail
      */
     protected function createMail($withLayout = false, $withTranslation = false, $withTranslationDomain = false)
     {
-        $mail = new Mail();
+        $mail = new TemplateMail();
         $mail
             ->setType(MailTypes::TYPE_ALL)
             ->setSubject('Subject of template')
@@ -403,7 +403,7 @@ final class MailTemplaterTest extends TestCase
         }
 
         if ($withTranslation && !$withTranslationDomain) {
-            $translation = new MailTranslation($mail);
+            $translation = new TemplateMailTranslation($mail);
             $translation
                 ->setSubject('Subject of translation')
                 ->setHtmlBody('HTML body of translation')
@@ -421,11 +421,11 @@ final class MailTemplaterTest extends TestCase
      * @param bool|false $withTranslation
      * @param bool|false $withTranslationDomain
      *
-     * @return Layout
+     * @return TemplateLayout
      */
     protected function createLayout($withTranslation = false, $withTranslationDomain = false)
     {
-        $layout = new Layout();
+        $layout = new TemplateLayout();
         $layout
             ->setName('test')
             ->setLabel('Test')
@@ -436,7 +436,7 @@ final class MailTemplaterTest extends TestCase
         ;
 
         if ($withTranslation && !$withTranslationDomain) {
-            $translation = new LayoutTranslation($layout);
+            $translation = new TemplateLayoutTranslation($layout);
             $translation
                 ->setLocale('fr')
                 ->setLabel('Label of translation')

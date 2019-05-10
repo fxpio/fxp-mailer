@@ -24,6 +24,9 @@ use PHPUnit\Framework\TestCase;
  */
 final class AbstractTemplateTest extends TestCase
 {
+    /**
+     * @throws \ReflectionException
+     */
     public function testModel(): void
     {
         /** @var TemplateInterface $template */

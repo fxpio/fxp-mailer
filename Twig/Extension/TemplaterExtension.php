@@ -13,11 +13,11 @@ namespace Fxp\Component\Mailer\Twig\Extension;
 
 use Fxp\Component\Mailer\Exception\InvalidArgumentException;
 use Fxp\Component\Mailer\Exception\UnknownLayoutException;
-use Fxp\Component\Mailer\Loader\LayoutLoaderInterface;
+use Fxp\Component\Mailer\Loader\TemplateLayoutLoaderInterface;
 use Fxp\Component\Mailer\MailRenderedInterface;
 use Fxp\Component\Mailer\MailTemplaterInterface;
 use Fxp\Component\Mailer\MailTypes;
-use Fxp\Component\Mailer\Model\TwigLayout;
+use Fxp\Component\Mailer\Model\TwigTemplateLayout;
 use Fxp\Component\Mailer\Twig\TokenParser\LayoutTokenParser;
 use Fxp\Component\Mailer\Util\TranslationUtil;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -43,7 +43,7 @@ class TemplaterExtension extends AbstractExtension
     protected $templater;
 
     /**
-     * @var LayoutLoaderInterface
+     * @var TemplateLayoutLoaderInterface
      */
     protected $layoutLoader;
 
@@ -60,10 +60,10 @@ class TemplaterExtension extends AbstractExtension
     /**
      * Constructor.
      *
-     * @param LayoutLoaderInterface $layoutLoader The layout loader
-     * @param TranslatorInterface   $translator   The translator
+     * @param TemplateLayoutLoaderInterface $layoutLoader The layout loader
+     * @param TranslatorInterface           $translator   The translator
      */
-    public function __construct(LayoutLoaderInterface $layoutLoader, TranslatorInterface $translator)
+    public function __construct(TemplateLayoutLoaderInterface $layoutLoader, TranslatorInterface $translator)
     {
         $this->layoutLoader = $layoutLoader;
         $this->translator = $translator;
@@ -172,14 +172,14 @@ class TemplaterExtension extends AbstractExtension
      * @throws UnknownLayoutException   When the layout template does not exist
      * @throws InvalidArgumentException When the layout is not a twig layout
      *
-     * @return TwigLayout
+     * @return TwigTemplateLayout
      */
-    public function getTranslatedLayout(string $layout): TwigLayout
+    public function getTranslatedLayout(string $layout): TwigTemplateLayout
     {
         $template = $this->layoutLoader->load($layout);
         $template = TranslationUtil::translateLayout($template, $this->getTemplater()->getLocale(), $this->translator);
 
-        if (!$template instanceof TwigLayout) {
+        if (!$template instanceof TwigTemplateLayout) {
             $msg = 'The "%s" layout is not a twig layout';
 
             throw new InvalidArgumentException(sprintf($msg, $layout));

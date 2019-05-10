@@ -13,9 +13,9 @@ namespace Fxp\Component\Mailer;
 
 use Fxp\Component\Mailer\Event\FilterPostRenderEvent;
 use Fxp\Component\Mailer\Event\FilterPreRenderEvent;
-use Fxp\Component\Mailer\Loader\MailLoaderInterface;
-use Fxp\Component\Mailer\Model\LayoutInterface;
-use Fxp\Component\Mailer\Model\MailInterface;
+use Fxp\Component\Mailer\Loader\TemplateMailLoaderInterface;
+use Fxp\Component\Mailer\Model\TemplateLayoutInterface;
+use Fxp\Component\Mailer\Model\TemplateMailInterface;
 use Fxp\Component\Mailer\Model\TwigTemplateInterface;
 use Fxp\Component\Mailer\Util\MailUtil;
 use Fxp\Component\Mailer\Util\TranslationUtil;
@@ -31,7 +31,7 @@ use Twig\Environment;
 class MailTemplater implements MailTemplaterInterface
 {
     /**
-     * @var MailLoaderInterface
+     * @var TemplateMailLoaderInterface
      */
     protected $loader;
 
@@ -58,12 +58,12 @@ class MailTemplater implements MailTemplaterInterface
     /**
      * Constructor.
      *
-     * @param MailLoaderInterface      $loader     The mail loader
-     * @param Environment              $renderer   The twig environment
-     * @param EventDispatcherInterface $dispatcher The event dispatcher
+     * @param TemplateMailLoaderInterface $loader     The mail loader
+     * @param Environment                 $renderer   The twig environment
+     * @param EventDispatcherInterface    $dispatcher The event dispatcher
      */
     public function __construct(
-        MailLoaderInterface $loader,
+        TemplateMailLoaderInterface $loader,
         Environment $renderer,
         EventDispatcherInterface $dispatcher
     ) {
@@ -121,14 +121,14 @@ class MailTemplater implements MailTemplaterInterface
     /**
      * Render the mail.
      *
-     * @param FilterPreRenderEvent $preEvent The template pre event
-     * @param MailInterface        $mail     The mail
+     * @param FilterPreRenderEvent  $preEvent The template pre event
+     * @param TemplateMailInterface $mail     The mail
      *
      * @throws
      *
      * @return MailRendered
      */
-    protected function doRender(FilterPreRenderEvent $preEvent, MailInterface $mail): MailRendered
+    protected function doRender(FilterPreRenderEvent $preEvent, TemplateMailInterface $mail): MailRendered
     {
         $variables = $preEvent->getVariables();
         $variables['_mail_type'] = $mail->getType();
@@ -155,9 +155,9 @@ class MailTemplater implements MailTemplaterInterface
      * @param string $template The mail template name
      * @param string $type     The mail type defined in MailTypes::TYPE_*
      *
-     * @return MailInterface
+     * @return TemplateMailInterface
      */
-    protected function getTranslatedMail(string $template, string $type): MailInterface
+    protected function getTranslatedMail(string $template, string $type): TemplateMailInterface
     {
         $mail = $this->loader->load($template, $type);
 
@@ -167,11 +167,11 @@ class MailTemplater implements MailTemplaterInterface
     /**
      * Get the translated layout of mail.
      *
-     * @param MailInterface $mail The mail
+     * @param TemplateMailInterface $mail The mail
      *
-     * @return null|LayoutInterface
+     * @return null|TemplateLayoutInterface
      */
-    protected function getTranslatedLayout(MailInterface $mail): ?LayoutInterface
+    protected function getTranslatedLayout(TemplateMailInterface $mail): ?TemplateLayoutInterface
     {
         $layout = $mail->getLayout();
 
@@ -185,9 +185,9 @@ class MailTemplater implements MailTemplaterInterface
     /**
      * Render the template.
      *
-     * @param string                        $template         The template string
-     * @param LayoutInterface|MailInterface $templateInstance The template instance
-     * @param array                         $variables        The variables of template
+     * @param string                                        $template         The template string
+     * @param TemplateLayoutInterface|TemplateMailInterface $templateInstance The template instance
+     * @param array                                         $variables        The variables of template
      *
      * @throws \Exception
      * @throws \Throwable

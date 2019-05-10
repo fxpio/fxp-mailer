@@ -9,21 +9,34 @@
  * file that was distributed with this source code.
  */
 
-namespace Fxp\Component\Mailer;
-
-use Fxp\Component\Mailer\Model\TemplateMailInterface;
+namespace Fxp\Component\Mailer\Model;
 
 /**
- * The mail rendered.
+ * Model for mail translation template.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
  */
-class MailRendered implements MailRenderedInterface
+class TemplateMailTranslation implements TemplateMailTranslationInterface
 {
     /**
      * @var TemplateMailInterface
      */
-    protected $template;
+    protected $mail;
+
+    /**
+     * @var string
+     */
+    protected $locale;
+
+    /**
+     * @var null|string
+     */
+    protected $label;
+
+    /**
+     * @var null|string
+     */
+    protected $description;
 
     /**
      * @var null|string
@@ -43,25 +56,74 @@ class MailRendered implements MailRenderedInterface
     /**
      * Constructor.
      *
-     * @param TemplateMailInterface $template The mail template
-     * @param null|string           $subject  The subject rendered
-     * @param null|string           $htmlBody The HTML body rendered
-     * @param null|string           $body     The body rendered
+     * @param TemplateMailInterface $mail The mail
      */
-    public function __construct(TemplateMailInterface $template, ?string $subject, ?string $htmlBody, ?string $body)
+    public function __construct(TemplateMailInterface $mail)
     {
-        $this->template = $template;
-        $this->subject = $subject;
-        $this->htmlBody = $htmlBody;
-        $this->body = $body;
+        $mail->addTranslation($this);
+        $this->mail = $mail;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getTemplate(): TemplateMailInterface
+    public function getMail(): TemplateMailInterface
     {
-        return $this->template;
+        return $this->mail;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLocale(?string $locale): self
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLocale(): ?string
+    {
+        return $this->locale;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLabel(?string $label): self
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLabel(): ?string
+    {
+        return $this->label;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
     }
 
     /**

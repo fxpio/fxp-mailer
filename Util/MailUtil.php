@@ -12,7 +12,7 @@
 namespace Fxp\Component\Mailer\Util;
 
 use Fxp\Component\Mailer\MailTypes;
-use Fxp\Component\Mailer\Model\MailInterface;
+use Fxp\Component\Mailer\Model\TemplateMailInterface;
 
 /**
  * Utils for mail.
@@ -24,12 +24,12 @@ abstract class MailUtil
     /**
      * Check if the mail template is valid.
      *
-     * @param MailInterface $mail The mail template
-     * @param string        $type The mail type defined in MailTypes::TYPE_*
+     * @param TemplateMailInterface $mail The mail template
+     * @param string                $type The mail type defined in MailTypes::TYPE_*
      *
      * @return bool
      */
-    public static function isValid(MailInterface $mail, string $type): bool
+    public static function isValid(TemplateMailInterface $mail, string $type): bool
     {
         $validTypes = static::getValidTypes($type);
 

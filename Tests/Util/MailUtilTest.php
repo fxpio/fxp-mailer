@@ -12,7 +12,7 @@
 namespace Fxp\Component\Mailer\Tests\Util;
 
 use Fxp\Component\Mailer\MailTypes;
-use Fxp\Component\Mailer\Model\MailInterface;
+use Fxp\Component\Mailer\Model\TemplateMailInterface;
 use Fxp\Component\Mailer\Util\MailUtil;
 use PHPUnit\Framework\TestCase;
 
@@ -60,8 +60,8 @@ final class MailUtilTest extends TestCase
      */
     public function testIsValid($result, $entryType, $mailEnabled, $mailType): void
     {
-        /** @var MailInterface|\PHPUnit_Framework_MockObject_MockObject $mail */
-        $mail = $this->getMockBuilder(MailInterface::class)->getMock();
+        /** @var \PHPUnit_Framework_MockObject_MockObject|TemplateMailInterface $mail */
+        $mail = $this->getMockBuilder(TemplateMailInterface::class)->getMock();
         $mail->expects($this->any())
             ->method('isEnabled')
             ->will($this->returnValue($mailEnabled))

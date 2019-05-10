@@ -11,12 +11,12 @@
 
 namespace Fxp\Component\Mailer\Tests\Twig\Extension;
 
-use Fxp\Component\Mailer\Loader\LayoutLoaderInterface;
+use Fxp\Component\Mailer\Loader\TemplateLayoutLoaderInterface;
 use Fxp\Component\Mailer\MailRenderedInterface;
 use Fxp\Component\Mailer\MailTemplaterInterface;
 use Fxp\Component\Mailer\MailTypes;
-use Fxp\Component\Mailer\Model\LayoutInterface;
-use Fxp\Component\Mailer\Model\TwigLayout;
+use Fxp\Component\Mailer\Model\TemplateLayoutInterface;
+use Fxp\Component\Mailer\Model\TwigTemplateLayout;
 use Fxp\Component\Mailer\Twig\Extension\TemplaterExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -41,7 +41,7 @@ final class TemplaterExtensionTest extends TestCase
     protected $templater;
 
     /**
-     * @var LayoutLoaderInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var \PHPUnit_Framework_MockObject_MockObject|TemplateLayoutLoaderInterface
      */
     protected $layoutLoader;
 
@@ -58,7 +58,7 @@ final class TemplaterExtensionTest extends TestCase
     protected function setUp(): void
     {
         $this->templater = $this->getMockBuilder(MailTemplaterInterface::class)->getMock();
-        $this->layoutLoader = $this->getMockBuilder(LayoutLoaderInterface::class)->getMock();
+        $this->layoutLoader = $this->getMockBuilder(TemplateLayoutLoaderInterface::class)->getMock();
         $this->translator = $this->getMockBuilder(TranslatorInterface::class)->getMock();
         $this->ext = new TemplaterExtension($this->layoutLoader, $this->translator);
 
@@ -187,7 +187,7 @@ final class TemplaterExtensionTest extends TestCase
 
     public function testGetTranslatedLayout(): void
     {
-        $layout = $this->getMockBuilder(TwigLayout::class)->disableOriginalConstructor()->getMock();
+        $layout = $this->getMockBuilder(TwigTemplateLayout::class)->disableOriginalConstructor()->getMock();
 
         $layout->expects($this->once())
             ->method('getTranslation')
@@ -207,7 +207,7 @@ final class TemplaterExtensionTest extends TestCase
 
         $res = $this->ext->getTranslatedLayout('test');
 
-        $this->assertInstanceOf(TwigLayout::class, $res);
+        $this->assertInstanceOf(TwigTemplateLayout::class, $res);
         $this->assertNotSame($layout, $res);
     }
 
@@ -216,7 +216,7 @@ final class TemplaterExtensionTest extends TestCase
         $this->expectException(\Fxp\Component\Mailer\Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('The "test" layout is not a twig layout');
 
-        $layout = $this->getMockBuilder(LayoutInterface::class)->getMock();
+        $layout = $this->getMockBuilder(TemplateLayoutInterface::class)->getMock();
 
         $layout->expects($this->once())
             ->method('getTranslation')

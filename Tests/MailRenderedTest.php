@@ -12,7 +12,7 @@
 namespace Fxp\Component\Mailer\Tests;
 
 use Fxp\Component\Mailer\MailRendered;
-use Fxp\Component\Mailer\Model\MailInterface;
+use Fxp\Component\Mailer\Model\TemplateMailInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -26,8 +26,8 @@ final class MailRenderedTest extends TestCase
 {
     public function testModel(): void
     {
-        /** @var MailInterface $template */
-        $template = $this->getMockBuilder(MailInterface::class)->getMock();
+        /** @var TemplateMailInterface $template */
+        $template = $this->getMockBuilder(TemplateMailInterface::class)->getMock();
         $subject = 'Subject of mail';
         $htmlBody = 'HTML body of mail';
         $body = 'Body of mail';
