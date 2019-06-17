@@ -7,38 +7,23 @@ Fxp Mailer
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/fxpio/fxp-mailer/master.svg)](https://scrutinizer-ci.com/g/fxpio/fxp-mailer?branch=master)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/f644cbc7-5481-49b5-aaab-6b09a0d6973a.svg)](https://insight.sensiolabs.com/projects/f644cbc7-5481-49b5-aaab-6b09a0d6973a)
 
-The Fxp Mailer is a manager for render and send an mail template with different
-transport (email, mail, fax, ...).
+The Fxp Mailer is a manager to render and send an mail template with different
+transporter (email, sms, etc...).
 
 Features include:
 
-- Stored the templates in:
-  - filesystem with twig format
-  - filesystem with yaml format
-  - app config
-  - database with doctrine (optional)
-- Compatible with the localization
-- Allow to use the Symfony translator with the translation domain
-- Use twig for rendered the mail and layout templates
-- Send your email with SwiftMailer
-- Template filters:
-  - Inline CSS to inline styles (`css_to_styles`) with [CssToInlineStyles](https://github.com/tijsverkoyen/CssToInlineStyles)
-- SwiftMailer plugins:
-  - Embed link images in email
-  - DKIM signer
-- Add your event listeners for:
-  - template pre render
-  - template post render
-  - transport pre send
-  - transport post send
-- Register your filters for:
-  - template mail
-  - transport
-- Build your custom loaders for:
-  - template mails
-  - template layouts
-- Build your custom transports
-- Twig function for use this templater with existing templates defined in twig files of already existing systems
+- Available transporters:
+  - Email with [Symfony Mailer](https://symfony.com/doc/current/mailer.html)
+- Twig loaders to retrieve automatically the localized templates with a fallback behavior:
+  - Filesystem
+  - Doctrine (optional)
+- Secure the rendering for the message templates of users by activating simply the Twig Sandbox
+  (only available tags, functions, etc. can be used, and templates loaded only from Doctrine)
+- Disable automatically the Twig option `strict variables` for the messages rendering
+- Build your custom transporters and messages with [Symfony Mime](https://symfony.com/doc/current/components/mime.html)
+- Creation of template layout using the `embed` Twig tag in template message
+- Direct use of transporters keeping the functionality of this component
+- Template Message repository is compatible with the [Doctrine Extensions Translatable](https://github.com/Atlantic18/DoctrineExtensions)
 
 Documentation
 -------------

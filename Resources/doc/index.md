@@ -1,5 +1,5 @@
 Getting Started With Fxp Mailer
-===================================
+===============================
 
 ## Prerequisites
 

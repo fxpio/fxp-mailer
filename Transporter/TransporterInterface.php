@@ -9,25 +9,35 @@
  * file that was distributed with this source code.
  */
 
-namespace Fxp\Component\Mailer;
+namespace Fxp\Component\Mailer\Transporter;
 
-use Fxp\Component\Mailer\Exception\TransporterNotFoundException;
+use Fxp\Component\Mailer\Exception\TransporterExceptionInterface;
 use Symfony\Component\Mime\RawMessage;
 
 /**
- * Interface for the mailer.
+ * Interface for the transporter.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
  */
-interface MailerInterface
+interface TransporterInterface
 {
+    /**
+     * Check if the transporter supports the message.
+     *
+     * @param RawMessage  $message  The message
+     * @param null|object $envelope The envelope
+     *
+     * @return bool
+     */
+    public function supports(RawMessage $message, $envelope = null): bool;
+
     /**
      * Send the message.
      *
      * @param RawMessage  $message  The message
      * @param null|object $envelope The envelope
      *
-     * @throws TransporterNotFoundException
+     * @throws TransporterExceptionInterface
      */
     public function send(RawMessage $message, $envelope = null): void;
 }

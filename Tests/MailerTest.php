@@ -11,13 +11,12 @@
 
 namespace Fxp\Component\Mailer\Tests;
 
+use Fxp\Component\Mailer\Exception\InvalidArgumentException;
+use Fxp\Component\Mailer\Exception\TransporterNotFoundException;
 use Fxp\Component\Mailer\Mailer;
-use Fxp\Component\Mailer\MailRenderedInterface;
-use Fxp\Component\Mailer\MailTemplaterInterface;
-use Fxp\Component\Mailer\MailTypes;
-use Fxp\Component\Mailer\Transport\TransportInterface;
+use Fxp\Component\Mailer\Transporter\TransporterInterface;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Mime\RawMessage;
 
 /**
  * Tests for mailer.
@@ -28,93 +27,41 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
  */
 final class MailerTest extends TestCase
 {
-    /**
-     * @var MailTemplaterInterface|\PHPUnit_Framework_MockObject_MockObject
-     */
-    protected $templater;
-
-    /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|TransportInterface
-     */
-    protected $transport;
-
-    /**
-     * @var EventDispatcherInterface|\PHPUnit_Framework_MockObject_MockObject
-     */
-    protected $dispatcher;
-
-    /**
-     * @var Mailer
-     */
-    protected $mailer;
-
-    protected function setUp(): void
-    {
-        $this->templater = $this->getMockBuilder(MailTemplaterInterface::class)->getMock();
-        $this->dispatcher = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
-        $this->transport = $this->getMockBuilder(TransportInterface::class)->getMock();
-        $this->transport->expects($this->atLeastOnce())
-            ->method('getName')
-            ->will($this->returnValue('test'))
-        ;
-
-        $this->mailer = new Mailer($this->templater, [$this->transport], $this->dispatcher);
-    }
-
-    public function testGetTransport(): void
-    {
-        $this->assertTrue($this->mailer->hasTransport('test'));
-        $this->assertFalse($this->mailer->hasTransport('foo'));
-
-        $this->assertSame($this->transport, $this->mailer->getTransport('test'));
-    }
-
-    public function testGetInvalidTransport(): void
-    {
-        $this->expectException(\Fxp\Component\Mailer\Exception\InvalidArgumentException::class);
-        $this->expectExceptionMessage('The "foo" transport does not exist');
-
-        $this->mailer->getTransport('foo');
-    }
-
     public function testSend(): void
     {
-        $message = $this->getMockBuilder(\Swift_Message::class)->disableOriginalConstructor()->getMock();
-        $mail = $this->getMockBuilder(MailRenderedInterface::class)->getMock();
+        $message = new RawMessage('');
+        $envelope = new \stdClass();
 
-        $this->templater->expects($this->once())
-            ->method('render')
-            ->with('template-test', [], MailTypes::TYPE_ALL)
-            ->will($this->returnValue($mail))
+        $transport = $this->getMockBuilder(TransporterInterface::class)->getMock();
+        $transport->expects($this->once())
+            ->method('supports')
+            ->with($message, $envelope)
+            ->willReturn(true)
         ;
 
-        $this->transport->expects($this->once())
+        $transport->expects($this->once())
             ->method('send')
-            ->with($message, $mail)
-            ->will($this->returnValue(true))
+            ->with($message, $envelope)
         ;
 
-        $res = $this->mailer->send('test', $message, 'template-test', [], MailTypes::TYPE_ALL);
-
-        $this->assertTrue($res);
+        $mailer = new Mailer([$transport]);
+        $mailer->send($message, $envelope);
     }
 
-    public function testSendWithoutTemplate(): void
+    public function testInvalidTransporter(): void
     {
-        $message = $this->getMockBuilder(\Swift_Message::class)->disableOriginalConstructor()->getMock();
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('The transporter must be an instance of Fxp\Component\Mailer\Transporter\TransporterInterface ("stdClass" given).');
 
-        $this->templater->expects($this->never())
-            ->method('render')
-        ;
+        new Mailer([new \stdClass()]);
+    }
 
-        $this->transport->expects($this->once())
-            ->method('send')
-            ->with($message, null)
-            ->will($this->returnValue(true))
-        ;
+    public function testTransporterNotFoundException(): void
+    {
+        $this->expectException(TransporterNotFoundException::class);
+        $this->expectExceptionMessage('No transporter was found to send the message');
 
-        $res = $this->mailer->send('test', $message);
-
-        $this->assertTrue($res);
+        $mailer = new Mailer([]);
+        $mailer->send(new RawMessage(''));
     }
 }

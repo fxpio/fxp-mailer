@@ -1,11 +1,10 @@
-{% block subject %}
-Sujet.
-{% endblock subject %}
+<h1>Bonjour {{ email.toName }} !</h1>
 
-{% block html_body %}
-<p>Corps HTML.</p>
-{% endblock html_body %}
+<p>
+    Vous vous êtes enregistré avec l'adresse email suivante:
+</p>
+<p><code>{{ email.to[0].address }}</code></p>
 
-{% block body %}
-Corps text plein.
-{% endblock body %}
+<p>
+    <a href="#">Cliquez ici pour activer votre compte</a>
+</p>
