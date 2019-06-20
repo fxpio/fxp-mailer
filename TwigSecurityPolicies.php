@@ -99,6 +99,15 @@ class TwigSecurityPolicies
             'getName',
             'getEncodedNamedAddress',
         ],
+        \Fxp\Component\SmsSender\Twig\Mime\WrappedTemplatedSms::class => [
+            'getFrom',
+            'addTo',
+            'getTo',
+        ],
+        \Fxp\Component\SmsSender\Mime\Phone::class => [
+            'getPhone',
+            'getEncodedPhone',
+        ],
     ];
 
     public const ALLOWED_PROPERTIES = [];

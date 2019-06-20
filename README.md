@@ -14,6 +14,7 @@ Features include:
 
 - Available transporters:
   - Email with [Symfony Mailer](https://symfony.com/doc/current/mailer.html)
+  - SMS with [Fxp SMS Sender](https://github.com/fxpio/fxp-sms-sender)
 - Twig loaders to retrieve automatically the localized templates with a fallback behavior:
   - Filesystem
   - Doctrine (optional)

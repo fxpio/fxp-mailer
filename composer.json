@@ -21,6 +21,7 @@
     },
     "require-dev": {
         "doctrine/orm": "^2.6.0",
+        "fxp/twig-sms-sender": "^2.0.0",
         "gedmo/doctrine-extensions": "^2.4.0",
         "symfony/filesystem": "^4.3.0",
         "symfony/mailer": "^4.3.0",
