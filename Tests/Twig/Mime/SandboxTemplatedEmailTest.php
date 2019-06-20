@@ -9,16 +9,21 @@
  * file that was distributed with this source code.
  */
 
-namespace Fxp\Component\Mailer\Twig\Mime;
+namespace Fxp\Component\Mailer\Tests\Twig\Mime;
 
-use Fxp\Component\Mailer\Mime\SandboxInterface;
+use Fxp\Component\Mailer\Twig\Mime\SandboxTemplatedEmail;
+use PHPUnit\Framework\TestCase;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 /**
- * Templated email to enable the sandbox.
- *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class SandboxTemplatedEmail extends TemplatedEmail implements SandboxInterface
+final class SandboxTemplatedEmailTest extends TestCase
 {
+    public function testConstructor(): void
+    {
+        static::assertInstanceOf(TemplatedEmail::class, new SandboxTemplatedEmail());
+    }
 }
