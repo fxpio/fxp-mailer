@@ -120,22 +120,22 @@ final class DoctrineTemplateLoaderTest extends TestCase
         if (0 === strpos($templateName, '@doctrine_template_messages')) {
             $templateMessage = $expected ? $this->getTemplateMessage() : null;
 
-            $this->doctrine->expects($this->once())
+            $this->doctrine->expects(static::once())
                 ->method('getRepository')
                 ->with(TemplateMessageInterface::class)
                 ->willReturn($this->repo)
             ;
 
-            $this->repo->expects($this->once())
+            $this->repo->expects(static::once())
                 ->method('findTemplate')
                 ->with($expectedName, $expectedType, $expectedLocale)
                 ->willReturn($templateMessage)
             ;
         }
 
-        $this->assertSame($expected, $this->loader->exists($templateName));
+        static::assertSame($expected, $this->loader->exists($templateName));
         // cache test
-        $this->assertSame($expected, $this->loader->exists($templateName));
+        static::assertSame($expected, $this->loader->exists($templateName));
     }
 
     /**
@@ -145,13 +145,13 @@ final class DoctrineTemplateLoaderTest extends TestCase
     {
         $templateMessage = $this->getTemplateMessage();
 
-        $this->doctrine->expects($this->once())
+        $this->doctrine->expects(static::once())
             ->method('getRepository')
             ->with(TemplateMessageInterface::class)
             ->willReturn($this->repo)
         ;
 
-        $this->repo->expects($this->once())
+        $this->repo->expects(static::once())
             ->method('findTemplate')
             ->with('mail', 'email', 'fr_FR')
             ->willReturn($templateMessage)
@@ -159,9 +159,9 @@ final class DoctrineTemplateLoaderTest extends TestCase
 
         $source = $this->loader->getSourceContext('@doctrine_template_messages/email/fr_FR/mail');
 
-        $this->assertNotNull($source);
-        $this->assertSame('@doctrine_template_messages/email/fr_FR/mail', $source->getName());
-        $this->assertSame('template body', $source->getCode());
+        static::assertNotNull($source);
+        static::assertSame('@doctrine_template_messages/email/fr_FR/mail', $source->getName());
+        static::assertSame('template body', $source->getCode());
     }
 
     /**
@@ -181,8 +181,8 @@ final class DoctrineTemplateLoaderTest extends TestCase
             $exception = $e;
         }
 
-        $this->assertInstanceOf($expectedExceptionClass, $exception);
-        $this->assertSame($expectedExceptionMessage, $exception->getMessage());
+        static::assertInstanceOf($expectedExceptionClass, $exception);
+        static::assertSame($expectedExceptionMessage, $exception->getMessage());
 
         // cache test
         $this->expectException(LoaderError::class);
@@ -198,13 +198,13 @@ final class DoctrineTemplateLoaderTest extends TestCase
     {
         $templateMessage = $this->getTemplateMessage();
 
-        $this->doctrine->expects($this->once())
+        $this->doctrine->expects(static::once())
             ->method('getRepository')
             ->with(TemplateMessageInterface::class)
             ->willReturn($this->repo)
         ;
 
-        $this->repo->expects($this->once())
+        $this->repo->expects(static::once())
             ->method('findTemplate')
             ->with('mail', 'email', 'fr_FR')
             ->willReturn($templateMessage)
@@ -212,7 +212,7 @@ final class DoctrineTemplateLoaderTest extends TestCase
 
         $cacheKey = $this->loader->getCacheKey('@doctrine_template_messages/email/fr_FR/mail');
 
-        $this->assertSame('42_@doctrine_template_messages/email/fr_FR/mail', $cacheKey);
+        static::assertSame('42_@doctrine_template_messages/email/fr_FR/mail', $cacheKey);
     }
 
     /**
@@ -222,13 +222,13 @@ final class DoctrineTemplateLoaderTest extends TestCase
     {
         $templateMessage = $this->getTemplateMessage();
 
-        $this->doctrine->expects($this->once())
+        $this->doctrine->expects(static::once())
             ->method('getRepository')
             ->with(TemplateMessageInterface::class)
             ->willReturn($this->repo)
         ;
 
-        $this->repo->expects($this->once())
+        $this->repo->expects(static::once())
             ->method('findTemplate')
             ->with('mail', 'email', 'fr_FR')
             ->willReturn($templateMessage)
@@ -237,7 +237,7 @@ final class DoctrineTemplateLoaderTest extends TestCase
         $expectedTime = $templateMessage->getUpdatedAt()->getTimestamp() - 1;
         $fresh = $this->loader->isFresh('@doctrine_template_messages/email/fr_FR/mail', $expectedTime);
 
-        $this->assertFalse($fresh);
+        static::assertFalse($fresh);
     }
 
     /**
@@ -252,23 +252,23 @@ final class DoctrineTemplateLoaderTest extends TestCase
         /** @var MockObject|TemplateMessageInterface $templateMessage */
         $templateMessage = $this->getMockBuilder(TemplateMessageInterface::class)->getMock();
 
-        $templateMessage->expects($this->once())
+        $templateMessage->expects(static::once())
             ->method('getId')
             ->willReturn(42)
         ;
-        $templateMessage->expects($this->once())
+        $templateMessage->expects(static::once())
             ->method('getName')
             ->willReturn('template_name')
         ;
-        $templateMessage->expects($this->once())
+        $templateMessage->expects(static::once())
             ->method('getType')
             ->willReturn('template_type')
         ;
-        $templateMessage->expects($this->once())
+        $templateMessage->expects(static::once())
             ->method('getBody')
             ->willReturn('template body')
         ;
-        $templateMessage->expects($this->atLeastOnce())
+        $templateMessage->expects(static::atLeastOnce())
             ->method('getUpdatedAt')
             ->willReturn($datetime)
         ;

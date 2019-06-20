@@ -52,7 +52,7 @@ final class SandboxLoaderTest extends TestCase
      */
     public function testGetSourceContext(): void
     {
-        $this->assertEquals(new Source('', 'name'), $this->loader->getSourceContext('name'));
+        static::assertEquals(new Source('', 'name'), $this->loader->getSourceContext('name'));
     }
 
     /**
@@ -60,7 +60,7 @@ final class SandboxLoaderTest extends TestCase
      */
     public function testGetCacheKey(): void
     {
-        $this->assertSame('name', $this->loader->getCacheKey('name'));
+        static::assertSame('name', $this->loader->getCacheKey('name'));
     }
 
     /**
@@ -68,7 +68,7 @@ final class SandboxLoaderTest extends TestCase
      */
     public function testIsFresh(): void
     {
-        $this->assertFalse($this->loader->isFresh('name', 0));
+        static::assertFalse($this->loader->isFresh('name', 0));
     }
 
     /**
@@ -76,12 +76,12 @@ final class SandboxLoaderTest extends TestCase
      */
     public function testExistsWithoutSandbox(): void
     {
-        $this->sandboxTemplater->expects($this->once())
+        $this->sandboxTemplater->expects(static::once())
             ->method('isSandboxed')
             ->willReturn(false)
         ;
 
-        $this->assertFalse($this->loader->exists('name'));
+        static::assertFalse($this->loader->exists('name'));
     }
 
     /**
@@ -89,12 +89,12 @@ final class SandboxLoaderTest extends TestCase
      */
     public function testExistsWithSandboxAndValidNamespace(): void
     {
-        $this->sandboxTemplater->expects($this->once())
+        $this->sandboxTemplater->expects(static::once())
             ->method('isSandboxed')
             ->willReturn(true)
         ;
 
-        $this->assertFalse($this->loader->exists('@test_namespace/name'));
+        static::assertFalse($this->loader->exists('@test_namespace/name'));
     }
 
     /**
@@ -105,7 +105,7 @@ final class SandboxLoaderTest extends TestCase
         $this->expectException(LoaderError::class);
         $this->expectExceptionMessage('Unable to find template "@invalid_namespace/name".');
 
-        $this->sandboxTemplater->expects($this->once())
+        $this->sandboxTemplater->expects(static::once())
             ->method('isSandboxed')
             ->willReturn(true)
         ;
@@ -121,7 +121,7 @@ final class SandboxLoaderTest extends TestCase
         $this->expectException(LoaderError::class);
         $this->expectExceptionMessage('Unable to find template "@invalid_namespace_without_name".');
 
-        $this->sandboxTemplater->expects($this->once())
+        $this->sandboxTemplater->expects(static::once())
             ->method('isSandboxed')
             ->willReturn(true)
         ;
@@ -137,7 +137,7 @@ final class SandboxLoaderTest extends TestCase
         $this->expectException(LoaderError::class);
         $this->expectExceptionMessage('Unable to find template "name".');
 
-        $this->sandboxTemplater->expects($this->once())
+        $this->sandboxTemplater->expects(static::once())
             ->method('isSandboxed')
             ->willReturn(true)
         ;

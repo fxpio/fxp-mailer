@@ -25,6 +25,6 @@ final class InvalidArgumentExceptionTest extends TestCase
     {
         $e = new InvalidArgumentException('MESSAGE');
 
-        $this->assertSame('MESSAGE', $e->getMessage());
+        static::assertSame('MESSAGE', $e->getMessage());
     }
 }

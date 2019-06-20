@@ -25,6 +25,6 @@ final class TransporterNotFoundExceptionTest extends TestCase
     {
         $e = new TransporterNotFoundException('MESSAGE');
 
-        $this->assertSame('MESSAGE', $e->getMessage());
+        static::assertSame('MESSAGE', $e->getMessage());
     }
 }

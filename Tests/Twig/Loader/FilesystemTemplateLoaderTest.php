@@ -78,7 +78,7 @@ final class FilesystemTemplateLoaderTest extends TestCase
      */
     public function testExists(bool $expected, string $templateName): void
     {
-        $this->assertSame($expected, $this->loader->exists($templateName));
+        static::assertSame($expected, $this->loader->exists($templateName));
     }
 
     public function getGetSourceContextArguments(): array
@@ -107,7 +107,7 @@ final class FilesystemTemplateLoaderTest extends TestCase
         $source = $this->loader->getSourceContext($templateName);
         $path = str_replace('\\', '/', substr($source->getPath(), \strlen($this->rootPath) + 1));
 
-        $this->assertSame($expectedPath, $path);
+        static::assertSame($expectedPath, $path);
     }
 
     /**

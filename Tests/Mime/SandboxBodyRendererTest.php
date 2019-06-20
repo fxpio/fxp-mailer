@@ -36,20 +36,20 @@ final class SandboxBodyRendererTest extends TestCase
         $sandboxBodyRenderer = new SandboxBodyRenderer($innerBodyRenderer, $sandboxTemplater);
         $message = new SandboxMessage();
 
-        $sandboxTemplater->expects($this->once())
+        $sandboxTemplater->expects(static::once())
             ->method('isSandboxed')
             ->willReturn(false)
         ;
 
-        $sandboxTemplater->expects($this->once())
+        $sandboxTemplater->expects(static::once())
             ->method('enableSandbox')
         ;
 
-        $sandboxTemplater->expects($this->once())
+        $sandboxTemplater->expects(static::once())
             ->method('disableSandbox')
         ;
 
-        $innerBodyRenderer->expects($this->once())
+        $innerBodyRenderer->expects(static::once())
             ->method('render')
             ->with($message)
         ;

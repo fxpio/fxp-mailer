@@ -54,8 +54,8 @@ final class EmailTransporterTest extends TestCase
 
     public function testSupports(): void
     {
-        $this->assertTrue($this->transporter->supports(new Email()));
-        $this->assertFalse($this->transporter->supports(new Message()));
+        static::assertTrue($this->transporter->supports(new Email()));
+        static::assertFalse($this->transporter->supports(new Message()));
     }
 
     public function testSend(): void
@@ -63,7 +63,7 @@ final class EmailTransporterTest extends TestCase
         $message = new RawMessage('');
         $envelope = $this->getMockBuilder(SmtpEnvelope::class)->disableOriginalConstructor()->getMock();
 
-        $this->sfMailer->expects($this->once())
+        $this->sfMailer->expects(static::once())
             ->method('send')
             ->with($message, $envelope)
         ;
@@ -76,7 +76,7 @@ final class EmailTransporterTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('The envelope of message must be an instance of Symfony\Component\Mailer\SmtpEnvelope ("stdClass" given)');
 
-        $this->sfMailer->expects($this->never())
+        $this->sfMailer->expects(static::never())
             ->method('send')
         ;
 
@@ -92,7 +92,7 @@ final class EmailTransporterTest extends TestCase
         $message = new RawMessage('');
         $envelope = $this->getMockBuilder(SmtpEnvelope::class)->disableOriginalConstructor()->getMock();
 
-        $this->sfMailer->expects($this->once())
+        $this->sfMailer->expects(static::once())
             ->method('send')
             ->with($message, $envelope)
             ->willThrowException($exception)

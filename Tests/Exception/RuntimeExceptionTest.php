@@ -25,6 +25,6 @@ final class RuntimeExceptionTest extends TestCase
     {
         $e = new RuntimeException('MESSAGE');
 
-        $this->assertSame('MESSAGE', $e->getMessage());
+        static::assertSame('MESSAGE', $e->getMessage());
     }
 }

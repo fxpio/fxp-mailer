@@ -27,13 +27,13 @@ final class SandboxTemplaterTest extends TestCase
     {
         $sandbox = new SandboxTemplater();
 
-        $this->assertFalse($sandbox->isSandboxed());
+        static::assertFalse($sandbox->isSandboxed());
 
         $sandbox->enableSandbox();
-        $this->assertTrue($sandbox->isSandboxed());
+        static::assertTrue($sandbox->isSandboxed());
 
         $sandbox->disableSandbox();
-        $this->assertFalse($sandbox->isSandboxed());
+        static::assertFalse($sandbox->isSandboxed());
     }
 
     public function testWithSandboxExtension(): void
@@ -44,15 +44,15 @@ final class SandboxTemplaterTest extends TestCase
 
         $sandbox = new SandboxTemplater($ext);
 
-        $this->assertFalse($sandbox->isSandboxed());
-        $this->assertFalse($ext->isSandboxed());
+        static::assertFalse($sandbox->isSandboxed());
+        static::assertFalse($ext->isSandboxed());
 
         $sandbox->enableSandbox();
-        $this->assertTrue($sandbox->isSandboxed());
-        $this->assertTrue($ext->isSandboxed());
+        static::assertTrue($sandbox->isSandboxed());
+        static::assertTrue($ext->isSandboxed());
 
         $sandbox->disableSandbox();
-        $this->assertFalse($sandbox->isSandboxed());
-        $this->assertFalse($ext->isSandboxed());
+        static::assertFalse($sandbox->isSandboxed());
+        static::assertFalse($ext->isSandboxed());
     }
 }

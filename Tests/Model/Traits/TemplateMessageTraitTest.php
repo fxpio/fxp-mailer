@@ -28,36 +28,36 @@ final class TemplateMessageTraitTest extends TestCase
     {
         $model = $this->getMockForTrait(TemplateMessageTrait::class);
 
-        $this->assertNull($model->getName());
+        static::assertNull($model->getName());
         $model->setName('NAME');
-        $this->assertSame('NAME', $model->getName());
+        static::assertSame('NAME', $model->getName());
 
-        $this->assertNull($model->getType());
+        static::assertNull($model->getType());
         $model->setType('TYPE');
-        $this->assertSame('TYPE', $model->getType());
+        static::assertSame('TYPE', $model->getType());
 
-        $this->assertTrue($model->isEnabled());
+        static::assertTrue($model->isEnabled());
         $model->setEnabled(false);
-        $this->assertFalse($model->isEnabled());
+        static::assertFalse($model->isEnabled());
 
-        $this->assertNull($model->getLabel());
+        static::assertNull($model->getLabel());
         $model->setLabel('LABEL');
-        $this->assertSame('LABEL', $model->getLabel());
+        static::assertSame('LABEL', $model->getLabel());
 
-        $this->assertNull($model->getDescription());
+        static::assertNull($model->getDescription());
         $model->setDescription('DESCRIPTION');
-        $this->assertSame('DESCRIPTION', $model->getDescription());
+        static::assertSame('DESCRIPTION', $model->getDescription());
 
-        $this->assertNull($model->getBody());
+        static::assertNull($model->getBody());
         $model->setBody('BODY');
-        $this->assertSame('BODY', $model->getBody());
+        static::assertSame('BODY', $model->getBody());
 
-        $this->assertNull($model->getCreatedAt());
+        static::assertNull($model->getCreatedAt());
         $model->setCreatedAt(new \DateTime());
-        $this->assertInstanceOf(\DateTime::class, $model->getCreatedAt());
+        static::assertInstanceOf(\DateTime::class, $model->getCreatedAt());
 
-        $this->assertNull($model->getUpdatedAt());
+        static::assertNull($model->getUpdatedAt());
         $model->setUpdatedAt(new \DateTime());
-        $this->assertInstanceOf(\DateTime::class, $model->getUpdatedAt());
+        static::assertInstanceOf(\DateTime::class, $model->getUpdatedAt());
     }
 }

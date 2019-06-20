@@ -25,6 +25,6 @@ final class TransporterExceptionTest extends TestCase
     {
         $e = new TransporterException('MESSAGE');
 
-        $this->assertSame('MESSAGE', $e->getMessage());
+        static::assertSame('MESSAGE', $e->getMessage());
     }
 }

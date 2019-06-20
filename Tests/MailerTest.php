@@ -33,13 +33,13 @@ final class MailerTest extends TestCase
         $envelope = new \stdClass();
 
         $transport = $this->getMockBuilder(TransporterInterface::class)->getMock();
-        $transport->expects($this->once())
+        $transport->expects(static::once())
             ->method('supports')
             ->with($message, $envelope)
             ->willReturn(true)
         ;
 
-        $transport->expects($this->once())
+        $transport->expects(static::once())
             ->method('send')
             ->with($message, $envelope)
         ;

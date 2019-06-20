@@ -40,7 +40,7 @@ final class UnstrictBodyRendererTest extends TestCase
 
         $disabledBeforeRenderValue = $twig->isStrictVariables();
 
-        $bodyRenderer->expects($this->once())
+        $bodyRenderer->expects(static::once())
             ->method('render')
             ->with($message)
             ->willReturnCallback(static function () use (&$disabledBeforeRenderValue, $twig): void {
@@ -48,12 +48,12 @@ final class UnstrictBodyRendererTest extends TestCase
             })
         ;
 
-        $this->assertTrue($disabledBeforeRenderValue);
-        $this->assertTrue($twig->isStrictVariables());
+        static::assertTrue($disabledBeforeRenderValue);
+        static::assertTrue($twig->isStrictVariables());
 
         $unstrictBodyRenderer->render($message);
 
-        $this->assertTrue($twig->isStrictVariables());
-        $this->assertFalse($disabledBeforeRenderValue);
+        static::assertTrue($twig->isStrictVariables());
+        static::assertFalse($disabledBeforeRenderValue);
     }
 }
