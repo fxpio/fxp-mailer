@@ -55,7 +55,7 @@ final class DoctrineTemplateLoaderTest extends TestCase
 
         $this->loader = new DoctrineTemplateLoader(
             $this->doctrine,
-            'doctrine_template_messages'
+            'user_templates'
         );
     }
 
@@ -70,34 +70,34 @@ final class DoctrineTemplateLoaderTest extends TestCase
         return [
             [false, 'mail',       null,    null,    'mail.html.twig'],
             [false, 'mail',       null,    null,    'mail.fr.html.twig'],
-            [true,  'mail',       null,    null,    '@doctrine_template_messages/mail'],
-            [true,  'mail',       null,    'fr_FR', '@doctrine_template_messages/fr_FR/mail'],
-            [true,  'mail',       null,    'fr',    '@doctrine_template_messages/fr/mail'],
-            [true,  'mail',       null,    'en_US', '@doctrine_template_messages/en_US/mail'],
-            [true,  'mail',       null,    'en',    '@doctrine_template_messages/en/mail'],
-            [true,  'mail',       null,    'it_IT', '@doctrine_template_messages/it_IT/mail'],
-            [true,  'mail',       null,    'it',    '@doctrine_template_messages/it/mail'],
+            [true,  'mail',       null,    null,    '@user_templates/mail'],
+            [true,  'mail',       null,    'fr_FR', '@user_templates/fr_FR/mail'],
+            [true,  'mail',       null,    'fr',    '@user_templates/fr/mail'],
+            [true,  'mail',       null,    'en_US', '@user_templates/en_US/mail'],
+            [true,  'mail',       null,    'en',    '@user_templates/en/mail'],
+            [true,  'mail',       null,    'it_IT', '@user_templates/it_IT/mail'],
+            [true,  'mail',       null,    'it',    '@user_templates/it/mail'],
 
-            [true,  'mail',       'email', null,    '@doctrine_template_messages/email/mail'],
-            [true,  'mail',       'email', 'fr_FR', '@doctrine_template_messages/email/fr_FR/mail'],
-            [true,  'mail',       'email', 'fr',    '@doctrine_template_messages/email/fr/mail'],
-            [true,  'mail',       'email', 'en_US', '@doctrine_template_messages/email/en_US/mail'],
-            [true,  'mail',       'email', 'en',    '@doctrine_template_messages/email/en/mail'],
-            [true,  'mail',       'email', 'it_IT', '@doctrine_template_messages/email/it_IT/mail'],
-            [true,  'mail',       'email', 'it',    '@doctrine_template_messages/email/it/mail'],
+            [true,  'mail',       'email', null,    '@user_templates/email/mail'],
+            [true,  'mail',       'email', 'fr_FR', '@user_templates/email/fr_FR/mail'],
+            [true,  'mail',       'email', 'fr',    '@user_templates/email/fr/mail'],
+            [true,  'mail',       'email', 'en_US', '@user_templates/email/en_US/mail'],
+            [true,  'mail',       'email', 'en',    '@user_templates/email/en/mail'],
+            [true,  'mail',       'email', 'it_IT', '@user_templates/email/it_IT/mail'],
+            [true,  'mail',       'email', 'it',    '@user_templates/email/it/mail'],
 
-            [true,  'mail',       'email', 'fr_FR', '@doctrine_template_messages/fr_FR/email/mail'],
-            [true,  'mail',       'email', 'fr',    '@doctrine_template_messages/fr/email/mail'],
-            [true,  'mail',       'email', 'en_US', '@doctrine_template_messages/en_US/email/mail'],
-            [true,  'mail',       'email', 'en',    '@doctrine_template_messages/en/email/mail'],
-            [true,  'mail',       'email', 'it_IT', '@doctrine_template_messages/it_IT/email/mail'],
-            [true,  'mail',       'email', 'it',    '@doctrine_template_messages/it/email/mail'],
+            [true,  'mail',       'email', 'fr_FR', '@user_templates/fr_FR/email/mail'],
+            [true,  'mail',       'email', 'fr',    '@user_templates/fr/email/mail'],
+            [true,  'mail',       'email', 'en_US', '@user_templates/en_US/email/mail'],
+            [true,  'mail',       'email', 'en',    '@user_templates/en/email/mail'],
+            [true,  'mail',       'email', 'it_IT', '@user_templates/it_IT/email/mail'],
+            [true,  'mail',       'email', 'it',    '@user_templates/it/email/mail'],
 
-            [false, 'mail',       'aa_AA', null,    '@doctrine_template_messages/aa_AA/mail'],
-            [false, 'mail',       'aa',    null,    '@doctrine_template_messages/aa/mail'],
+            [false, 'mail',       'aa_AA', null,    '@user_templates/aa_AA/mail'],
+            [false, 'mail',       'aa',    null,    '@user_templates/aa/mail'],
 
-            [false, 'aa_AA/mail', 'email', null,    '@doctrine_template_messages/email/aa_AA/mail'],
-            [false, 'aa/mail',    'email', null,    '@doctrine_template_messages/email/aa/mail'],
+            [false, 'aa_AA/mail', 'email', null,    '@user_templates/email/aa_AA/mail'],
+            [false, 'aa/mail',    'email', null,    '@user_templates/email/aa/mail'],
         ];
     }
 
@@ -117,7 +117,7 @@ final class DoctrineTemplateLoaderTest extends TestCase
         ?string $expectedLocale,
         string $templateName
     ): void {
-        if (0 === strpos($templateName, '@doctrine_template_messages')) {
+        if (0 === strpos($templateName, '@user_templates')) {
             $templateMessage = $expected ? $this->getTemplateMessage() : null;
 
             $this->doctrine->expects(static::once())
@@ -157,10 +157,10 @@ final class DoctrineTemplateLoaderTest extends TestCase
             ->willReturn($templateMessage)
         ;
 
-        $source = $this->loader->getSourceContext('@doctrine_template_messages/email/fr_FR/mail');
+        $source = $this->loader->getSourceContext('@user_templates/email/fr_FR/mail');
 
         static::assertNotNull($source);
-        static::assertSame('@doctrine_template_messages/email/fr_FR/mail', $source->getName());
+        static::assertSame('@user_templates/email/fr_FR/mail', $source->getName());
         static::assertSame('template body', $source->getCode());
     }
 
@@ -170,9 +170,9 @@ final class DoctrineTemplateLoaderTest extends TestCase
     public function testGetSourceContextWithNotFoundException(): void
     {
         $expectedExceptionClass = LoaderError::class;
-        $expectedExceptionMessage = 'Unable to find template "@doctrine_template_messages/email/fr_FR/mail".';
+        $expectedExceptionMessage = 'Unable to find template "@user_templates/email/fr_FR/mail".';
 
-        $name = '@doctrine_template_messages/email/fr_FR/mail';
+        $name = '@user_templates/email/fr_FR/mail';
         $exception = null;
 
         try {
@@ -210,9 +210,9 @@ final class DoctrineTemplateLoaderTest extends TestCase
             ->willReturn($templateMessage)
         ;
 
-        $cacheKey = $this->loader->getCacheKey('@doctrine_template_messages/email/fr_FR/mail');
+        $cacheKey = $this->loader->getCacheKey('@user_templates/email/fr_FR/mail');
 
-        static::assertSame('42_@doctrine_template_messages/email/fr_FR/mail', $cacheKey);
+        static::assertSame('42_@user_templates/email/fr_FR/mail', $cacheKey);
     }
 
     /**
@@ -235,7 +235,7 @@ final class DoctrineTemplateLoaderTest extends TestCase
         ;
 
         $expectedTime = $templateMessage->getUpdatedAt()->getTimestamp() - 1;
-        $fresh = $this->loader->isFresh('@doctrine_template_messages/email/fr_FR/mail', $expectedTime);
+        $fresh = $this->loader->isFresh('@user_templates/email/fr_FR/mail', $expectedTime);
 
         static::assertFalse($fresh);
     }

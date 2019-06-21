@@ -44,7 +44,7 @@ final class FilesystemTemplateLoaderTest extends TestCase
             $this->rootPath,
             'en_US',
             'loaders',
-            'template_messages'
+            '@templates'
         );
     }
 
@@ -58,15 +58,15 @@ final class FilesystemTemplateLoaderTest extends TestCase
         return [
             [false, 'mail.html.twig'],
             [false, 'mail.fr.html.twig'],
-            [true,  '@template_messages/mail.html.twig'],
-            [true,  '@template_messages/mail.fr_FR.html.twig'],
-            [true,  '@template_messages/mail.fr.html.twig'],
-            [true,  '@template_messages/mail.en_US.html.twig'],
-            [true,  '@template_messages/mail.en.html.twig'],
-            [true,  '@template_messages/mail.it_IT.html.twig'],
-            [true,  '@template_messages/mail.it.html.twig'],
-            [false, '@template_messages/mail.aa_AA.html.twig'],
-            [false, '@template_messages/mail.aa.html.twig'],
+            [true,  '@@templates/mail.html.twig'],
+            [true,  '@@templates/mail.fr_FR.html.twig'],
+            [true,  '@@templates/mail.fr.html.twig'],
+            [true,  '@@templates/mail.en_US.html.twig'],
+            [true,  '@@templates/mail.en.html.twig'],
+            [true,  '@@templates/mail.it_IT.html.twig'],
+            [true,  '@@templates/mail.it.html.twig'],
+            [false, '@@templates/mail.aa_AA.html.twig'],
+            [false, '@@templates/mail.aa.html.twig'],
         ];
     }
 
@@ -84,13 +84,13 @@ final class FilesystemTemplateLoaderTest extends TestCase
     public function getGetSourceContextArguments(): array
     {
         return [
-            ['@template_messages/mail.html.twig', 'loaders/mail.fr.html.twig'],
-            ['@template_messages/mail.fr_FR.html.twig', 'loaders/mail.fr.html.twig'],
-            ['@template_messages/mail.fr.html.twig', 'loaders/mail.fr.html.twig'],
-            ['@template_messages/mail.en_US.html.twig', 'loaders/mail.en.html.twig'],
-            ['@template_messages/mail.en.html.twig', 'loaders/mail.en.html.twig'],
-            ['@template_messages/mail.it_IT.html.twig', 'loaders/mail.en.html.twig'],
-            ['@template_messages/mail.it.html.twig', 'loaders/mail.en.html.twig'],
+            ['@@templates/mail.html.twig', 'loaders/mail.fr.html.twig'],
+            ['@@templates/mail.fr_FR.html.twig', 'loaders/mail.fr.html.twig'],
+            ['@@templates/mail.fr.html.twig', 'loaders/mail.fr.html.twig'],
+            ['@@templates/mail.en_US.html.twig', 'loaders/mail.en.html.twig'],
+            ['@@templates/mail.en.html.twig', 'loaders/mail.en.html.twig'],
+            ['@@templates/mail.it_IT.html.twig', 'loaders/mail.en.html.twig'],
+            ['@@templates/mail.it.html.twig', 'loaders/mail.en.html.twig'],
         ];
     }
 
@@ -116,8 +116,8 @@ final class FilesystemTemplateLoaderTest extends TestCase
     public function testGetSourceContextWithInvalidName(): void
     {
         $this->expectException(LoaderError::class);
-        $this->expectExceptionMessage('Unable to find template "@template_messages/invalid.en_US.html.twig');
+        $this->expectExceptionMessage('Unable to find template "@@templates/invalid.en_US.html.twig');
 
-        $this->loader->getSourceContext('@template_messages/invalid.en_US.html.twig');
+        $this->loader->getSourceContext('@@templates/invalid.en_US.html.twig');
     }
 }

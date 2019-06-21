@@ -54,7 +54,7 @@ class DoctrineTemplateLoader implements LoaderInterface, SourceContextLoaderInte
      */
     public function __construct(
         ManagerRegistry $doctrine,
-        string $namespace = 'doctrine_template_messages'
+        string $namespace = 'user_templates'
     ) {
         $this->doctrine = $doctrine;
         $this->namespace = $namespace;

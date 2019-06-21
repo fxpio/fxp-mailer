@@ -39,7 +39,7 @@ class FilesystemTemplateLoader extends FilesystemLoader
         string $rootPath = null,
         string $fallback = 'en',
         string $path = 'templates',
-        string $namespace = 'template_messages'
+        string $namespace = 'templates'
     ) {
         parent::__construct([], $rootPath);
 
