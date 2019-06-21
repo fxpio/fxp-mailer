@@ -100,4 +100,9 @@ final class EmailTransporterTest extends TestCase
 
         $this->transporter->send($message, $envelope);
     }
+
+    public function testHasRequiredFrom(): void
+    {
+        static::assertTrue($this->transporter->hasRequiredFrom());
+    }
 }

@@ -30,4 +30,16 @@ interface MailerInterface
      * @throws TransporterNotFoundException
      */
     public function send(RawMessage $message, $envelope = null): void;
+
+    /**
+     * Check if the from is required.
+     *
+     * @param RawMessage  $message  The message
+     * @param null|object $envelope The envelope
+     *
+     * @throws TransporterNotFoundException
+     *
+     * @return bool
+     */
+    public function hasRequiredFrom(RawMessage $message, $envelope = null): bool;
 }

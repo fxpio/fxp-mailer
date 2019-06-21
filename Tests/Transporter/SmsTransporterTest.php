@@ -100,4 +100,11 @@ final class SmsTransporterTest extends TestCase
 
         $this->transporter->send($message, $envelope);
     }
+
+    public function testHasRequiredFrom(): void
+    {
+        $this->smsSender->expects(static::once())->method('hasRequiredFrom')->willReturn(true);
+
+        static::assertTrue($this->transporter->hasRequiredFrom());
+    }
 }

@@ -44,6 +44,14 @@ class SmsTransporter implements TransporterInterface
     /**
      * {@inheritdoc}
      */
+    public function hasRequiredFrom(): bool
+    {
+        return $this->smsSender->hasRequiredFrom();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function send(RawMessage $message, $envelope = null): void
     {
         if (null !== $envelope && !$envelope instanceof SmsEnvelope) {

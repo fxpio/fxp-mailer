@@ -51,14 +51,35 @@ class Mailer implements MailerInterface
      */
     public function send(RawMessage $message, $envelope = null): void
     {
+        $this->findTransporter($message, $envelope)->send($message, $envelope);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasRequiredFrom(RawMessage $message, $envelope = null): bool
+    {
+        return $this->findTransporter($message, $envelope)->hasRequiredFrom();
+    }
+
+    /**
+     * Find the transporter.
+     *
+     * @param RawMessage  $message  The message
+     * @param null|object $envelope The envelope
+     *
+     * @throws TransporterNotFoundException
+     *
+     * @return TransporterInterface
+     */
+    private function findTransporter(RawMessage $message, $envelope = null): TransporterInterface
+    {
         foreach ($this->transporters as $transporter) {
             if ($transporter->supports($message, $envelope)) {
-                $transporter->send($message, $envelope);
-
-                return;
+                return $transporter;
             }
         }
 
-        throw new TransporterNotFoundException('No transporter was found to send the message');
+        throw new TransporterNotFoundException('No transporter was found for the message');
     }
 }
